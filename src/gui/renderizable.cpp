@@ -12,3 +12,24 @@ QRect Renderizable::getRect(){
 bool Renderizable::isCollide(Renderizable *_otherRenderizable){
     return _Rectangle.intersects(_otherRenderizable->getRect());
 }
+
+int Renderizable::getX() const
+{
+    return _Rectangle.x();
+}
+
+int Renderizable::getY() const
+{
+    return _Rectangle.y();
+}
+
+
+int Renderizable::getHeight() const
+{
+    return _Rectangle.height();
+}
+
+int Renderizable::getWidth() const
+{
+    return _Rectangle.width();
+}
