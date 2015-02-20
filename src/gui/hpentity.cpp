@@ -5,7 +5,7 @@ HPEntity::HPEntity(int pMaxHp):_Hp(pMaxHp),_MaxHp(pMaxHp)
 }
 
 void HPEntity::addHitPoints(int pHp){
-    if (pHp >= _Hp)_Hp = 0;
+    if (pHp+_Hp <= 0)_Hp = 0;
     else if (pHp+_Hp > _MaxHp)_Hp = _MaxHp;
     else _Hp += pHp;
 }
