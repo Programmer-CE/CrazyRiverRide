@@ -13,6 +13,10 @@ public:
     void moveInPlace(int pX,int pY);
     QRect getRect();
     bool isCollide(Renderizable *_otherRenderizable);
+    int getX()const;
+    int getY()const;
+    int getHeight()const;
+    int getWidth()const;
 };
 
 #endif // RENDERIZABLE_H
