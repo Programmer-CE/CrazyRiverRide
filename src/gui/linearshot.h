@@ -9,11 +9,11 @@ protected:
     int _VelocityY;
     bool __IsTouched;
 public:
-    virtual void LinearShot(bool _toUp)=0;
-    virtual bool isUsefulShot()=0;
-    virtual bool isCollide(Renderizable *otherRenderizable)=0;
-    virtual void update()=0;
+    void LinearShot(bool _toUp);
+    bool isUsefulShot()=0;
+    bool isCollide(Renderizable *otherRenderizable);
+    void update();
 
     virtual ~LinearShot();
-}
+};
 #endif // LINEARSHOT_H
