@@ -5,7 +5,7 @@ class Shot: public Renderizable
 {
 public:
     virtual void demage(HPEntity *pEntity)=0;
-    virtual bool isUefulShot()=0;
+    virtual bool isUsefulShot()=0;
     virtual void getType()=0;
     virtual ~Shot();
 };
