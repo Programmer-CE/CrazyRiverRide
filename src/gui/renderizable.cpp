@@ -33,3 +33,5 @@ int Renderizable::getWidth() const
 {
     return _Rectangle.width();
 }
+
+Renderizable::~Renderizable(){}

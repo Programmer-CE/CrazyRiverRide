@@ -12,6 +12,7 @@ public:
     bool isDead()const;
     void addHitPoints(int pHp = -1);
     int getHitPoints()const;
+    virtual ~HPEntity();
 };
 
 #endif // HPENTITY_H

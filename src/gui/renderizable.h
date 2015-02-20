@@ -17,6 +17,7 @@ public:
     int getY()const;
     int getHeight()const;
     int getWidth()const;
+    virtual ~Renderizable();
 };
 
 #endif // RENDERIZABLE_H

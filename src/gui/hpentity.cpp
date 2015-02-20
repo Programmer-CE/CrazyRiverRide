@@ -1,6 +1,6 @@
 #include "hpentity.h"
 
-HPEntity::HPEntity(int pMaxHp):_Hp(pHp),_MaxHp(pHp)
+HPEntity::HPEntity(int pMaxHp):_Hp(pMaxHp),_MaxHp(pMaxHp)
 {
 }
 
@@ -16,4 +16,7 @@ bool HPEntity::isDead()const{
 
 int HPEntity::getHitPoints()const{
     return _Hp;
+}
+
+HPEntity::~HPEntity(){
 }

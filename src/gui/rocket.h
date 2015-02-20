@@ -1,6 +1,6 @@
 #include "qpixmap.h"
 #include "hpentity.h"
-#include "shoot.h"
+#include "shot.h"
 #ifndef ROCKET_H
 #define ROCKET_H
 
@@ -25,7 +25,9 @@ public:
     //render: renderiza la nave en un lugar dado
     void render(QPainter *pPainter);
     // crea un disparo en la posicion frontal de la nave
-    virtual Shoot* shoot() = 0;
+    virtual Shot* shoot() = 0;
+    //Liberador de memeoria
+    virtual ~Rocket();
 };
 
 #endif // ROCKET_H
