@@ -12,6 +12,12 @@ protected:
     //Velocidad en el eje Y
     int _Vy;
 public:
+    static const int ROCKET_WIDTH;
+
+    static const int ROCKET_HEIGHT;
+
+    static const int MAX_HP;
+
     //Constructor solicita la vida que tendra la nave
     Rocket(QRect pRectangle, int pMaxHp);
     //Actualiza la posicion de la nave

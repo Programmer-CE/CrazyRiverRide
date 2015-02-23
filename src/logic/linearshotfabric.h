@@ -6,7 +6,7 @@ class LinearShotFabric:public ShotFabric
 {
 public:
     LinearShotFabric(int pMaxMunition);
-    Shot* getNewShoot(int pX,int pY, bool pPlayer,int pDamage);
+    Shot* getNewShoot(int pX,int pY, bool pPlayer);
     virtual ~LinearShotFabric();
 };
 

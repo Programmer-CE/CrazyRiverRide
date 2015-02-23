@@ -4,6 +4,7 @@
 
 class ShotFabric
 {
+
 protected:
     // es la cantidad de municion que tiene el jugador.
     int _CurrentMunition;
@@ -13,7 +14,7 @@ protected:
 
 public:
     ShotFabric(int pMaxMunition);
-    virtual Shot* getNewShoot(int pX,int pY, bool pPlayer,int pDamage) = 0;
+    virtual Shot* getNewShoot(int pX,int pY, bool pPlayer) = 0;
     void addMunition(int pMunition);
     bool haveMunition();
     virtual ~ShotFabric();

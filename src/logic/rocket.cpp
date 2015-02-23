@@ -1,6 +1,11 @@
 #include "rocket.h"
 #include "hpentity.h"
 
+const int Rocket::ROCKET_WIDTH = 128;
+const int Rocket::ROCKET_HEIGHT = 108;
+const int Rocket::MAX_HP= 108;
+
+
 Rocket::Rocket(QRect pRectangle, int pMaxHp) : HPEntity(pRectangle,pMaxHp), _Vx(0), _Vy(0)
 {
 }

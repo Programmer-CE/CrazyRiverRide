@@ -26,6 +26,11 @@ int LinearShot::getYVelocity()
     return _VelocityY;
 }
 
+int LinearShot::getType()
+{
+    return LINEAR_SHOT;
+}
+
 int LinearShot::getXVelocity()
 {
     return 0;

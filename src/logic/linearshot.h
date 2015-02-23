@@ -13,6 +13,7 @@ public:
     bool isCollide(GameObject *otherRenderizable);
     int getXVelocity();
     int getYVelocity();
+    int getType();
     void update();
     virtual ~LinearShot();
 };

@@ -4,7 +4,6 @@ ShotFabric::ShotFabric(int pMaxMunition):_MaxMunition(pMaxMunition),_CurrentMuni
 {
 
 }
-
 void ShotFabric::addMunition(int pMunition){
     if (_CurrentMunition+pMunition <= 0)_CurrentMunition = 0;
     else if (_CurrentMunition+pMunition > _MaxMunition) _CurrentMunition = _MaxMunition;
