@@ -12,9 +12,11 @@ protected:
 
 
 public:
-    virtual Shot* getNewShoot(int pX,int pY, bool pPlayer) = 0;
+    ShotFabric(int pMaxMunition);
+    virtual Shot* getNewShoot(int pX,int pY, bool pPlayer,int pDamage) = 0;
     void addMunition(int pMunition);
     bool haveMunition();
+    virtual ~ShotFabric();
 };
 
 #endif // SHOTFABRIC_H
