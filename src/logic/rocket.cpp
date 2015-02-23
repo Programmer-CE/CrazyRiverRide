@@ -20,5 +20,15 @@ void Rocket::setYVelocity(int pYVelocity)
     _Vy = pYVelocity;
 }
 
+int Rocket::getXVelocity() const
+{
+    return _Vx;
+}
+
+int Rocket::getYVelocity() const
+{
+    return _Vy;
+}
+
 Rocket::~Rocket(){
 }

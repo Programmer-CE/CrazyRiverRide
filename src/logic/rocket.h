@@ -20,6 +20,13 @@ public:
     void setXVelocity(int pXVelocity);
     //Setea la velocidad en el eje y
     void setYVelocity(int pYVelocity);
+
+    //obtiene la velocidad en el eje x
+    int getXVelocity() const;
+
+    //obtiene la velocidad en el eje y
+    int getYVelocity() const;
+
     // crea un disparo en la posicion frontal de la nave
     virtual Shot* shoot() = 0;
     //Liberador de memeoria
