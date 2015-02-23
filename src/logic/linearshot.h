@@ -1,5 +1,5 @@
 #include "shot.h"
-#include "renderizable.h"
+#include "gameobject.h"
 #ifndef LINEARSHOT_H
 #define LINEARSHOT_H
 class LinearShot : public Shot
@@ -9,11 +9,10 @@ protected:
     int _VelocityY;
     bool __IsTouched;
 public:
-    void LinearShot(bool _toUp);
+    LinearShot(bool _toUp);
     bool isUsefulShot()=0;
-    bool isCollide(Renderizable *otherRenderizable);
+    bool isCollide(GameObject *otherRenderizable);
     void update();
-
     virtual ~LinearShot();
 };
 #endif // LINEARSHOT_H

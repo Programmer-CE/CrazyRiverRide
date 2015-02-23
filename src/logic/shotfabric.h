@@ -1,3 +1,4 @@
+#include "shot.h"
 #ifndef SHOTFABRIC_H
 #define SHOTFABRIC_H
 

@@ -1,7 +1,7 @@
 #include "rocket.h"
 #include "hpentity.h"
 
-Rocket::Rocket(int pMaxHp):_Vx(0),_Vy(0),HPEntity(pMaxHp)
+Rocket::Rocket(int pMaxHp) : HPEntity(pMaxHp), _Vx(0), _Vy(0)
 {
 }
 
@@ -20,12 +20,5 @@ void Rocket::setYVelocity(int pYVelocity)
     _Vy = pYVelocity;
 }
 
-void Rocket::render(QPainter *pPainter)
-{
-    pPainter->drawPixmap(this->_Rectangle,*_Sprite);
-}
-
-
 Rocket::~Rocket(){
-    _Sprite=0;
 }

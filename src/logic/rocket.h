@@ -11,8 +11,6 @@ protected:
     int _Vx;
     //Velocidad en el eje Y
     int _Vy;
-    //Puntero a la imagen que la nave pinta
-    QPixmap *_Sprite;
 public:
     //Constructor solicita la vida que tendra la nave
     Rocket(int pMaxHp);
@@ -22,8 +20,6 @@ public:
     void setXVelocity(int pXVelocity);
     //Setea la velocidad en el eje y
     void setYVelocity(int pYVelocity);
-    //render: renderiza la nave en un lugar dado
-    void render(QPainter *pPainter);
     // crea un disparo en la posicion frontal de la nave
     virtual Shot* shoot() = 0;
     //Liberador de memeoria

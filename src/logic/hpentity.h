@@ -1,8 +1,8 @@
-#include "renderizable.h"
+#include "gameobject.h"
 #ifndef HPENTITY_H
 #define HPENTITY_H
 
-class HPEntity:public Renderizable
+class HPEntity:public GameObject
 {
 protected:
     int _Hp;
