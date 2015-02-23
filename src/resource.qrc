@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/player/mini blue rocket.png</file>
+        <file>images/player/mini gray rocket.png</file>
+        <file>images/player/mini green rocket.png</file>
+        <file>images/player/mini metroid rocket.png</file>
+        <file>images/player/mini premium rocket.png</file>
+        <file>images/player/mini purple rocket.png</file>
+        <file>images/player/mini red rocket.png</file>
+    </qresource>
+</RCC>
