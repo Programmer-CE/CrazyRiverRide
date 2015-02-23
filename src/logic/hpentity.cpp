@@ -1,6 +1,6 @@
 #include "hpentity.h"
 
-HPEntity::HPEntity(int pMaxHp):_Hp(pMaxHp),_MaxHp(pMaxHp)
+HPEntity::HPEntity(QRect pRectangle, int pMaxHp):GameObject(pRectangle),_Hp(pMaxHp),_MaxHp(pMaxHp)
 {
 }
 

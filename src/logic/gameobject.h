@@ -1,20 +1,30 @@
 #include "qrect.h"
+#include <string>
+
 #ifndef RENDERIZABLE_H
 #define RENDERIZABLE_H
+
+
+using namespace std;
 
 class GameObject
 {
 protected:
     QRect _Rectangle;
-public:
-    virtual void update() = 0;
+    string _Id;
+    static int _Serial;
     void moveInPlace(int pX,int pY);
-    QRect getRect();
-    bool isCollide(GameObject *_otherRenderizable);
-    int getX()const;
-    int getY()const;
-    int getHeight()const;
-    int getWidth()const;
+public:
+    GameObject(QRect pRect);
+    GameObject(GameObject& go);
+    virtual QRect getRect();
+    virtual bool isCollide(GameObject *_otherRenderizable);
+    virtual void update() = 0;
+    virtual string getId();
+    virtual int getHeight()const;
+    virtual int getWidth()const;
+    virtual int getX()const;
+    virtual int getY()const;
     virtual ~GameObject();
 };
 

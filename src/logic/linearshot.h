@@ -5,13 +5,14 @@
 class LinearShot : public Shot
 {
 protected:
-    int _DireccionY;
     int _VelocityY;
-    bool __IsTouched;
+    bool _IsTouched;
 public:
-    LinearShot(bool _toUp);
-    bool isUsefulShot()=0;
+    LinearShot(QRect pRectangle,bool pToUp, int pDamage);
+    bool isUsefulShot(QRect pArea);
     bool isCollide(GameObject *otherRenderizable);
+    int getXVelocity();
+    int getYVelocity();
     void update();
     virtual ~LinearShot();
 };

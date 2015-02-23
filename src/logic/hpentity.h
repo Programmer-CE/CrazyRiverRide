@@ -8,7 +8,8 @@ protected:
     int _Hp;
     int _MaxHp;
 public:
-    HPEntity(int pMaxHp);
+    HPEntity(QRect pRectangle, int pMaxHp);
+    //HPEntity(HPEntity&);
     bool isDead()const;
     void addHitPoints(int pHp = -1);
     int getHitPoints()const;

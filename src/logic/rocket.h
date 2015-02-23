@@ -13,7 +13,7 @@ protected:
     int _Vy;
 public:
     //Constructor solicita la vida que tendra la nave
-    Rocket(int pMaxHp);
+    Rocket(QRect pRectangle, int pMaxHp);
     //Actualiza la posicion de la nave
     void update();
     //Setea la velocidad en el eje x

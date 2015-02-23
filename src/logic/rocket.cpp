@@ -1,7 +1,7 @@
 #include "rocket.h"
 #include "hpentity.h"
 
-Rocket::Rocket(int pMaxHp) : HPEntity(pMaxHp), _Vx(0), _Vy(0)
+Rocket::Rocket(QRect pRectangle, int pMaxHp) : HPEntity(pRectangle,pMaxHp), _Vx(0), _Vy(0)
 {
 }
 
