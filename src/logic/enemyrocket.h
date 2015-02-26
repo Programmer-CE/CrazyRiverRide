@@ -10,6 +10,7 @@ public:
     static const int MOVIL_ENEMY_ROCKET;
     EnemyRocket(QRect pRectangle, int pMaxHp);
     Shot* shoot();
+    virtual int getEnemyType() = 0;
     virtual ~EnemyRocket();
 };
 

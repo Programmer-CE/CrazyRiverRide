@@ -18,6 +18,10 @@ public:
 
     static const int MAX_HP;
 
+
+    static const int ROCKET_VELOCITY;
+
+
     //Constructor solicita la vida que tendra la nave
     Rocket(QRect pRectangle, int pMaxHp);
     //Actualiza la posicion de la nave

@@ -60,13 +60,17 @@ void KernelGame::addRandomEnemy(QRect rec)
     //agrega un enemigo
     //inconcluso
     int typeOfEnemy = rand() %2;
+    Player *player = (_Players.get(rand()%_Players.getLenght()));
     int posX = rand() % rec.width();
     QRect enemyPos(posX,0,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT);
     if(typeOfEnemy == EnemyRocket::MOVIL_ENEMY_ROCKET)_Enemies.add(new MovilEnemyRocket(enemyPos,Rocket::MAX_HP));
-    else _Enemies.add(new Kamikaze(enemyPos,Rocket::MAX_HP));
+    else _Enemies.add(new Kamikaze(enemyPos,Rocket::MAX_HP,player));
 }
 
-KernelGame::KernelGame(){
+KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false){
+    _Rec = rec;
+    _Paused = false;
+    _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));
 }
 
 void KernelGame::update(QRect rec)
@@ -82,12 +86,21 @@ void KernelGame::update(QRect rec)
                 player->update(rec);
             }
         }
-        if (_CurrentTimeToRegenerateEnemies ==0){
-            _CurrentTimeToRegenerateEnemies = KernelGame::TIME_TO_REGENERATE_ENEMIES;
-            int numOfEnemies = rand() % MAX_ENEMIES_PER_CYCLES;
-            for (int x = 0; x < numOfEnemies;x++)addRandomEnemy(rec);
+        for (int x = 0; x < _Enemies.getLenght();x++){
+            if (!_Enemies.get(x)->getRect().intersects(rec)){
+                delete _Enemies.get(x);
+                _Enemies.remove(x);
+                break;
+            }
         }
-        else _CurrentTimeToRegenerateEnemies++;
+        for (int x = 0; x < _EnemiesShots.getLenght();x++){
+            if (!_EnemiesShots.get(x)->getRect().intersects(rec)){
+                delete _EnemiesShots.get(x);
+                _EnemiesShots.remove(x);
+                break;
+            }
+        }
+        addRandomEnemy(rec);
     }
 }
 
@@ -129,6 +142,16 @@ bool KernelGame::isPaused()
     return _Paused;
 }
 
+void KernelGame::killPlayer(Player *pPlayer)
+{
+    pPlayer->getRocket()->addHitPoints(pPlayer->getRocket()->getHitPoints());
+    List<Shot*> *shots = pPlayer->getPlayerShots();
+    while(!shots->isEmpty()){
+        delete shots->get(0);
+        shots->remove(0);
+    }
+}
+
 Player *KernelGame::getPlayer(int pPlayerNum)
 {
     for (int x = 0; x < _Players.getLenght();x++){
@@ -138,8 +161,18 @@ Player *KernelGame::getPlayer(int pPlayerNum)
 }
 
 
-int KernelGame::createPlayer()
+void KernelGame::createPlayer()
 {
     _NumOfPlayer++;
     _Players.add(new Player(0,0,_NumOfPlayer));
+}
+
+
+
+KernelGame::~KernelGame()
+{
+    for(int x = 0; x < _Enemies.getLenght(); x++)delete _Enemies.get(x);
+    for(int x = 0; x < _Players.getLenght(); x++)delete _Players.get(x);
+    for(int x = 0; x < _EnemiesShots.getLenght(); x++)delete _EnemiesShots.get(x);
+
 }

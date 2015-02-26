@@ -12,6 +12,7 @@ private:
     int _NumOfPlayer;
     int _CurrentTimeToRegenerateEnemies;
     bool _OnMenu;
+    QRect _Rec;
     List<EnemyRocket*> _Enemies;
     List<Player*> _Players;
     List<Shot*> _EnemiesShots;
@@ -24,14 +25,13 @@ private:
     void collisionPlayerShotsWithBridge(Player *pPlayer);
     //void collisionPlayerWithEnemies(Player *pPlayer);
     void collisionPlayerWithEnemiesShots(Player *pPlayer);
-    void addRandomEnemy(QRect rec);
 public:
     static const int FPS;
     static const int POINTS_PER_ENEMY;
     static const int STUN_TIME;
     static const int TIME_TO_REGENERATE_ENEMIES;
     static const int MAX_ENEMIES_PER_CYCLES;
-    KernelGame();
+    KernelGame(QRect rec);
     void update(QRect rec);
     void changePlayerXVelocity(Player *pPlayer,int pXvelocity);
     void changePlayerYVelocity(Player *pPlayer,int pYvelocity);
@@ -43,8 +43,12 @@ public:
     bool isPaused();
     bool isStageClear();
     void killPlayer(Player *pPlayer);
-    int createPlayer();
+    void createPlayer();
+    //retorna el tipo de enemigo creado, el tipo puede ser EnemyRocket::MOVIL_ENEMY_ROCKET
+    // o puede ser EnemyRocket::KAMIKAZE
+    void addRandomEnemy(QRect rec);
     Player *getPlayer(int pPlayerNum);
+    virtual ~KernelGame();
 
 };
 
