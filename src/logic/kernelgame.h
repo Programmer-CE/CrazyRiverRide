@@ -9,6 +9,7 @@ class KernelGame
 private:
     bool _Paused;
     int _PlayerPause;
+    int _NumOfPlayer;
     int _CurrentTimeToRegenerateEnemies;
     bool _OnMenu;
     List<EnemyRocket*> _Enemies;
@@ -41,6 +42,8 @@ public:
     void play(Player *pPlayer);
     bool isPaused();
     bool isStageClear();
+    void killPlayer(Player *pPlayer);
+    int createPlayer();
     Player *getPlayer(int pPlayerNum);
 
 };

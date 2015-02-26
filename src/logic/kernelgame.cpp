@@ -75,10 +75,12 @@ void KernelGame::update(QRect rec)
         Player * player;
         for (int x = 0; x < _Players.getLenght();x++){
             player = _Players.get(x);
-            collisionPlayerShotsWithEnemies(player);
-            collisionPlayerWithEnemiesShots(player);
-            collisionPlayerWithEnemiesShots(player);
-            player->update(rec);
+            if (!player->isDead()){
+                collisionPlayerShotsWithEnemies(player);
+                collisionPlayerWithEnemiesShots(player);
+                collisionPlayerWithEnemiesShots(player);
+                player->update(rec);
+            }
         }
         if (_CurrentTimeToRegenerateEnemies ==0){
             _CurrentTimeToRegenerateEnemies = KernelGame::TIME_TO_REGENERATE_ENEMIES;
@@ -133,4 +135,11 @@ Player *KernelGame::getPlayer(int pPlayerNum)
         if(pPlayerNum == _Players.get(x)->getPlayerNumber())return _Players.get(x);
     }
     return 0;
+}
+
+
+int KernelGame::createPlayer()
+{
+    _NumOfPlayer++;
+    _Players.add(new Player(0,0,_NumOfPlayer));
 }
