@@ -6,10 +6,10 @@ class ShotFabric
 {
 
 protected:
-    // es la cantidad de municion que tiene el jugador.
-    int _CurrentMunition;
     //Es la cantidad maxima de municiones que tiene e jugador.
     int _MaxMunition;
+    // es la cantidad de municion que tiene el jugador.
+    int _CurrentMunition;
 
 
 public:

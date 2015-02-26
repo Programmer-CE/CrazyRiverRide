@@ -6,6 +6,8 @@
 class EnemyRocket:public Rocket
 {
 public:
+    static const int KAMIKAZE;
+    static const int MOVIL_ENEMY_ROCKET;
     EnemyRocket(QRect pRectangle, int pMaxHp);
     Shot* shoot();
     virtual ~EnemyRocket();

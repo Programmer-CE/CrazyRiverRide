@@ -1,6 +1,11 @@
 #include "enemyrocket.h"
 #include "linearshot.h"
 
+
+const int EnemyRocket::MOVIL_ENEMY_ROCKET = 0;
+const int EnemyRocket::KAMIKAZE= 1;
+
+
 EnemyRocket::EnemyRocket(QRect pRectangle, int pMaxHp):Rocket(pRectangle,pMaxHp)
 {
 }
