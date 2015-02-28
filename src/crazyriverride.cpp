@@ -40,7 +40,7 @@ CrazyRiverRide::~CrazyRiverRide()
     delete ui;
 }
 
-void CrazyRiverRide::closeEvent(QCloseEvent *e)
+void CrazyRiverRide::closeEvent(QCloseEvent *)
 {
 
 }

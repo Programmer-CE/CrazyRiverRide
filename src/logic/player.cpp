@@ -72,11 +72,7 @@ void Player::update(QRect rec)
         if (rec.x() > xposition || xposition > rec.right()) _Rocket->setXVelocity(0);
         int yposition = _Rocket->getY()+_Rocket->getYVelocity();
         if (rec.y() > yposition || yposition > rec.bottom()){
-            std::cout << "y: "<< rec.y() << " yposition: " << yposition << " bottom: " << rec.bottom()<< std::endl;
             _Rocket->setYVelocity(0);
-        }
-        else{
-            std::cout << "esta entrando aqui"<< std::endl;
         }
         _Rocket->update();
         return;

@@ -7,5 +7,9 @@
         <file>images/player/mini premium rocket.png</file>
         <file>images/player/mini purple rocket.png</file>
         <file>images/player/mini red rocket.png</file>
+        <file>images/enemy/mini enemy nave premium version.png</file>
+        <file>images/attack/attack.png</file>
+        <file>images/attack/greenattack.png</file>
+        <file>images/levels/bg.jpg</file>
     </qresource>
 </RCC>

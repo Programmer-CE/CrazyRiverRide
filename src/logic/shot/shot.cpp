@@ -11,10 +11,10 @@ const bool Shot::SHOT_TO_UP = true;
 const bool Shot::SHOT_TO_DOWN = false;
 
 
-const int Shot::ENEMY_DAMAGE = 1;
-const int Shot::LINEAR_DAMAGE = 1;
-const int Shot::ANGULAR_DAMAGE = 1;
-const int Shot::MAYHEM_DAMAGE = 1;
+const int Shot::ENEMY_DAMAGE = -5;
+const int Shot::LINEAR_DAMAGE = -8;
+const int Shot::ANGULAR_DAMAGE = -8;
+const int Shot::MAYHEM_DAMAGE = -800;
 
 Shot::Shot(QRect pRectangle, int pDamage):GameObject(pRectangle)
 {

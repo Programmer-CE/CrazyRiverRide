@@ -24,7 +24,7 @@ public:
     void setkeyUpdater(KeyUpdater pKeyUpdater);
     ~CrazyRiverRide();
 protected:
-    void closeEvent(QCloseEvent *e);
+    void closeEvent(QCloseEvent *);
     void paintEvent(QPaintEvent*);
     void keyPressEvent(QKeyEvent *);
     void keyReleaseEvent(QKeyEvent *);

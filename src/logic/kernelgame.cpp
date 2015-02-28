@@ -2,6 +2,7 @@
 #include "logic/rocket/movilenemyrocket.h"
 #include "logic/rocket/kamikaze.h"
 #include <cmath>
+#include <iostream>
 #include "protobufmessage/GameObjectNotify.pb.h"
 
 const int KernelGame::FPS = 24;
@@ -57,6 +58,7 @@ void KernelGame::collisionPlayerWithEnemies(Player *pPlayer)
 {
     PlayerRocket *rocket = pPlayer->getRocket();
     for (int x= 0; x < this->_Enemies.getLenght();x++){
+        std::cout << "aqui ocurre algo" << endl;
         if (rocket->isCollide(_Enemies.get(x))){
             rocket->addHitPoints(Shot::ENEMY_DAMAGE);
             delete _Enemies.get(x);
@@ -124,12 +126,18 @@ void KernelGame::addRandomEnemy(QRect rec)
 {
     //agrega un enemigo
     //inconcluso
-    int typeOfEnemy = rand() %2;
-    Player *player = (_Players.get(rand()%_Players.getLenght()));
-    int posX = rand() % rec.width();
-    QRect enemyPos(posX,0,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT);
-    if(typeOfEnemy == EnemyRocket::MOVIL_ENEMY_ROCKET)_Enemies.add(new MovilEnemyRocket(enemyPos,Rocket::MAX_HP));
-    else _Enemies.add(new Kamikaze(enemyPos,Rocket::MAX_HP,player));
+    if (_Enemies.getLenght() < 3){
+        int typeOfEnemy = rand() %2;
+        Player *player = (_Players.get(rand()%_Players.getLenght()));
+        int posX = rand() % rec.width();
+        QRect enemyPos(posX,0,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT);
+        if(typeOfEnemy == 0){
+            _Enemies.add(new MovilEnemyRocket(enemyPos,Rocket::MAX_HP));
+        }
+        else{
+            _Enemies.add(new Kamikaze(enemyPos,Rocket::MAX_HP,player));
+        }
+    }
 }
 
 //==================================================================================================
@@ -154,6 +162,7 @@ void KernelGame::update(QRect rec)
 {
     if(!isPaused()){
         updatePlayers(rec);
+        //std::cout << "actualizacion de enemigos, cantidad" << _Enemies.getLenght() << std::endl;
         updateEnemies(rec);
         addRandomEnemy(rec);
         notifyAll();
@@ -169,7 +178,7 @@ void KernelGame::updatePlayers(QRect rec)
         if (!player->isDead()){
             collisionPlayerShotsWithEnemies(player);
             collisionPlayerWithEnemiesShots(player);
-            collisionPlayerWithEnemiesShots(player);
+            collisionPlayerWithEnemies(player);
             player->update(rec);
         }
     }
@@ -179,6 +188,7 @@ void KernelGame::updateEnemies(QRect rec)
 {
     for (int x = 0; x < _Enemies.getLenght();x++){
         if (!_Enemies.get(x)->getRect().intersects(rec)){
+            std::cout << "no interseca " << std::endl;
             delete _Enemies.get(x);
             _Enemies.remove(x);
             break;
@@ -191,18 +201,52 @@ void KernelGame::updateEnemies(QRect rec)
             break;
         }
     }
+    for (int x = 0; x < _Enemies.getLenght();x++){
+        if(_Enemies.get(x)->getEnemyType() == EnemyRocket::MOVIL_ENEMY_ROCKET){
+            _Enemies.get(x)->setXVelocity((rand()%2)*Rocket::ROCKET_VELOCITY);
+            _Enemies.get(x)->setYVelocity((1)*Rocket::ROCKET_VELOCITY);
+        }
+        _Enemies.get(x)->update();
+    }
 }
 
 
 void KernelGame::notifyAll()
 {
-    GameObjectNotify *message = new GameObjectNotify();
-    message->set_height(_Players.get(0)->getRocket()->getHeight());
-    message->set_width(_Players.get(0)->getRocket()->getWidth());
-    message->set_x(_Players.get(0)->getRocket()->getX());
-    message->set_y(_Players.get(0)->getRocket()->getY());
+    GameObjectNotify *message;
+    message = new GameObjectNotify();
+    message->set_height(_Rec.height());
+    message->set_width(_Rec.width());
+    message->set_x(_Rec.x());
+    message->set_y(_Rec.y());
     message->set_type(0);
     _UiDriver->update(message);
+    delete message;
+    for (int x = 0; x < _Players.getLenght();x++){
+        message = new GameObjectNotify();
+        if(!_Players.get(x)->isDead()){
+            message->set_height(_Players.get(x)->getRocket()->getHeight());
+            message->set_width(_Players.get(x)->getRocket()->getWidth());
+            message->set_x(_Players.get(x)->getRocket()->getX());
+            message->set_y(_Players.get(x)->getRocket()->getY());
+            message->set_type(1);
+            _UiDriver->update(message);
+        }
+
+
+        delete message;
+    }
+    for (int x = 0; x < _Enemies.getLenght();x++){
+        message = new GameObjectNotify();
+        message->set_height(_Enemies.get(x)->getHeight());
+        message->set_width(_Enemies.get(x)->getWidth());
+        message->set_x(_Enemies.get(x)->getX());
+        message->set_y(_Enemies.get(x)->getY());
+        message->set_type(2);
+        _UiDriver->update(message);
+        delete message;
+    }
+
 }
 
 

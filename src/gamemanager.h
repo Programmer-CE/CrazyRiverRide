@@ -8,7 +8,9 @@ class GameManager:public Observer
 {
     CrazyRiverRide *_GameWindows;
     QRect r;
-    QPixmap pix;
+    QPixmap player1;
+    QPixmap enemies;
+    QPixmap level;
     bool _Run;
 public:
     GameManager(CrazyRiverRide *);
