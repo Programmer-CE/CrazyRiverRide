@@ -134,7 +134,7 @@ template <class E> Node<E>* CircularList<E>::getNode(int index){
 }
 
 template <class E> void CircularList<E>::addi(E data){
-        if(head == null){
+        if(head == none){
             head = new Node<E>(data);
             tail = head;
         }
@@ -148,7 +148,7 @@ template <class E> void CircularList<E>::addi(E data){
 }
 
 template <class E> void CircularList<E>::add(E data){
-        if (head == null){
+        if (head == none){
             head = new Node<E>(data);
             tail = head;
         }
@@ -262,8 +262,8 @@ template <class E> CircularList<E>::~CircularList(){
 }
 
 template <class E> CircularList<E>::CircularList() {
-    tail = null;
-    head = null;
+    tail = none;
+    head = none;
     this->lenght = 0;
 }
 

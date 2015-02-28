@@ -105,8 +105,8 @@ public:
 
 
 template <class E> List<E>::List() {
-    tail = null;
-    head = null;
+    tail = none;
+    head = none;
     this->lenght = 0;
 }
 
@@ -123,7 +123,7 @@ template <class E> Node<E>* List<E>::getNode(int index){
 
 
 template <class E> void List<E>::addi(E data){
-    if(head == null){
+    if(head == none){
         head = new Node<E>(data);
         tail = head;
     }
@@ -138,7 +138,7 @@ template <class E> void List<E>::addi(E data){
 
 
 template <class E> void List<E>::add(E data){
-    if (head == null){
+    if (head == none){
         head = new Node<E>(data);
         tail = head;
     }
@@ -170,7 +170,7 @@ template <class E> bool List<E>::add(E data,int index){
         return true;
     }
     else{
-        std::cerr << "index out bounds";
+        std::cerr << "index out bounds: ";
         throw index;
         return false;
     }
@@ -194,7 +194,7 @@ template <class E> bool List<E>::remove(int index){
         else if (this->lenght-1 == index){
             Node<E> *deleteNode = tail;
             tail = getNode(index-1);
-            tail->setNext(null);
+            tail->setNext(none);
             delete deleteNode;
         }
         else{
@@ -207,7 +207,7 @@ template <class E> bool List<E>::remove(int index){
         return true;
     }
     else{
-        std::cerr << "index out bounds";
+        std::cerr << "index out bounds: " << index << std::endl;
         throw index;
         return false;
     }
@@ -232,7 +232,7 @@ template <class E> E List<E>:: get(int index){
         return getNode(index)->getData();
     }
     else{
-        std::cerr << "index out bounds";
+        std::cerr << "index out bounds: " << index << std::endl ;
         throw index;
     }
 }

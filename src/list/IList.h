@@ -1,6 +1,6 @@
 #include "IIterator.h"
 
-#define null 0
+#define none 0
 
 #ifndef ILIST_H
 #define ILIST_H

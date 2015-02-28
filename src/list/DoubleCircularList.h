@@ -160,15 +160,15 @@ template <class E> DoubleNode<E>* DoubleCircularList<E>::getNode(int index){
 }
 
 template <class E> DoubleCircularList<E>::DoubleCircularList(){
-    tail = null;
-    head = null;
+    tail = none;
+    head = none;
     this->lenght = 0;
     inverseIterate = false;
 }
 
 
 template <class E> void DoubleCircularList<E>::addi(E data){
-    if(head == null){
+    if(head == none){
         head = new DoubleNode<E>(data);
         tail = head;
     }
@@ -185,7 +185,7 @@ template <class E> void DoubleCircularList<E>::addi(E data){
 
 
 template <class E> void DoubleCircularList<E>::add(E data){
-    if (tail == null){
+    if (tail == none){
         head = new DoubleNode<E>(data);
         tail = head;
     }
@@ -246,7 +246,7 @@ template <class E> bool DoubleCircularList<E>::remove(int index){
             tail = tail->getPrevious();
             tail->setNext(head);
             head->setPrevious(tail);
-            deleteNode->setPrevious(null);
+            deleteNode->setPrevious(none);
             delete deleteNode;
         }
         else{
@@ -254,8 +254,8 @@ template <class E> bool DoubleCircularList<E>::remove(int index){
             DoubleNode<E> *deleteNode = previousNode->getNext();
             previousNode->setNext(deleteNode->getNext());
             deleteNode->getNext()->setPrevious(previousNode);
-            deleteNode->setNext(null);
-            deleteNode->setPrevious(null);
+            deleteNode->setNext(none);
+            deleteNode->setPrevious(none);
             delete deleteNode;
         }
         this->lenght--;

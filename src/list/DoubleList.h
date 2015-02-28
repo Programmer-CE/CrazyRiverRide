@@ -137,15 +137,15 @@ template <class E> DoubleNode<E>* DoubleList<E>::getNode(int index){
 
 
 template <class E> DoubleList<E>::DoubleList(){
-    tail = null;
-    head = null;
+    tail = none;
+    head = none;
     this->lenght = 0;
     inverseIterate = false;
 }
 
 
 template <class E> void DoubleList<E>::addi(E data){
-    if(head == null){
+    if(head == none){
         head = new DoubleNode<E>(data);
         tail = head;
     }
@@ -160,7 +160,7 @@ template <class E> void DoubleList<E>::addi(E data){
 
 
 template <class E> void DoubleList<E>::add(E data){
-    if (tail == null){
+    if (tail == none){
         head = new DoubleNode<E>(data);
         tail = head;
     }
@@ -210,14 +210,14 @@ template <class E> bool DoubleList<E>::remove(int index){
         else if (index == 0){
             DoubleNode<E> *deleteNode = head;
             head = head->getNext();
-            head->setPrevious(null);
+            head->setPrevious(none);
             delete deleteNode;
         }
         else if (this->lenght-1 == index){
             DoubleNode<E> *deleteNode = tail;
             tail = tail->getPrevious();
-            tail->setNext(null);
-            deleteNode->setPrevious(null);
+            tail->setNext(none);
+            deleteNode->setPrevious(none);
             delete deleteNode;
         }
         else{
@@ -225,8 +225,8 @@ template <class E> bool DoubleList<E>::remove(int index){
             DoubleNode<E> *deleteNode = previousNode->getNext();
             previousNode->setNext(deleteNode->getNext());
             deleteNode->getNext()->setPrevious(previousNode);
-            deleteNode->setNext(null);
-            deleteNode->setPrevious(null);
+            deleteNode->setNext(none);
+            deleteNode->setPrevious(none);
             delete deleteNode;
         }
         this->lenght--;
