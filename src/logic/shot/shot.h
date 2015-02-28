@@ -34,11 +34,11 @@ public:
     static const bool SHOT_TO_DOWN;
 
     Shot(QRect pRectangle, int pDamage);
-    void damage(HPEntity *pEntity);
+    virtual void damage(HPEntity *pEntity);
     virtual bool isUsefulShot(QRect pArea)=0;
     virtual int getXVelocity()=0;
     virtual int getYVelocity()=0;
     virtual int getType()=0;
-    virtual ~Shot(){std::cout << "final de disparo" << std::endl;}
+    virtual ~Shot(){}
 };
 #endif // SHOT_H

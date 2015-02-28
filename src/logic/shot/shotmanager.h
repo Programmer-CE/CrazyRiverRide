@@ -19,6 +19,9 @@ public:
     ShotManager();
     Shot* createMunition(int pX,int pY);
     void nextMunition();
+    void addMunition(int pMunition);
+    int getMunition();
+    int getMunitionType();
     virtual ~ShotManager();
 };
 

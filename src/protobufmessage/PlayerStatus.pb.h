@@ -130,6 +130,20 @@ class PlayerStatus : public ::google::protobuf::Message {
   inline bool isdead() const;
   inline void set_isdead(bool value);
 
+  // required int32 NumOfMunition = 5;
+  inline bool has_numofmunition() const;
+  inline void clear_numofmunition();
+  static const int kNumOfMunitionFieldNumber = 5;
+  inline ::google::protobuf::int32 numofmunition() const;
+  inline void set_numofmunition(::google::protobuf::int32 value);
+
+  // required int32 TypeOfMunition = 6;
+  inline bool has_typeofmunition() const;
+  inline void clear_typeofmunition();
+  static const int kTypeOfMunitionFieldNumber = 6;
+  inline ::google::protobuf::int32 typeofmunition() const;
+  inline void set_typeofmunition(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PlayerStatus)
  private:
   inline void set_has_num_of_player();
@@ -140,6 +154,10 @@ class PlayerStatus : public ::google::protobuf::Message {
   inline void clear_has_playerlife();
   inline void set_has_isdead();
   inline void clear_has_isdead();
+  inline void set_has_numofmunition();
+  inline void clear_has_numofmunition();
+  inline void set_has_typeofmunition();
+  inline void clear_has_typeofmunition();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -151,6 +169,8 @@ class PlayerStatus : public ::google::protobuf::Message {
   ::google::protobuf::int32 playerpoints_;
   ::google::protobuf::int32 playerlife_;
   bool isdead_;
+  ::google::protobuf::int32 numofmunition_;
+  ::google::protobuf::int32 typeofmunition_;
   friend void  protobuf_AddDesc_PlayerStatus_2eproto();
   friend void protobuf_AssignDesc_PlayerStatus_2eproto();
   friend void protobuf_ShutdownFile_PlayerStatus_2eproto();
@@ -259,6 +279,54 @@ inline void PlayerStatus::set_isdead(bool value) {
   set_has_isdead();
   isdead_ = value;
   // @@protoc_insertion_point(field_set:PlayerStatus.isDead)
+}
+
+// required int32 NumOfMunition = 5;
+inline bool PlayerStatus::has_numofmunition() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PlayerStatus::set_has_numofmunition() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PlayerStatus::clear_has_numofmunition() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PlayerStatus::clear_numofmunition() {
+  numofmunition_ = 0;
+  clear_has_numofmunition();
+}
+inline ::google::protobuf::int32 PlayerStatus::numofmunition() const {
+  // @@protoc_insertion_point(field_get:PlayerStatus.NumOfMunition)
+  return numofmunition_;
+}
+inline void PlayerStatus::set_numofmunition(::google::protobuf::int32 value) {
+  set_has_numofmunition();
+  numofmunition_ = value;
+  // @@protoc_insertion_point(field_set:PlayerStatus.NumOfMunition)
+}
+
+// required int32 TypeOfMunition = 6;
+inline bool PlayerStatus::has_typeofmunition() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void PlayerStatus::set_has_typeofmunition() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void PlayerStatus::clear_has_typeofmunition() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void PlayerStatus::clear_typeofmunition() {
+  typeofmunition_ = 0;
+  clear_has_typeofmunition();
+}
+inline ::google::protobuf::int32 PlayerStatus::typeofmunition() const {
+  // @@protoc_insertion_point(field_get:PlayerStatus.TypeOfMunition)
+  return typeofmunition_;
+}
+inline void PlayerStatus::set_typeofmunition(::google::protobuf::int32 value) {
+  set_has_typeofmunition();
+  typeofmunition_ = value;
+  // @@protoc_insertion_point(field_set:PlayerStatus.TypeOfMunition)
 }
 
 

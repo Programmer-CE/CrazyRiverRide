@@ -8,7 +8,7 @@
 CrazyRiverRide::CrazyRiverRide(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CrazyRiverRide), _Pause(false),_Close(false),_Shoot(false),_ChangeMunition(false),
-    playerlife(0),playerpoints(0)
+    playerlife(0),playerpoints(0),playermunition(0)
 {
     ui->setupUi(this);
     KeyXaxis = 0;
@@ -71,6 +71,9 @@ void CrazyRiverRide::paintEvent(QPaintEvent *)
     info = "Points: ";
     variant = QVariant(playerpoints);
     p.drawText(0,30,info.append(variant.toString()));
+    info = "Munitions: ";
+    variant = QVariant(playermunition);
+    p.drawText(0,45,info.append(variant.toString()));
     p.end();
 }
 
@@ -149,6 +152,16 @@ void CrazyRiverRide::keyReleaseEvent(QKeyEvent *k)
 
     }
 }
+int CrazyRiverRide::getPlayermunition() const
+{
+    return playermunition;
+}
+
+void CrazyRiverRide::setPlayermunition(int value)
+{
+    playermunition = value;
+}
+
 int CrazyRiverRide::getPlayerpoints() const
 {
     return playerpoints;
@@ -179,6 +192,7 @@ void CrazyRiverRide::render()
     mensaje->set_yvelocity(getKeyYaxis());
     mensaje->set_pause(_Pause);
     mensaje->set_shoot(_Shoot);
+    mensaje->set_changemunition(_ChangeMunition);
     _KeyUpdater.update(mensaje);
     delete mensaje;
 }

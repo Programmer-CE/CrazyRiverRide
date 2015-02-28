@@ -15,6 +15,11 @@ bool ShotFabric::haveMunition(){
     return _CurrentMunition == 0;
 }
 
+int ShotFabric::getMunitions()
+{
+    return _CurrentMunition;
+}
+
 ShotFabric::~ShotFabric()
 {
 

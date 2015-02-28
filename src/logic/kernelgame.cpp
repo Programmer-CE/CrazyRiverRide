@@ -288,6 +288,8 @@ void KernelGame::notifyAll()
     statusmessage->set_num_of_player(0);
     statusmessage->set_isdead(_Players.get(0)->isDead());
     statusmessage->set_playerlife(_Players.get(0)->getRocket()->getHitPoints());
+    statusmessage->set_numofmunition(_Players.get(0)->getRocket()->getMunitions());
+    statusmessage->set_typeofmunition(_Players.get(0)->getRocket()->getMunitionType());
     _UiDriver->update(statusmessage);
     delete statusmessage;
 
@@ -370,7 +372,7 @@ void KernelGame::setObserver(Observer *observer)
     _UiDriver = observer;
 }
 
-void KernelGame::updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause)
+void KernelGame::updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition)
 {
     Player * player = getPlayer(pPlayer);
     if(player && !player->isDead()){
@@ -378,6 +380,7 @@ void KernelGame::updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, boo
         player->getRocket()->setYVelocity(vY*Rocket::ROCKET_VELOCITY);
         if (pShoot)player->shoot();
         if (pPause)_Paused  = !_Paused;
+        if(pChangeMunition)player->changeMunition();
     }
 }
 

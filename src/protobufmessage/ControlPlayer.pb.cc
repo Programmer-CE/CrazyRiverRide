@@ -32,12 +32,13 @@ void protobuf_AssignDesc_ControlPlayer_2eproto() {
       "ControlPlayer.proto");
   GOOGLE_CHECK(file != NULL);
   ControlPlayer_descriptor_ = file->message_type(0);
-  static const int ControlPlayer_offsets_[5] = {
+  static const int ControlPlayer_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, num_of_player_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, xvelocity_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, yvelocity_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, shoot_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, pause_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, changemunition_),
   };
   ControlPlayer_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -80,10 +81,10 @@ void protobuf_AddDesc_ControlPlayer_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023ControlPlayer.proto\"j\n\rControlPlayer\022\025"
-    "\n\rNUM_OF_PLAYER\030\001 \002(\005\022\021\n\tXVelocity\030\002 \002(\005"
-    "\022\021\n\tYVelocity\030\003 \002(\005\022\r\n\005Shoot\030\004 \002(\010\022\r\n\005Pa"
-    "use\030\005 \002(\010", 129);
+    "\n\023ControlPlayer.proto\"\202\001\n\rControlPlayer\022"
+    "\025\n\rNUM_OF_PLAYER\030\001 \002(\005\022\021\n\tXVelocity\030\002 \002("
+    "\005\022\021\n\tYVelocity\030\003 \002(\005\022\r\n\005Shoot\030\004 \002(\010\022\r\n\005P"
+    "ause\030\005 \002(\010\022\026\n\016ChangeMunition\030\006 \002(\010", 154);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ControlPlayer.proto", &protobuf_RegisterTypes);
   ControlPlayer::default_instance_ = new ControlPlayer();
@@ -116,6 +117,7 @@ const int ControlPlayer::kXVelocityFieldNumber;
 const int ControlPlayer::kYVelocityFieldNumber;
 const int ControlPlayer::kShootFieldNumber;
 const int ControlPlayer::kPauseFieldNumber;
+const int ControlPlayer::kChangeMunitionFieldNumber;
 #endif  // !_MSC_VER
 
 ControlPlayer::ControlPlayer()
@@ -142,6 +144,7 @@ void ControlPlayer::SharedCtor() {
   yvelocity_ = 0;
   shoot_ = false;
   pause_ = false;
+  changemunition_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -191,8 +194,8 @@ void ControlPlayer::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 31) {
-    ZR_(num_of_player_, pause_);
+  if (_has_bits_[0 / 32] & 63) {
+    ZR_(num_of_player_, changemunition_);
   }
 
 #undef OFFSET_OF_FIELD_
@@ -284,6 +287,21 @@ bool ControlPlayer::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(48)) goto parse_ChangeMunition;
+        break;
+      }
+
+      // required bool ChangeMunition = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_ChangeMunition:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &changemunition_)));
+          set_has_changemunition();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -338,6 +356,11 @@ void ControlPlayer::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->pause(), output);
   }
 
+  // required bool ChangeMunition = 6;
+  if (has_changemunition()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->changemunition(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -371,6 +394,11 @@ void ControlPlayer::SerializeWithCachedSizes(
   // required bool Pause = 5;
   if (has_pause()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->pause(), target);
+  }
+
+  // required bool ChangeMunition = 6;
+  if (has_changemunition()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->changemunition(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -415,12 +443,17 @@ int ControlPlayer::RequiredFieldsByteSizeFallback() const {
     total_size += 1 + 1;
   }
 
+  if (has_changemunition()) {
+    // required bool ChangeMunition = 6;
+    total_size += 1 + 1;
+  }
+
   return total_size;
 }
 int ControlPlayer::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
     // required int32 NUM_OF_PLAYER = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -440,6 +473,9 @@ int ControlPlayer::ByteSize() const {
     total_size += 1 + 1;
 
     // required bool Pause = 5;
+    total_size += 1 + 1;
+
+    // required bool ChangeMunition = 6;
     total_size += 1 + 1;
 
   } else {
@@ -486,6 +522,9 @@ void ControlPlayer::MergeFrom(const ControlPlayer& from) {
     if (from.has_pause()) {
       set_pause(from.pause());
     }
+    if (from.has_changemunition()) {
+      set_changemunition(from.changemunition());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -505,7 +544,7 @@ void ControlPlayer::CopyFrom(const ControlPlayer& from) {
 }
 
 bool ControlPlayer::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
 
   return true;
 }
@@ -520,6 +559,7 @@ void ControlPlayer::InternalSwap(ControlPlayer* other) {
   std::swap(yvelocity_, other->yvelocity_);
   std::swap(shoot_, other->shoot_);
   std::swap(pause_, other->pause_);
+  std::swap(changemunition_, other->changemunition_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);

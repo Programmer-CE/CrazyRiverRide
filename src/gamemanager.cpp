@@ -3,13 +3,17 @@
 #include <protobufmessage/GameObjectNotify.pb.h>
 #include <protobufmessage/PlayerStatus.pb.h>
 #include <string>
+#include "logic/shot/shot.h"
 
 GameManager::GameManager(CrazyRiverRide *gw):
     player1(":/images/images/player/mini blue rocket.png"),
     enemies(":/images/images/enemy/mini enemy nave premium version.png"),
     level(":/images/images/levels/bg.jpg"),
     enemyshot(":/images/images/attack/greenattack.png"),
-    playershot(":/images/images/attack/attack.png")
+    playershot(":/images/images/attack/attack.png"),
+    indicadorSimpleshot(":/images/images/indicador/simpleshot.png"),
+    indicadorDifusionShot(":/images/images/indicador/difusionshot.png"),
+    indicadorMayhemShot(":/images/images/indicador/mayhemsimpleshot.png")
   ,_Run(true)
 {
     r = gw->rect();
@@ -45,10 +49,19 @@ void GameManager::update(google::protobuf::Message *pMessage)
             }
         }
         else if (pMessage->GetTypeName() == PlayerStatus().GetTypeName()){
-            std::cout << "is player status" << std::endl;
             PlayerStatus *playerstatus = (PlayerStatus*)pMessage;
             _GameWindows->setPlayerlife(playerstatus->playerlife());
             _GameWindows->setPlayerpoints(playerstatus->playerpoints());
+            _GameWindows->setPlayermunition(playerstatus->numofmunition());
+            if (playerstatus->typeofmunition() == Shot::LINEAR_SHOT){
+                _GameWindows->paintImage(QRect(950,0,50,50),&indicadorSimpleshot);
+            }
+            else if ((playerstatus->typeofmunition() == Shot::ANGLE_SHOT)){
+                _GameWindows->paintImage(QRect(950,0,50,50),&indicadorDifusionShot);
+            }
+            else if ((playerstatus->typeofmunition() == Shot::MAYHEM_SHOT)){
+                _GameWindows->paintImage(QRect(950,0,50,50),&indicadorMayhemShot);
+            }
 
         }
     }

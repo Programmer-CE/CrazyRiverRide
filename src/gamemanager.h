@@ -13,6 +13,7 @@ class GameManager:public Observer
     QPixmap level;
     QPixmap enemyshot;
     QPixmap playershot;
+    QPixmap indicadorSimpleshot,indicadorDifusionShot,indicadorMayhemShot;
     bool _Run;
 public:
     GameManager(CrazyRiverRide *);

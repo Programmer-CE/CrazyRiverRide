@@ -11,5 +11,8 @@
         <file>images/attack/attack.png</file>
         <file>images/attack/greenattack.png</file>
         <file>images/levels/bg.jpg</file>
+        <file>images/indicador/difusionshot.png</file>
+        <file>images/indicador/mayhemsimpleshot.png</file>
+        <file>images/indicador/simpleshot.png</file>
     </qresource>
 </RCC>

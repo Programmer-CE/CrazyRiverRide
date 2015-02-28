@@ -4,11 +4,13 @@
 
 class AngleShotManager:public ShotFabric
 {
-    int *anglelist;
+    int * anglelist;
+    int current;
 public:
     AngleShotManager(int pMaxMunition);
-    Shot* getNewShoot(int pX,int pY, bool pPlayer);
-    virtual ~AngleShotManager(){}
+    Shot *getNewShoot(int pX,int pY, bool pPlayer);
+    int getMunitionType();
+    virtual ~AngleShotManager();
 };
 
 #endif // ANGLESHOTMANAGER_H

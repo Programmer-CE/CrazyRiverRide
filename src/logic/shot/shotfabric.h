@@ -17,6 +17,8 @@ public:
     virtual Shot* getNewShoot(int pX,int pY, bool pPlayer) = 0;
     void addMunition(int pMunition);
     bool haveMunition();
+    int getMunitions();
+    virtual int getMunitionType() = 0;
     virtual ~ShotFabric();
 };
 

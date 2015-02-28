@@ -9,6 +9,9 @@ class PlayerRocket:public Rocket
 public:
     PlayerRocket(QRect pRectangle, int pMaxHp);
     void nextMunition();
+    void addMunition(int pMunition);
+    int getMunitions();
+    int getMunitionType();
     Shot* shoot();
     virtual ~PlayerRocket();
 };

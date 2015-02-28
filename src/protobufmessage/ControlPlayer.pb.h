@@ -137,6 +137,13 @@ class ControlPlayer : public ::google::protobuf::Message {
   inline bool pause() const;
   inline void set_pause(bool value);
 
+  // required bool ChangeMunition = 6;
+  inline bool has_changemunition() const;
+  inline void clear_changemunition();
+  static const int kChangeMunitionFieldNumber = 6;
+  inline bool changemunition() const;
+  inline void set_changemunition(bool value);
+
   // @@protoc_insertion_point(class_scope:ControlPlayer)
  private:
   inline void set_has_num_of_player();
@@ -149,6 +156,8 @@ class ControlPlayer : public ::google::protobuf::Message {
   inline void clear_has_shoot();
   inline void set_has_pause();
   inline void clear_has_pause();
+  inline void set_has_changemunition();
+  inline void clear_has_changemunition();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -161,6 +170,7 @@ class ControlPlayer : public ::google::protobuf::Message {
   ::google::protobuf::int32 yvelocity_;
   bool shoot_;
   bool pause_;
+  bool changemunition_;
   friend void  protobuf_AddDesc_ControlPlayer_2eproto();
   friend void protobuf_AssignDesc_ControlPlayer_2eproto();
   friend void protobuf_ShutdownFile_ControlPlayer_2eproto();
@@ -293,6 +303,30 @@ inline void ControlPlayer::set_pause(bool value) {
   set_has_pause();
   pause_ = value;
   // @@protoc_insertion_point(field_set:ControlPlayer.Pause)
+}
+
+// required bool ChangeMunition = 6;
+inline bool ControlPlayer::has_changemunition() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ControlPlayer::set_has_changemunition() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ControlPlayer::clear_has_changemunition() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ControlPlayer::clear_changemunition() {
+  changemunition_ = false;
+  clear_has_changemunition();
+}
+inline bool ControlPlayer::changemunition() const {
+  // @@protoc_insertion_point(field_get:ControlPlayer.ChangeMunition)
+  return changemunition_;
+}
+inline void ControlPlayer::set_changemunition(bool value) {
+  set_has_changemunition();
+  changemunition_ = value;
+  // @@protoc_insertion_point(field_set:ControlPlayer.ChangeMunition)
 }
 
 

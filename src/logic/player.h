@@ -12,6 +12,7 @@ class Player
     int _Points;
     int _PlayerNumber;
     int shotcounter;
+    int _ChangeAmmount;
     List<Shot *> *_PlayerShots;
 public:
     Player(int pX,int pY,int pPlayerNumber);
@@ -20,6 +21,7 @@ public:
     void addPoints(int pPoints);
     int getPoints();
     int getPlayerNumber() const;
+    void changeMunition();
     bool isDead();
     bool revive();
     void shoot();

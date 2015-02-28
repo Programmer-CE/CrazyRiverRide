@@ -2,7 +2,7 @@
 #include "iostream"
 
 
-Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber),shotcounter(12)
+Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber),shotcounter(12),_ChangeAmmount(0)
 {
     _PlayerShots = new List<Shot*>();
     _Rocket = new PlayerRocket(QRect(pX,pY,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT),Rocket::MAX_HP);
@@ -29,6 +29,15 @@ int Player::getPlayerNumber() const
     return this->_PlayerNumber;
 }
 
+void Player::changeMunition()
+{
+    std::cout << "changeMuntion: " << _ChangeAmmount << std::endl;
+    if(_ChangeAmmount == 0){
+        _ChangeAmmount = 4;
+        _Rocket->nextMunition();
+    }
+}
+
 bool Player::isDead()
 {
     return _Rocket->isDead();
@@ -46,11 +55,18 @@ bool Player::revive()
 void Player::shoot()
 {
     if (shotcounter-- == 0){
-        shotcounter = 3;
+        shotcounter = 7;
         Shot* shot = _Rocket->shoot();
-        //if (shot->getType() == Shot::ANGLE_SHOT);
         if (shot){
             _PlayerShots->add(shot);
+            if (shot->getType() == Shot::ANGLE_SHOT){
+                for (int x =0;x <4 ;x++){
+                    shot = _Rocket->shoot();
+                    if (!shot)break;
+                    _PlayerShots->add(shot);
+                    _Rocket->addMunition(1);
+                }
+            }
         }
     }
     //agrega un disparo, revisar para difusion shot;
@@ -63,6 +79,7 @@ void Player::setStunTime(int pStunTime)
 
 void Player::update(QRect rec)
 {
+    if (_ChangeAmmount > 0)_ChangeAmmount--;
     if (_StunTime ==0){
         int xposition = _Rocket->getX()+_Rocket->getXVelocity();
         int yposition = _Rocket->getY()+_Rocket->getYVelocity();
@@ -85,6 +102,7 @@ void Player::update(QRect rec)
         return;
 
     }
+
     _StunTime--;
 }
 

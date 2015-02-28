@@ -30,6 +30,9 @@ public:
     int getPlayerpoints() const;
     void setPlayerpoints(int value);
 
+    int getPlayermunition() const;
+    void setPlayermunition(int value);
+
 protected:
     void closeEvent(QCloseEvent *);
     void paintEvent(QPaintEvent*);
@@ -42,7 +45,7 @@ private:
     QPainter p;
     Queue<PaintTask> queue;
     KeyUpdater _KeyUpdater;
-    int playerlife,playerpoints;
+    int playerlife,playerpoints,playermunition;
 public slots:
     void render();
 };

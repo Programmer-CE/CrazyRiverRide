@@ -57,7 +57,7 @@ public:
     QRect getPlayerRect(int pPlayerNum);
     QRect getRect(){return _Rec;}
     void setObserver(Observer *observer);
-    void updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause);
+    void updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition);
     bool isRunning();
     void stop();
     void notifyAll();
