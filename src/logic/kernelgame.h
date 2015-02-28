@@ -4,6 +4,7 @@
 #include "patterdesing/observer.h"
 #include "protobufmessage/ControlPlayer.pb.h"
 #include "player.h"
+#include "mapobjects/gamemap.h"
 #ifndef KERNELGAME_H
 #define KERNELGAME_H
 
@@ -16,6 +17,7 @@ private:
     int _CurrentTimeToRegenerateEnemies;
     bool _OnMenu;
     QRect _Rec;
+    GameMap _Map;
     List<EnemyRocket*> _Enemies;
     List<Player*> _Players;
     List<Shot*> _EnemiesShots;

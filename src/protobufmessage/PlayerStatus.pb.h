@@ -116,10 +116,17 @@ class PlayerStatus : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 playerpoints() const;
   inline void set_playerpoints(::google::protobuf::int32 value);
 
-  // required bool isDead = 3;
+  // required int32 playerLife = 3;
+  inline bool has_playerlife() const;
+  inline void clear_playerlife();
+  static const int kPlayerLifeFieldNumber = 3;
+  inline ::google::protobuf::int32 playerlife() const;
+  inline void set_playerlife(::google::protobuf::int32 value);
+
+  // required bool isDead = 4;
   inline bool has_isdead() const;
   inline void clear_isdead();
-  static const int kIsDeadFieldNumber = 3;
+  static const int kIsDeadFieldNumber = 4;
   inline bool isdead() const;
   inline void set_isdead(bool value);
 
@@ -129,6 +136,8 @@ class PlayerStatus : public ::google::protobuf::Message {
   inline void clear_has_num_of_player();
   inline void set_has_playerpoints();
   inline void clear_has_playerpoints();
+  inline void set_has_playerlife();
+  inline void clear_has_playerlife();
   inline void set_has_isdead();
   inline void clear_has_isdead();
 
@@ -140,6 +149,7 @@ class PlayerStatus : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::int32 num_of_player_;
   ::google::protobuf::int32 playerpoints_;
+  ::google::protobuf::int32 playerlife_;
   bool isdead_;
   friend void  protobuf_AddDesc_PlayerStatus_2eproto();
   friend void protobuf_AssignDesc_PlayerStatus_2eproto();
@@ -203,15 +213,39 @@ inline void PlayerStatus::set_playerpoints(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:PlayerStatus.playerPoints)
 }
 
-// required bool isDead = 3;
-inline bool PlayerStatus::has_isdead() const {
+// required int32 playerLife = 3;
+inline bool PlayerStatus::has_playerlife() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void PlayerStatus::set_has_isdead() {
+inline void PlayerStatus::set_has_playerlife() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void PlayerStatus::clear_has_isdead() {
+inline void PlayerStatus::clear_has_playerlife() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void PlayerStatus::clear_playerlife() {
+  playerlife_ = 0;
+  clear_has_playerlife();
+}
+inline ::google::protobuf::int32 PlayerStatus::playerlife() const {
+  // @@protoc_insertion_point(field_get:PlayerStatus.playerLife)
+  return playerlife_;
+}
+inline void PlayerStatus::set_playerlife(::google::protobuf::int32 value) {
+  set_has_playerlife();
+  playerlife_ = value;
+  // @@protoc_insertion_point(field_set:PlayerStatus.playerLife)
+}
+
+// required bool isDead = 4;
+inline bool PlayerStatus::has_isdead() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PlayerStatus::set_has_isdead() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PlayerStatus::clear_has_isdead() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void PlayerStatus::clear_isdead() {
   isdead_ = false;

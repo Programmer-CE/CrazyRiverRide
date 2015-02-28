@@ -13,6 +13,7 @@ public:
     void run();
     void setActive(bool b);
     bool isClose();
+    ~Updater();
 
 private:
     bool open;

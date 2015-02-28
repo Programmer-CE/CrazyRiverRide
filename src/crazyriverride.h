@@ -21,8 +21,15 @@ public:
     void paintImage(QRect rec, QPixmap *pImage);
     int getKeyXaxis();
     int getKeyYaxis();
+    bool isRunning();
     void setkeyUpdater(KeyUpdater pKeyUpdater);
     ~CrazyRiverRide();
+    int getPlayerlife() const;
+    void setPlayerlife(int value);
+
+    int getPlayerpoints() const;
+    void setPlayerpoints(int value);
+
 protected:
     void closeEvent(QCloseEvent *);
     void paintEvent(QPaintEvent*);
@@ -35,6 +42,7 @@ private:
     QPainter p;
     Queue<PaintTask> queue;
     KeyUpdater _KeyUpdater;
+    int playerlife,playerpoints;
 public slots:
     void render();
 };

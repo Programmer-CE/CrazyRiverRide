@@ -8,5 +8,5 @@ GameMap::GameMap(QRect pRect,int pVy, int pLimit):GameObject(pRect),_Vy(pVy),_Li
 
 void GameMap::update()
 {
-    if (abs(_Limit)-abs(_Rectangle.y())>0)moveInPlace(0,_Vy);
+    if (abs(_Limit)-abs(_Rectangle.y())<0)moveInPlace(0,_Vy);
 }
