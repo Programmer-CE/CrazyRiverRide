@@ -1,5 +1,6 @@
 #include "keyupdater.h"
 #include "protobufmessage/ControlPlayer.pb.h"
+#include "protobufmessage/Stop.pb.h"
 KeyUpdater::KeyUpdater(KernelGame *pKernelGame)
 {
     _KernelGame = pKernelGame;
@@ -14,6 +15,9 @@ void KeyUpdater::update(google::protobuf::Message *pMessage)
 {
     if(ControlPlayer().GetTypeName() == pMessage->GetTypeName()){
         ControlPlayer *cp = (ControlPlayer*)pMessage;
-        _KernelGame->updatePlayerPosition(cp->num_of_player(),cp->xvelocity(),cp->yvelocity());
+        _KernelGame->updatePlayerPosition(cp->num_of_player(),cp->xvelocity(),cp->yvelocity(),cp->shoot(),cp->pause());
+    }
+    else if(Close().GetTypeName() == pMessage->GetTypeName()){
+        _KernelGame->stop();
     }
 }

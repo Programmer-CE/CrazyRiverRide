@@ -9,7 +9,7 @@ LinearShot::LinearShot(QRect pRectangle, bool pToUp, int pDamage):Shot(pRectangl
 bool LinearShot::isUsefulShot(QRect pArea)
 {
     // Agregar posterior al area de juego.
-    return !_IsTouched && pArea.intersects(this->_Rectangle);
+    return !_IsTouched && pArea.intersects(_Rectangle);
 
 }
 bool LinearShot::isCollide(GameObject *otherRenderizable)

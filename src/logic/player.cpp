@@ -2,7 +2,7 @@
 #include "iostream"
 
 
-Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber)
+Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber),shotcounter(12)
 {
     _PlayerShots = new List<Shot*>();
     _Rocket = new PlayerRocket(QRect(pX,pY,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT),Rocket::MAX_HP);
@@ -45,12 +45,16 @@ bool Player::revive()
 
 void Player::shoot()
 {
-    /**
-    Shot* shot = _Rocket->shoot();
-    if (shot->getType() = Shot::ANGLE_SHOT)
-    _PlayerShots.add(shot);
-    agrega un disparo, revisar para difusion shot;
-    **/
+    if (shotcounter-- == 0){
+        shotcounter = 3;
+        Shot* shot = _Rocket->shoot();
+        //if (shot->getType() == Shot::ANGLE_SHOT);
+        if (shot){
+            std::cout << "disparo usable" <<std::endl;
+            _PlayerShots->add(shot);
+        }
+    }
+    //agrega un disparo, revisar para difusion shot;
 }
 
 void Player::setStunTime(int pStunTime)
@@ -60,13 +64,6 @@ void Player::setStunTime(int pStunTime)
 
 void Player::update(QRect rec)
 {
-    for (int x = 0; x < _PlayerShots->getLenght();x++){
-        if(!_PlayerShots->get(x)->isUsefulShot(rec)){
-            delete _PlayerShots->get(x);
-            _PlayerShots->remove(x);
-            break;
-        }
-    }
     if (_StunTime ==0){
         int xposition = _Rocket->getX()+_Rocket->getXVelocity();
         if (rec.x() > xposition || xposition > rec.right()) _Rocket->setXVelocity(0);
@@ -75,6 +72,19 @@ void Player::update(QRect rec)
             _Rocket->setYVelocity(0);
         }
         _Rocket->update();
+        for (int x = 0; x < _PlayerShots->getLenght();x++){
+            if(!_PlayerShots->get(x)->isUsefulShot(rec)){
+                delete _PlayerShots->get(x);
+                _PlayerShots->remove(x);
+                break;
+            }
+        }
+
+        for (int y = 0; y < _PlayerShots->getLenght();y++){
+            std::cout << "largo de lista: " << _PlayerShots->getLenght()<< std::endl;
+            _PlayerShots->get(y)->update();
+            std::cout << "largo arrojado"<< std::endl;
+        }
         return;
     }
     _StunTime--;

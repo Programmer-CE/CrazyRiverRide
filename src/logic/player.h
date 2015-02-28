@@ -11,6 +11,7 @@ class Player
     int _StunTime;
     int _Points;
     int _PlayerNumber;
+    int shotcounter;
     List<Shot *> *_PlayerShots;
 public:
     Player(int pX,int pY,int pPlayerNumber);

@@ -36,7 +36,6 @@ private:
     void shoot(Player *pPlayer);
     void pause();
     void play(Player *pPlayer);
-    void stop();
     bool isPaused();
     bool isStageClear();
     void killPlayer(Player *pPlayer);
@@ -56,8 +55,9 @@ public:
     QRect getPlayerRect(int pPlayerNum);
     QRect getRect(){return _Rec;}
     void setObserver(Observer *observer);
-    void updatePlayerPosition(int pPlayer,int vX,int vY);
+    void updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause);
     bool isRunning();
+    void stop();
     void notifyAll();
     //void setKeyYaxis(int pPlayer,int pKeyAxis);
     //void setKeyXaxis(int pPlayer,int pKeyAxis);

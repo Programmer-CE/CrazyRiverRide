@@ -2,10 +2,11 @@
 #include "ui_crazyriverride.h"
 #include "qpaintengine.h"
 #include "protobufmessage/ControlPlayer.pb.h"
+#include "protobufmessage/Stop.pb.h"
 
 CrazyRiverRide::CrazyRiverRide(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::CrazyRiverRide)
+    ui(new Ui::CrazyRiverRide), _Pause(false),_Close(false),_Shoot(false),_ChangeMunition(false)
 {
     ui->setupUi(this);
     KeyXaxis = 0;
@@ -42,7 +43,11 @@ CrazyRiverRide::~CrazyRiverRide()
 
 void CrazyRiverRide::closeEvent(QCloseEvent *)
 {
-
+    _Close = true;
+    Close *mensaje = new Close();
+    mensaje->set_close(_Close);
+    _KeyUpdater.update(mensaje);
+    delete mensaje;
 }
 
 void CrazyRiverRide::paintEvent(QPaintEvent *)
@@ -95,6 +100,15 @@ void CrazyRiverRide::keyPressEvent(QKeyEvent *k)
                 nextKeyXaxis = 1;
             }
             break;
+        case Qt::Key_Enter:
+            _Pause = !_Pause;
+            break;
+        case Qt::Key_Space:
+            _Shoot = true;
+            break;
+        case Qt::Key_Z:
+            _ChangeMunition = true;
+            break;
         default:
             break;
         }
@@ -112,6 +126,13 @@ void CrazyRiverRide::keyReleaseEvent(QKeyEvent *k)
             KeyXaxis = nextKeyYaxis;
             nextKeyYaxis = 0;
         }
+        else if (k->key() == Qt::Key_Z){
+            _ChangeMunition = false;
+        }
+        else if (k->key() == Qt::Key_Space){
+            _Shoot = false;
+        }
+
     }
 }
 
@@ -122,6 +143,8 @@ void CrazyRiverRide::render()
     mensaje->set_num_of_player(0);
     mensaje->set_xvelocity(getKeyXaxis());
     mensaje->set_yvelocity(getKeyYaxis());
+    mensaje->set_pause(_Pause);
+    mensaje->set_shoot(_Shoot);
     _KeyUpdater.update(mensaje);
     delete mensaje;
 }

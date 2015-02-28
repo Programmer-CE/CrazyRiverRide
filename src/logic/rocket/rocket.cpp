@@ -4,6 +4,7 @@
 const int Rocket::ROCKET_WIDTH = 128;
 const int Rocket::ROCKET_HEIGHT = 108;
 const int Rocket::MAX_HP= 100;
+const int Rocket::ENEMY_MAX_HP= 50;
 
 const int Rocket::ROCKET_VELOCITY = 15;
 

@@ -1,6 +1,6 @@
 #include "logic/shot/shot.h"
 
-const int Shot::VELOCITY = 10;
+const int Shot::VELOCITY = 20;
 const int Shot::LINEAR_SHOT = 1;
 const int Shot::ANGLE_SHOT = 2;
 const int Shot::MAYHEM_SHOT = 3;

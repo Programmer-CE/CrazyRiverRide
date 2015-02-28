@@ -31,6 +31,7 @@ protected:
 private:
     Ui::CrazyRiverRide *ui;
     int KeyXaxis,KeyYaxis,nextKeyXaxis,nextKeyYaxis;
+    bool _Pause, _Close, _Shoot, _ChangeMunition;
     QPainter p;
     Queue<PaintTask> queue;
     KeyUpdater _KeyUpdater;

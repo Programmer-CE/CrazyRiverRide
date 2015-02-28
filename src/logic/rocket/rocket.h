@@ -18,6 +18,8 @@ public:
 
     static const int MAX_HP;
 
+    static const int ENEMY_MAX_HP;
+
 
     static const int ROCKET_VELOCITY;
 

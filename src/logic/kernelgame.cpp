@@ -58,7 +58,6 @@ void KernelGame::collisionPlayerWithEnemies(Player *pPlayer)
 {
     PlayerRocket *rocket = pPlayer->getRocket();
     for (int x= 0; x < this->_Enemies.getLenght();x++){
-        std::cout << "aqui ocurre algo" << endl;
         if (rocket->isCollide(_Enemies.get(x))){
             rocket->addHitPoints(Shot::ENEMY_DAMAGE);
             delete _Enemies.get(x);
@@ -71,14 +70,18 @@ void KernelGame::collisionPlayerWithEnemies(Player *pPlayer)
 void KernelGame::collisionPlayerShotsWithEnemies(Player *pPlayer)
 {
     List<Shot*> * shotlist = pPlayer->getPlayerShots();
+    Shot* shot = 0;
     for (int x= 0; x < shotlist->getLenght();x++){
-        for (int y = 0; x < _Enemies.getLenght();y++){
-            if (shotlist->get(x)->isCollide(_EnemiesShots.get(x))){
-                shotlist->get(x)->damage(_Enemies.get(x));
-                if (_Enemies.get(x)->isDead()){
+        for (int y = 0; y < _Enemies.getLenght();y++){
+            shot = shotlist->get(x);
+            if (shot->isCollide(_Enemies.get(y))){
+                shot->damage(_Enemies.get(y));
+                delete shot;
+                shotlist->remove(x);
+                if (_Enemies.get(y)->isDead()){
                     pPlayer->addPoints(POINTS_PER_ENEMY);
-                    delete _EnemiesShots.get(x);
-                    _EnemiesShots.remove(x);
+                    delete _Enemies.get(y);
+                    _Enemies.remove(y);
                 }
                 break;
             }
@@ -132,10 +135,10 @@ void KernelGame::addRandomEnemy(QRect rec)
         int posX = rand() % rec.width();
         QRect enemyPos(posX,0,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT);
         if(typeOfEnemy == 0){
-            _Enemies.add(new MovilEnemyRocket(enemyPos,Rocket::MAX_HP));
+            _Enemies.add(new MovilEnemyRocket(enemyPos,Rocket::ENEMY_MAX_HP));
         }
         else{
-            _Enemies.add(new Kamikaze(enemyPos,Rocket::MAX_HP,player));
+            _Enemies.add(new Kamikaze(enemyPos,Rocket::ENEMY_MAX_HP,player));
         }
     }
 }
@@ -176,10 +179,10 @@ void KernelGame::updatePlayers(QRect rec)
     for (int x = 0; x < _Players.getLenght();x++){
         player = _Players.get(x);
         if (!player->isDead()){
+            player->update(rec);
             collisionPlayerShotsWithEnemies(player);
             collisionPlayerWithEnemiesShots(player);
             collisionPlayerWithEnemies(player);
-            player->update(rec);
         }
     }
 }
@@ -245,6 +248,29 @@ void KernelGame::notifyAll()
         message->set_type(2);
         _UiDriver->update(message);
         delete message;
+    }
+
+    for (int x = 0; x < _EnemiesShots.getLenght();x++){
+        message = new GameObjectNotify();
+        message->set_height(_EnemiesShots.get(x)->getHeight());
+        message->set_width(_EnemiesShots.get(x)->getWidth());
+        message->set_x(_EnemiesShots.get(x)->getX());
+        message->set_y(_EnemiesShots.get(x)->getY());
+        message->set_type(3);
+        _UiDriver->update(message);
+        delete message;
+    }
+    for (int x = 0; x < _Players.getLenght();x++){
+        for (int y = 0; y < _Players.get(x)->getPlayerShots()->getLenght();y++){
+            message = new GameObjectNotify();
+            message->set_height(_Players.get(x)->getPlayerShots()->get(y)->getHeight());
+            message->set_width(_Players.get(x)->getPlayerShots()->get(y)->getWidth());
+            message->set_x(_Players.get(x)->getPlayerShots()->get(y)->getX());
+            message->set_y(_Players.get(x)->getPlayerShots()->get(y)->getY());
+            message->set_type(4);
+            _UiDriver->update(message);
+            delete message;
+        }
     }
 
 }
@@ -326,12 +352,14 @@ void KernelGame::setObserver(Observer *observer)
     _UiDriver = observer;
 }
 
-void KernelGame::updatePlayerPosition(int pPlayer, int vX, int vY)
+void KernelGame::updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause)
 {
     Player * player = getPlayer(pPlayer);
     if(player && !player->isDead()){
         player->getRocket()->setXVelocity(vX*Rocket::ROCKET_VELOCITY);
         player->getRocket()->setYVelocity(vY*Rocket::ROCKET_VELOCITY);
+        if (pShoot)player->shoot();
+        if (pPause)_Paused  = !_Paused;
     }
 }
 

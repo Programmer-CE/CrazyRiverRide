@@ -123,6 +123,20 @@ class ControlPlayer : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 yvelocity() const;
   inline void set_yvelocity(::google::protobuf::int32 value);
 
+  // required bool Shoot = 4;
+  inline bool has_shoot() const;
+  inline void clear_shoot();
+  static const int kShootFieldNumber = 4;
+  inline bool shoot() const;
+  inline void set_shoot(bool value);
+
+  // required bool Pause = 5;
+  inline bool has_pause() const;
+  inline void clear_pause();
+  static const int kPauseFieldNumber = 5;
+  inline bool pause() const;
+  inline void set_pause(bool value);
+
   // @@protoc_insertion_point(class_scope:ControlPlayer)
  private:
   inline void set_has_num_of_player();
@@ -131,6 +145,10 @@ class ControlPlayer : public ::google::protobuf::Message {
   inline void clear_has_xvelocity();
   inline void set_has_yvelocity();
   inline void clear_has_yvelocity();
+  inline void set_has_shoot();
+  inline void clear_has_shoot();
+  inline void set_has_pause();
+  inline void clear_has_pause();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -141,6 +159,8 @@ class ControlPlayer : public ::google::protobuf::Message {
   ::google::protobuf::int32 num_of_player_;
   ::google::protobuf::int32 xvelocity_;
   ::google::protobuf::int32 yvelocity_;
+  bool shoot_;
+  bool pause_;
   friend void  protobuf_AddDesc_ControlPlayer_2eproto();
   friend void protobuf_AssignDesc_ControlPlayer_2eproto();
   friend void protobuf_ShutdownFile_ControlPlayer_2eproto();
@@ -225,6 +245,54 @@ inline void ControlPlayer::set_yvelocity(::google::protobuf::int32 value) {
   set_has_yvelocity();
   yvelocity_ = value;
   // @@protoc_insertion_point(field_set:ControlPlayer.YVelocity)
+}
+
+// required bool Shoot = 4;
+inline bool ControlPlayer::has_shoot() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ControlPlayer::set_has_shoot() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ControlPlayer::clear_has_shoot() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ControlPlayer::clear_shoot() {
+  shoot_ = false;
+  clear_has_shoot();
+}
+inline bool ControlPlayer::shoot() const {
+  // @@protoc_insertion_point(field_get:ControlPlayer.Shoot)
+  return shoot_;
+}
+inline void ControlPlayer::set_shoot(bool value) {
+  set_has_shoot();
+  shoot_ = value;
+  // @@protoc_insertion_point(field_set:ControlPlayer.Shoot)
+}
+
+// required bool Pause = 5;
+inline bool ControlPlayer::has_pause() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ControlPlayer::set_has_pause() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ControlPlayer::clear_has_pause() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ControlPlayer::clear_pause() {
+  pause_ = false;
+  clear_has_pause();
+}
+inline bool ControlPlayer::pause() const {
+  // @@protoc_insertion_point(field_get:ControlPlayer.Pause)
+  return pause_;
+}
+inline void ControlPlayer::set_pause(bool value) {
+  set_has_pause();
+  pause_ = value;
+  // @@protoc_insertion_point(field_set:ControlPlayer.Pause)
 }
 
 

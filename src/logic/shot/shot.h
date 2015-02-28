@@ -1,5 +1,6 @@
 #include "logic/mapobjects/gameobject.h"
 #include "logic/mapobjects/hpentity.h"
+#include "iostream"
 #ifndef SHOT_H
 #define SHOT_H
 class Shot: public GameObject
@@ -38,6 +39,6 @@ public:
     virtual int getXVelocity()=0;
     virtual int getYVelocity()=0;
     virtual int getType()=0;
-    virtual ~Shot(){}
+    virtual ~Shot(){std::cout << "final de disparo" << std::endl;}
 };
 #endif // SHOT_H

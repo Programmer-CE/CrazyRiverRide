@@ -32,10 +32,12 @@ void protobuf_AssignDesc_ControlPlayer_2eproto() {
       "ControlPlayer.proto");
   GOOGLE_CHECK(file != NULL);
   ControlPlayer_descriptor_ = file->message_type(0);
-  static const int ControlPlayer_offsets_[3] = {
+  static const int ControlPlayer_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, num_of_player_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, xvelocity_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, yvelocity_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, shoot_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ControlPlayer, pause_),
   };
   ControlPlayer_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -78,9 +80,10 @@ void protobuf_AddDesc_ControlPlayer_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023ControlPlayer.proto\"L\n\rControlPlayer\022\025"
+    "\n\023ControlPlayer.proto\"j\n\rControlPlayer\022\025"
     "\n\rNUM_OF_PLAYER\030\001 \002(\005\022\021\n\tXVelocity\030\002 \002(\005"
-    "\022\021\n\tYVelocity\030\003 \002(\005", 99);
+    "\022\021\n\tYVelocity\030\003 \002(\005\022\r\n\005Shoot\030\004 \002(\010\022\r\n\005Pa"
+    "use\030\005 \002(\010", 129);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ControlPlayer.proto", &protobuf_RegisterTypes);
   ControlPlayer::default_instance_ = new ControlPlayer();
@@ -111,6 +114,8 @@ static void MergeFromFail(int line) {
 const int ControlPlayer::kNUMOFPLAYERFieldNumber;
 const int ControlPlayer::kXVelocityFieldNumber;
 const int ControlPlayer::kYVelocityFieldNumber;
+const int ControlPlayer::kShootFieldNumber;
+const int ControlPlayer::kPauseFieldNumber;
 #endif  // !_MSC_VER
 
 ControlPlayer::ControlPlayer()
@@ -135,6 +140,8 @@ void ControlPlayer::SharedCtor() {
   num_of_player_ = 0;
   xvelocity_ = 0;
   yvelocity_ = 0;
+  shoot_ = false;
+  pause_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -184,7 +191,9 @@ void ControlPlayer::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  ZR_(num_of_player_, yvelocity_);
+  if (_has_bits_[0 / 32] & 31) {
+    ZR_(num_of_player_, pause_);
+  }
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -245,6 +254,36 @@ bool ControlPlayer::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(32)) goto parse_Shoot;
+        break;
+      }
+
+      // required bool Shoot = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_Shoot:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &shoot_)));
+          set_has_shoot();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_Pause;
+        break;
+      }
+
+      // required bool Pause = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_Pause:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &pause_)));
+          set_has_pause();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -289,6 +328,16 @@ void ControlPlayer::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->yvelocity(), output);
   }
 
+  // required bool Shoot = 4;
+  if (has_shoot()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->shoot(), output);
+  }
+
+  // required bool Pause = 5;
+  if (has_pause()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->pause(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -312,6 +361,16 @@ void ControlPlayer::SerializeWithCachedSizes(
   // required int32 YVelocity = 3;
   if (has_yvelocity()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->yvelocity(), target);
+  }
+
+  // required bool Shoot = 4;
+  if (has_shoot()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->shoot(), target);
+  }
+
+  // required bool Pause = 5;
+  if (has_pause()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->pause(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -346,12 +405,22 @@ int ControlPlayer::RequiredFieldsByteSizeFallback() const {
         this->yvelocity());
   }
 
+  if (has_shoot()) {
+    // required bool Shoot = 4;
+    total_size += 1 + 1;
+  }
+
+  if (has_pause()) {
+    // required bool Pause = 5;
+    total_size += 1 + 1;
+  }
+
   return total_size;
 }
 int ControlPlayer::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
     // required int32 NUM_OF_PLAYER = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -366,6 +435,12 @@ int ControlPlayer::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->yvelocity());
+
+    // required bool Shoot = 4;
+    total_size += 1 + 1;
+
+    // required bool Pause = 5;
+    total_size += 1 + 1;
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -405,6 +480,12 @@ void ControlPlayer::MergeFrom(const ControlPlayer& from) {
     if (from.has_yvelocity()) {
       set_yvelocity(from.yvelocity());
     }
+    if (from.has_shoot()) {
+      set_shoot(from.shoot());
+    }
+    if (from.has_pause()) {
+      set_pause(from.pause());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -424,7 +505,7 @@ void ControlPlayer::CopyFrom(const ControlPlayer& from) {
 }
 
 bool ControlPlayer::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
 
   return true;
 }
@@ -437,6 +518,8 @@ void ControlPlayer::InternalSwap(ControlPlayer* other) {
   std::swap(num_of_player_, other->num_of_player_);
   std::swap(xvelocity_, other->xvelocity_);
   std::swap(yvelocity_, other->yvelocity_);
+  std::swap(shoot_, other->shoot_);
+  std::swap(pause_, other->pause_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);

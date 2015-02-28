@@ -170,7 +170,7 @@ template <class E> bool List<E>::add(E data,int index){
         return true;
     }
     else{
-        std::cerr << "index out bounds";
+        std::cerr << "index out bounds: ";
         throw index;
         return false;
     }
@@ -207,7 +207,7 @@ template <class E> bool List<E>::remove(int index){
         return true;
     }
     else{
-        std::cerr << "index out bounds";
+        std::cerr << "index out bounds: " << index << std::endl;
         throw index;
         return false;
     }
@@ -232,7 +232,7 @@ template <class E> E List<E>:: get(int index){
         return getNode(index)->getData();
     }
     else{
-        std::cerr << "index out bounds";
+        std::cerr << "index out bounds: " << index << std::endl ;
         throw index;
     }
 }
