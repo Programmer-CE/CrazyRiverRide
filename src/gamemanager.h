@@ -1,18 +1,23 @@
 #include "crazyriverride.h"
-#include "logic/kernelgame.h"
+#include "logic/patterdesing/observer.h"
 #include "qpixmap.h"
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
-class GameManager
+class GameManager:public Observer
 {
-    KernelGame *_KernelGame;
     CrazyRiverRide *_GameWindows;
     QRect r;
     QPixmap pix;
+    bool _Run;
 public:
     GameManager(CrazyRiverRide *);
     void runAGame();
+    int getXAxis();
+    int getYAxis();
+    bool shoot();
+    bool pause();
+    void update(google::protobuf::Message *pMessage);
     ~GameManager();
 };
 

@@ -1,21 +1,25 @@
 #include "list/List.h"
-#include "enemyrocket.h"
+#include "rocket/enemyrocket.h"
+#include "patterdesing/subject.h"
+#include "patterdesing/observer.h"
+#include "protobufmessage/ControlPlayer.pb.h"
 #include "player.h"
 #ifndef KERNELGAME_H
 #define KERNELGAME_H
 
-class KernelGame
+class KernelGame:public Subject
 {
 private:
-    bool _Paused;
     int _PlayerPause;
     int _NumOfPlayer;
+    bool _Paused,_isRunning;
     int _CurrentTimeToRegenerateEnemies;
     bool _OnMenu;
     QRect _Rec;
     List<EnemyRocket*> _Enemies;
     List<Player*> _Players;
     List<Shot*> _EnemiesShots;
+    Observer * _UiDriver;
     //List<Box> _Boxes;
 
 
@@ -25,6 +29,22 @@ private:
     void collisionPlayerShotsWithBridge(Player *pPlayer);
     //void collisionPlayerWithEnemies(Player *pPlayer);
     void collisionPlayerWithEnemiesShots(Player *pPlayer);
+    void changePlayerXVelocity(Player *pPlayer,int pXvelocity);
+    void changePlayerYVelocity(Player *pPlayer,int pYvelocity);
+    void selectMap(int pMap);
+    void stunPlayers(Player *pPlayer);
+    void shoot(Player *pPlayer);
+    void pause();
+    void play(Player *pPlayer);
+    void stop();
+    bool isPaused();
+    bool isStageClear();
+    void killPlayer(Player *pPlayer);
+    void createPlayer();
+    void addRandomEnemy(QRect rec);
+    Player *getPlayer(int pPlayerNum);
+    void updatePlayers(QRect rec);
+    void updateEnemies(QRect rec);
 public:
     static const int FPS;
     static const int POINTS_PER_ENEMY;
@@ -33,21 +53,18 @@ public:
     static const int MAX_ENEMIES_PER_CYCLES;
     KernelGame(QRect rec);
     void update(QRect rec);
-    void changePlayerXVelocity(Player *pPlayer,int pXvelocity);
-    void changePlayerYVelocity(Player *pPlayer,int pYvelocity);
-    void selectMap(int pMap);
-    void stunPlayers(Player *pPlayer);
-    void shoot(Player *pPlayer);
-    void pause();
-    void play(Player *pPlayer);
-    bool isPaused();
-    bool isStageClear();
-    void killPlayer(Player *pPlayer);
-    void createPlayer();
+    QRect getPlayerRect(int pPlayerNum);
+    QRect getRect(){return _Rec;}
+    void setObserver(Observer *observer);
+    void updatePlayerPosition(int pPlayer,int vX,int vY);
+    bool isRunning();
+    void notifyAll();
+    //void setKeyYaxis(int pPlayer,int pKeyAxis);
+    //void setKeyXaxis(int pPlayer,int pKeyAxis);
+
+
     //retorna el tipo de enemigo creado, el tipo puede ser EnemyRocket::MOVIL_ENEMY_ROCKET
     // o puede ser EnemyRocket::KAMIKAZE
-    void addRandomEnemy(QRect rec);
-    Player *getPlayer(int pPlayerNum);
     virtual ~KernelGame();
 
 };

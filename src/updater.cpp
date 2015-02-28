@@ -5,17 +5,17 @@ Updater::Updater(QObject *parent) :
 {
 }
 
-void Updater::setRunTarget(GameManager *ogm)
+void Updater::setRunTarget(KernelGame *ogm)
 {
     gm = ogm;
 }
 
 void Updater::run()
 {
-    while(open){
+    while(gm->isRunning()){
         QMutex m;
         m.lock();
-        gm->runAGame();
+        gm->update(gm->getRect());
         emit renderGame();
         m.unlock();
         this->msleep(42);

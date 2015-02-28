@@ -2,6 +2,7 @@
 #include "painttask.h"
 #include "QKeyEvent"
 #include "controlStructure/Queue.h"
+#include "keyupdater.h"
 #ifndef CRAZYRIVERRIDE_H
 #define CRAZYRIVERRIDE_H
 
@@ -20,8 +21,10 @@ public:
     void paintImage(QRect rec, QPixmap *pImage);
     int getKeyXaxis();
     int getKeyYaxis();
+    void setkeyUpdater(KeyUpdater pKeyUpdater);
     ~CrazyRiverRide();
 protected:
+    void closeEvent(QCloseEvent *e);
     void paintEvent(QPaintEvent*);
     void keyPressEvent(QKeyEvent *);
     void keyReleaseEvent(QKeyEvent *);
@@ -30,6 +33,7 @@ private:
     int KeyXaxis,KeyYaxis,nextKeyXaxis,nextKeyYaxis;
     QPainter p;
     Queue<PaintTask> queue;
+    KeyUpdater _KeyUpdater;
 public slots:
     void render();
 };

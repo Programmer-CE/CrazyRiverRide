@@ -1,6 +1,7 @@
 #include "crazyriverride.h"
 #include "ui_crazyriverride.h"
 #include "qpaintengine.h"
+#include "protobufmessage/ControlPlayer.pb.h"
 
 CrazyRiverRide::CrazyRiverRide(QWidget *parent) :
     QMainWindow(parent),
@@ -29,9 +30,19 @@ int CrazyRiverRide::getKeyYaxis()
     return KeyYaxis;
 }
 
+void CrazyRiverRide::setkeyUpdater(KeyUpdater pKeyUpdater)
+{
+    _KeyUpdater = pKeyUpdater;
+}
+
 CrazyRiverRide::~CrazyRiverRide()
 {
     delete ui;
+}
+
+void CrazyRiverRide::closeEvent(QCloseEvent *e)
+{
+
 }
 
 void CrazyRiverRide::paintEvent(QPaintEvent *)
@@ -107,4 +118,10 @@ void CrazyRiverRide::keyReleaseEvent(QKeyEvent *k)
 void CrazyRiverRide::render()
 {
     repaint();
+    ControlPlayer *mensaje = new ControlPlayer();
+    mensaje->set_num_of_player(0);
+    mensaje->set_xvelocity(getKeyXaxis());
+    mensaje->set_yvelocity(getKeyYaxis());
+    _KeyUpdater.update(mensaje);
+    delete mensaje;
 }

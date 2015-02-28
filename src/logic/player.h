@@ -1,6 +1,6 @@
-#include "gameobject.h"
-#include "playerrocket.h"
-#include "shot.h"
+#include "logic/mapobjects/gameobject.h"
+#include "logic/rocket/playerrocket.h"
+#include "logic/shot/shot.h"
 #include "list/List.h"
 #ifndef PLAYER_H
 #define PLAYER_H

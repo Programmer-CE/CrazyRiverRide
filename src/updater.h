@@ -2,21 +2,21 @@
 #define UPDATER_H
 
 #include <QThread>
-#include "gamemanager.h"
+#include "logic/kernelgame.h"
 
 class Updater : public QThread
 {
     Q_OBJECT
 public:
     explicit Updater(QObject *parent = 0);
-    void setRunTarget(GameManager *ogm);
+    void setRunTarget(KernelGame *ogm);
     void run();
     void setActive(bool b);
     bool isClose();
 
 private:
     bool open;
-    GameManager *gm;
+    KernelGame *gm;
 signals:
     void renderGame();
 public slots:

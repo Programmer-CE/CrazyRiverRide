@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "iostream"
 
 
 Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber)
@@ -60,16 +60,26 @@ void Player::setStunTime(int pStunTime)
 
 void Player::update(QRect rec)
 {
-    if (_StunTime ==0){
-        _Rocket->update();
-        return;
-    }
     for (int x = 0; x < _PlayerShots->getLenght();x++){
         if(!_PlayerShots->get(x)->isUsefulShot(rec)){
             delete _PlayerShots->get(x);
             _PlayerShots->remove(x);
             break;
         }
+    }
+    if (_StunTime ==0){
+        int xposition = _Rocket->getX()+_Rocket->getXVelocity();
+        if (rec.x() > xposition || xposition > rec.right()) _Rocket->setXVelocity(0);
+        int yposition = _Rocket->getY()+_Rocket->getYVelocity();
+        if (rec.y() > yposition || yposition > rec.bottom()){
+            std::cout << "y: "<< rec.y() << " yposition: " << yposition << " bottom: " << rec.bottom()<< std::endl;
+            _Rocket->setYVelocity(0);
+        }
+        else{
+            std::cout << "esta entrando aqui"<< std::endl;
+        }
+        _Rocket->update();
+        return;
     }
     _StunTime--;
 }

@@ -1,7 +1,9 @@
 #include "kernelgame.h"
-#include "movilenemyrocket.h"
-#include "kamikaze.h"
+#include "logic/rocket/movilenemyrocket.h"
+#include "logic/rocket/kamikaze.h"
 #include <cmath>
+#include "protobufmessage/GameObjectNotify.pb.h"
+
 const int KernelGame::FPS = 24;
 const int KernelGame::POINTS_PER_ENEMY = 50;
 const int KernelGame::MAX_ENEMIES_PER_CYCLES = 9;
@@ -10,6 +12,46 @@ const int KernelGame::MAX_ENEMIES_PER_CYCLES = 9;
 const int KernelGame::STUN_TIME= 5;
 
 const int KernelGame::TIME_TO_REGENERATE_ENEMIES = KernelGame::FPS*10;
+
+
+
+
+
+
+
+//==================================================================================================
+// 01 CONSTRUCTOR
+//==================================================================================================
+
+KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false),_isRunning(true){
+    _Rec = rec;
+    _Paused = false;
+    _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));
+}
+
+//==================================================================================================
+// 01 FIN DE CONSTRUCTOR
+//==================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================
+// 02 MANEJO DE COLISIONES
+//==================================================================================================
 
 void KernelGame::collisionPlayerWithEnemies(Player *pPlayer)
 {
@@ -55,6 +97,29 @@ void KernelGame::collisionPlayerWithEnemiesShots(Player *pPlayer)
     }
 }
 
+
+
+//==================================================================================================
+// 02 FINAL DE MANEJO DE COLISIONES
+//==================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================
+// 03 AGREGAR ENEMIGOS DE MANERA ALEATORIA
+//==================================================================================================
+
 void KernelGame::addRandomEnemy(QRect rec)
 {
     //agrega un enemigo
@@ -67,42 +132,103 @@ void KernelGame::addRandomEnemy(QRect rec)
     else _Enemies.add(new Kamikaze(enemyPos,Rocket::MAX_HP,player));
 }
 
-KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false){
-    _Rec = rec;
-    _Paused = false;
-    _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));
-}
+//==================================================================================================
+// 03 FINAL DE AGREGAR ENEMIGOS DE MANERA ALEATORIA
+//==================================================================================================
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================
+// 04 ACTUALIZACIONES DEL JUEGO
+//==================================================================================================
+
 
 void KernelGame::update(QRect rec)
 {
     if(!isPaused()){
-        Player * player;
-        for (int x = 0; x < _Players.getLenght();x++){
-            player = _Players.get(x);
-            if (!player->isDead()){
-                collisionPlayerShotsWithEnemies(player);
-                collisionPlayerWithEnemiesShots(player);
-                collisionPlayerWithEnemiesShots(player);
-                player->update(rec);
-            }
-        }
-        for (int x = 0; x < _Enemies.getLenght();x++){
-            if (!_Enemies.get(x)->getRect().intersects(rec)){
-                delete _Enemies.get(x);
-                _Enemies.remove(x);
-                break;
-            }
-        }
-        for (int x = 0; x < _EnemiesShots.getLenght();x++){
-            if (!_EnemiesShots.get(x)->getRect().intersects(rec)){
-                delete _EnemiesShots.get(x);
-                _EnemiesShots.remove(x);
-                break;
-            }
-        }
+        updatePlayers(rec);
+        updateEnemies(rec);
         addRandomEnemy(rec);
+        notifyAll();
     }
 }
+
+
+void KernelGame::updatePlayers(QRect rec)
+{
+    Player * player = _Players.get(0);
+    for (int x = 0; x < _Players.getLenght();x++){
+        player = _Players.get(x);
+        if (!player->isDead()){
+            collisionPlayerShotsWithEnemies(player);
+            collisionPlayerWithEnemiesShots(player);
+            collisionPlayerWithEnemiesShots(player);
+            player->update(rec);
+        }
+    }
+}
+
+void KernelGame::updateEnemies(QRect rec)
+{
+    for (int x = 0; x < _Enemies.getLenght();x++){
+        if (!_Enemies.get(x)->getRect().intersects(rec)){
+            delete _Enemies.get(x);
+            _Enemies.remove(x);
+            break;
+        }
+    }
+    for (int x = 0; x < _EnemiesShots.getLenght();x++){
+        if (!_EnemiesShots.get(x)->getRect().intersects(rec)){
+            delete _EnemiesShots.get(x);
+            _EnemiesShots.remove(x);
+            break;
+        }
+    }
+}
+
+
+void KernelGame::notifyAll()
+{
+    GameObjectNotify *message = new GameObjectNotify();
+    message->set_height(_Players.get(0)->getRocket()->getHeight());
+    message->set_width(_Players.get(0)->getRocket()->getWidth());
+    message->set_x(_Players.get(0)->getRocket()->getX());
+    message->set_y(_Players.get(0)->getRocket()->getY());
+    message->set_type(0);
+    _UiDriver->update(message);
+}
+
+
+//==================================================================================================
+// 04 FINAL DE ACTUALIZACIONES DEL JUEGO
+//==================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================
+// 05 MANEJO DE JUGADORES
+//==================================================================================================
 
 void KernelGame::changePlayerXVelocity(Player *pPlayer,int pXvelocity)
 {
@@ -128,20 +254,6 @@ void KernelGame::shoot(Player *pPlayer)
     pPlayer->shoot();
 }
 
-void KernelGame::pause()
-{
-    _Paused = true;
-}
-
-void KernelGame::play(Player *pPlayer){
-    if (pPlayer->getPlayerNumber() == 1 || pPlayer->getPlayerNumber() == _PlayerPause)_Paused = true;
-}
-
-bool KernelGame::isPaused()
-{
-    return _Paused;
-}
-
 void KernelGame::killPlayer(Player *pPlayer)
 {
     pPlayer->getRocket()->addHitPoints(pPlayer->getRocket()->getHitPoints());
@@ -160,6 +272,31 @@ Player *KernelGame::getPlayer(int pPlayerNum)
     return 0;
 }
 
+QRect KernelGame::getPlayerRect(int pPlayerNum)
+{
+    return getPlayer(pPlayerNum)->getRocket()->getRect();
+}
+
+void KernelGame::setObserver(Observer *observer)
+{
+    _UiDriver = observer;
+}
+
+void KernelGame::updatePlayerPosition(int pPlayer, int vX, int vY)
+{
+    Player * player = getPlayer(pPlayer);
+    if(player && !player->isDead()){
+        player->getRocket()->setXVelocity(vX*Rocket::ROCKET_VELOCITY);
+        player->getRocket()->setYVelocity(vY*Rocket::ROCKET_VELOCITY);
+    }
+}
+
+bool KernelGame::isRunning()
+{
+    return _isRunning;
+}
+
+
 
 void KernelGame::createPlayer()
 {
@@ -167,8 +304,71 @@ void KernelGame::createPlayer()
     _Players.add(new Player(0,0,_NumOfPlayer));
 }
 
+//==================================================================================================
+// 05 FINAL DE MANEJO DE JUGADORES
+//==================================================================================================
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================
+// 06 PAUSA Y PLAY
+//==================================================================================================
+
+void KernelGame::pause()
+{
+    _Paused = true;
+}
+
+void KernelGame::play(Player *pPlayer){
+    if (pPlayer->getPlayerNumber() == 1 || pPlayer->getPlayerNumber() == _PlayerPause)_Paused = true;
+}
+
+void KernelGame::stop()
+{
+    _isRunning = false;
+}
+
+bool KernelGame::isPaused()
+{
+    return _Paused;
+}
+
+//==================================================================================================
+// 06 FINAL DE PAUSA Y PLAY
+//==================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================
+// 07 DESTRUCTOR
+//==================================================================================================
 KernelGame::~KernelGame()
 {
     for(int x = 0; x < _Enemies.getLenght(); x++)delete _Enemies.get(x);
@@ -176,3 +376,6 @@ KernelGame::~KernelGame()
     for(int x = 0; x < _EnemiesShots.getLenght(); x++)delete _EnemiesShots.get(x);
 
 }
+//==================================================================================================
+// 07 FINAL DESTRUCTOR
+//==================================================================================================
