@@ -32,9 +32,10 @@ void protobuf_AssignDesc_PlayerStatus_2eproto() {
       "PlayerStatus.proto");
   GOOGLE_CHECK(file != NULL);
   PlayerStatus_descriptor_ = file->message_type(0);
-  static const int PlayerStatus_offsets_[3] = {
+  static const int PlayerStatus_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, num_of_player_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, playerpoints_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, playerlife_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, isdead_),
   };
   PlayerStatus_reflection_ =
@@ -78,9 +79,9 @@ void protobuf_AddDesc_PlayerStatus_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\022PlayerStatus.proto\"K\n\014PlayerStatus\022\025\n\r"
+    "\n\022PlayerStatus.proto\"_\n\014PlayerStatus\022\025\n\r"
     "NUM_OF_PLAYER\030\001 \002(\005\022\024\n\014playerPoints\030\002 \002("
-    "\005\022\016\n\006isDead\030\003 \002(\010", 97);
+    "\005\022\022\n\nplayerLife\030\003 \002(\005\022\016\n\006isDead\030\004 \002(\010", 117);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PlayerStatus.proto", &protobuf_RegisterTypes);
   PlayerStatus::default_instance_ = new PlayerStatus();
@@ -110,6 +111,7 @@ static void MergeFromFail(int line) {
 #ifndef _MSC_VER
 const int PlayerStatus::kNUMOFPLAYERFieldNumber;
 const int PlayerStatus::kPlayerPointsFieldNumber;
+const int PlayerStatus::kPlayerLifeFieldNumber;
 const int PlayerStatus::kIsDeadFieldNumber;
 #endif  // !_MSC_VER
 
@@ -134,6 +136,7 @@ void PlayerStatus::SharedCtor() {
   _cached_size_ = 0;
   num_of_player_ = 0;
   playerpoints_ = 0;
+  playerlife_ = 0;
   isdead_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -230,13 +233,28 @@ bool PlayerStatus::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_isDead;
+        if (input->ExpectTag(24)) goto parse_playerLife;
         break;
       }
 
-      // required bool isDead = 3;
+      // required int32 playerLife = 3;
       case 3: {
         if (tag == 24) {
+         parse_playerLife:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &playerlife_)));
+          set_has_playerlife();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_isDead;
+        break;
+      }
+
+      // required bool isDead = 4;
+      case 4: {
+        if (tag == 32) {
          parse_isDead:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -284,9 +302,14 @@ void PlayerStatus::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->playerpoints(), output);
   }
 
-  // required bool isDead = 3;
+  // required int32 playerLife = 3;
+  if (has_playerlife()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->playerlife(), output);
+  }
+
+  // required bool isDead = 4;
   if (has_isdead()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->isdead(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->isdead(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -309,9 +332,14 @@ void PlayerStatus::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->playerpoints(), target);
   }
 
-  // required bool isDead = 3;
+  // required int32 playerLife = 3;
+  if (has_playerlife()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->playerlife(), target);
+  }
+
+  // required bool isDead = 4;
   if (has_isdead()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->isdead(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->isdead(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -339,8 +367,15 @@ int PlayerStatus::RequiredFieldsByteSizeFallback() const {
         this->playerpoints());
   }
 
+  if (has_playerlife()) {
+    // required int32 playerLife = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->playerlife());
+  }
+
   if (has_isdead()) {
-    // required bool isDead = 3;
+    // required bool isDead = 4;
     total_size += 1 + 1;
   }
 
@@ -349,7 +384,7 @@ int PlayerStatus::RequiredFieldsByteSizeFallback() const {
 int PlayerStatus::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required int32 NUM_OF_PLAYER = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -360,7 +395,12 @@ int PlayerStatus::ByteSize() const {
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->playerpoints());
 
-    // required bool isDead = 3;
+    // required int32 playerLife = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->playerlife());
+
+    // required bool isDead = 4;
     total_size += 1 + 1;
 
   } else {
@@ -398,6 +438,9 @@ void PlayerStatus::MergeFrom(const PlayerStatus& from) {
     if (from.has_playerpoints()) {
       set_playerpoints(from.playerpoints());
     }
+    if (from.has_playerlife()) {
+      set_playerlife(from.playerlife());
+    }
     if (from.has_isdead()) {
       set_isdead(from.isdead());
     }
@@ -420,7 +463,7 @@ void PlayerStatus::CopyFrom(const PlayerStatus& from) {
 }
 
 bool PlayerStatus::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
   return true;
 }
@@ -432,6 +475,7 @@ void PlayerStatus::Swap(PlayerStatus* other) {
 void PlayerStatus::InternalSwap(PlayerStatus* other) {
   std::swap(num_of_player_, other->num_of_player_);
   std::swap(playerpoints_, other->playerpoints_);
+  std::swap(playerlife_, other->playerlife_);
   std::swap(isdead_, other->isdead_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);

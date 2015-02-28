@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include "protobufmessage/GameObjectNotify.pb.h"
+#include "protobufmessage/PlayerStatus.pb.h"
 
 const int KernelGame::FPS = 24;
 const int KernelGame::POINTS_PER_ENEMY = 50;
@@ -24,7 +25,8 @@ const int KernelGame::TIME_TO_REGENERATE_ENEMIES = KernelGame::FPS*10;
 // 01 CONSTRUCTOR
 //==================================================================================================
 
-KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false),_isRunning(true){
+KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false),_isRunning(true),
+    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0){
     _Rec = rec;
     _Paused = false;
     _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));
@@ -60,6 +62,9 @@ void KernelGame::collisionPlayerWithEnemies(Player *pPlayer)
     for (int x= 0; x < this->_Enemies.getLenght();x++){
         if (rocket->isCollide(_Enemies.get(x))){
             rocket->addHitPoints(Shot::ENEMY_DAMAGE);
+            if(rocket->isDead()){
+                killPlayer(pPlayer);
+            }
             delete _Enemies.get(x);
             _Enemies.remove(x);
             break;
@@ -95,6 +100,7 @@ void KernelGame::collisionPlayerWithEnemiesShots(Player *pPlayer)
     for (int x= 0; x < this->_EnemiesShots.getLenght();x++){
         if (rocket->isCollide(_EnemiesShots.get(x))){
             _EnemiesShots.get(x)->damage(rocket);
+            if (rocket->isDead())killPlayer(pPlayer);
             delete _EnemiesShots.get(x);
             _EnemiesShots.remove(x);
             break;
@@ -165,11 +171,16 @@ void KernelGame::update(QRect rec)
 {
     if(!isPaused()){
         updatePlayers(rec);
-        //std::cout << "actualizacion de enemigos, cantidad" << _Enemies.getLenght() << std::endl;
         updateEnemies(rec);
         addRandomEnemy(rec);
+        _Map.update();
         notifyAll();
     }
+    /**
+    std::cout << "cantidad de disparos jugador" << _Players.get(0)->getPlayerShots()->getLenght() << std::endl;
+    std::cout << "cantidad de disparos enemigos" << _EnemiesShots.getLenght() << std::endl;
+    std::cout << "cantidad de enemigos" << _Enemies.getLenght() << std::endl;
+    */
 }
 
 
@@ -191,7 +202,6 @@ void KernelGame::updateEnemies(QRect rec)
 {
     for (int x = 0; x < _Enemies.getLenght();x++){
         if (!_Enemies.get(x)->getRect().intersects(rec)){
-            std::cout << "no interseca " << std::endl;
             delete _Enemies.get(x);
             _Enemies.remove(x);
             break;
@@ -206,7 +216,7 @@ void KernelGame::updateEnemies(QRect rec)
     }
     for (int x = 0; x < _Enemies.getLenght();x++){
         if(_Enemies.get(x)->getEnemyType() == EnemyRocket::MOVIL_ENEMY_ROCKET){
-            _Enemies.get(x)->setXVelocity((rand()%2)*Rocket::ROCKET_VELOCITY);
+            _Enemies.get(x)->setXVelocity(((rand()%3)-1)*Rocket::ROCKET_VELOCITY);
             _Enemies.get(x)->setYVelocity((1)*Rocket::ROCKET_VELOCITY);
         }
         _Enemies.get(x)->update();
@@ -218,10 +228,10 @@ void KernelGame::notifyAll()
 {
     GameObjectNotify *message;
     message = new GameObjectNotify();
-    message->set_height(_Rec.height());
-    message->set_width(_Rec.width());
-    message->set_x(_Rec.x());
-    message->set_y(_Rec.y());
+    message->set_height(_Map.getHeight());
+    message->set_width(_Map.getWidth());
+    message->set_x(_Map.getX());
+    message->set_y(_Map.getY());
     message->set_type(0);
     _UiDriver->update(message);
     delete message;
@@ -272,6 +282,14 @@ void KernelGame::notifyAll()
             delete message;
         }
     }
+
+    PlayerStatus *statusmessage = new PlayerStatus();
+    statusmessage->set_playerpoints(_Players.get(0)->getPoints());
+    statusmessage->set_num_of_player(0);
+    statusmessage->set_isdead(_Players.get(0)->isDead());
+    statusmessage->set_playerlife(_Players.get(0)->getRocket()->getHitPoints());
+    _UiDriver->update(statusmessage);
+    delete statusmessage;
 
 }
 

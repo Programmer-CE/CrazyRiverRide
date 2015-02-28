@@ -3,17 +3,19 @@
 #include "qpaintengine.h"
 #include "protobufmessage/ControlPlayer.pb.h"
 #include "protobufmessage/Stop.pb.h"
+#include "QVariant"
 
 CrazyRiverRide::CrazyRiverRide(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::CrazyRiverRide), _Pause(false),_Close(false),_Shoot(false),_ChangeMunition(false)
+    ui(new Ui::CrazyRiverRide), _Pause(false),_Close(false),_Shoot(false),_ChangeMunition(false),
+    playerlife(0),playerpoints(0)
 {
     ui->setupUi(this);
     KeyXaxis = 0;
     KeyYaxis = 0;
     nextKeyXaxis = 0;
     nextKeyYaxis = 0;
-    setGeometry(0,0,800,800);
+    setGeometry(0,0,1024,800);
 }
 
 void CrazyRiverRide::paintImage(QRect rec, QPixmap *pImage)
@@ -31,6 +33,11 @@ int CrazyRiverRide::getKeyYaxis()
     return KeyYaxis;
 }
 
+bool CrazyRiverRide::isRunning()
+{
+    return !_Close;
+}
+
 void CrazyRiverRide::setkeyUpdater(KeyUpdater pKeyUpdater)
 {
     _KeyUpdater = pKeyUpdater;
@@ -38,6 +45,7 @@ void CrazyRiverRide::setkeyUpdater(KeyUpdater pKeyUpdater)
 
 CrazyRiverRide::~CrazyRiverRide()
 {
+    _Close = true;
     delete ui;
 }
 
@@ -57,6 +65,12 @@ void CrazyRiverRide::paintEvent(QPaintEvent *)
         PaintTask pt= queue.dequeue();
         p.drawPixmap(pt.getRec().topLeft(),*pt.getPix());
     }
+    QString info("HP: ");
+    QVariant variant(playerlife);
+    p.drawText(0,15,info.append(variant.toString()));
+    info = "Points: ";
+    variant = QVariant(playerpoints);
+    p.drawText(0,30,info.append(variant.toString()));
     p.end();
 }
 
@@ -135,6 +149,26 @@ void CrazyRiverRide::keyReleaseEvent(QKeyEvent *k)
 
     }
 }
+int CrazyRiverRide::getPlayerpoints() const
+{
+    return playerpoints;
+}
+
+void CrazyRiverRide::setPlayerpoints(int value)
+{
+    playerpoints = value;
+}
+
+int CrazyRiverRide::getPlayerlife() const
+{
+    return playerlife;
+}
+
+void CrazyRiverRide::setPlayerlife(int value)
+{
+    playerlife = value;
+}
+
 
 void CrazyRiverRide::render()
 {

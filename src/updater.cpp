@@ -15,15 +15,21 @@ void Updater::run()
     while(gm->isRunning()){
         QMutex m;
         m.lock();
-        gm->update(gm->getRect());
-        emit renderGame();
+        if (gm)gm->update(gm->getRect());
+        if (parent())emit renderGame();
         m.unlock();
         this->msleep(42);
 
     }
+    delete gm;
 }
 
 void Updater::setActive(bool b)
 {
     open = b;
+}
+
+Updater::~Updater()
+{
+    while(isRunning())gm->stop();
 }

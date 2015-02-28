@@ -50,7 +50,6 @@ void Player::shoot()
         Shot* shot = _Rocket->shoot();
         //if (shot->getType() == Shot::ANGLE_SHOT);
         if (shot){
-            std::cout << "disparo usable" <<std::endl;
             _PlayerShots->add(shot);
         }
     }
@@ -66,9 +65,9 @@ void Player::update(QRect rec)
 {
     if (_StunTime ==0){
         int xposition = _Rocket->getX()+_Rocket->getXVelocity();
-        if (rec.x() > xposition || xposition > rec.right()) _Rocket->setXVelocity(0);
         int yposition = _Rocket->getY()+_Rocket->getYVelocity();
-        if (rec.y() > yposition || yposition > rec.bottom()){
+        if (rec.x() > xposition || xposition+_Rocket->getWidth() > rec.right()) _Rocket->setXVelocity(0);
+        if (rec.y() > yposition || yposition+_Rocket->getHeight() > rec.bottom()){
             _Rocket->setYVelocity(0);
         }
         _Rocket->update();
@@ -81,11 +80,10 @@ void Player::update(QRect rec)
         }
 
         for (int y = 0; y < _PlayerShots->getLenght();y++){
-            std::cout << "largo de lista: " << _PlayerShots->getLenght()<< std::endl;
             _PlayerShots->get(y)->update();
-            std::cout << "largo arrojado"<< std::endl;
         }
         return;
+
     }
     _StunTime--;
 }
