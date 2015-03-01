@@ -5,7 +5,7 @@
 #include "QThread"
 #include "updater.h"
 #include "keyupdater.h"
-
+#include "logic/crazythreads/gameloop.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -14,17 +14,17 @@ int main(int argc, char *argv[])
     KeyUpdater keyupdater(kernel);
     w.setkeyUpdater(keyupdater);
     w.show();
-    Updater mthread(&w);
-    w.connect(&mthread,SIGNAL(renderGame()),&w,SLOT(render()));
+    GameLoop mthread(kernel);
+    //Updater mthread(&w);
+    //w.connect(mthread.getGuiConector(),SIGNAL(renderGame()),&w,SLOT(render()));
     GameManager gm(&w);
     kernel->setObserver(&gm);
-    mthread.setRunTarget(kernel);
     mthread.start();
     /*
     while(w.isVisible()){
         gm.runAGame();
     }
     */
-    if (mthread.isRunning())
+    //if (mthread.isRunning())
     return a.exec();
 }
