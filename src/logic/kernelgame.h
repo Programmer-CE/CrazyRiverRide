@@ -5,6 +5,9 @@
 #include "protobufmessage/ControlPlayer.pb.h"
 #include "player.h"
 #include "mapobjects/gamemap.h"
+#include "logic/mapobjects/amountbox.h"
+#include "logic/mapobjects/combustiblebox.h"
+#include "logic/mapobjects/box.h"
 #ifndef KERNELGAME_H
 #define KERNELGAME_H
 
@@ -21,7 +24,12 @@ private:
     List<EnemyRocket*> _Enemies;
     List<Player*> _Players;
     List<Shot*> _EnemiesShots;
+    CombustibleBox *_CombustibleBox;
+    Box *_HpBox;
+    AmountBox *_AmountBox;
     Observer * _UiDriver;
+    int _CurrentTimeToBadBox;
+    int _CurrentTimeToRegenerateHpBox;
     //List<Box> _Boxes;
 
 
@@ -29,16 +37,16 @@ private:
     void collisionPlayerShotsWithEnemies(Player *pPlayer);
     void collisionPlayerWithBridge(Player *pPlayer);
     void collisionPlayerShotsWithBridge(Player *pPlayer);
-    //void collisionPlayerWithEnemies(Player *pPlayer);
+    void collisionPlayerWithBox(Player *pPlayer);
+    void collisionPlayerShotWithBox(Player *pPlayer);
+    void collisionPlayerShotWithBox(Player *pPlayer,Box **pBox);
     void collisionPlayerWithEnemiesShots(Player *pPlayer);
     void changePlayerXVelocity(Player *pPlayer,int pXvelocity);
     void changePlayerYVelocity(Player *pPlayer,int pYvelocity);
     void selectMap(int pMap);
     void stunPlayers(Player *pPlayer);
     void shoot(Player *pPlayer);
-    void pause();
     void play(Player *pPlayer);
-    bool isPaused();
     bool isStageClear();
     void killPlayer(Player *pPlayer);
     void createPlayer();
@@ -46,12 +54,18 @@ private:
     Player *getPlayer(int pPlayerNum);
     void updatePlayers(QRect rec);
     void updateEnemies(QRect rec);
+    void randomBoxes(QRect rec);
+    void updateBoxes(QRect rec);
 public:
     static const int FPS;
     static const int POINTS_PER_ENEMY;
     static const int STUN_TIME;
     static const int TIME_TO_REGENERATE_ENEMIES;
     static const int MAX_ENEMIES_PER_CYCLES;
+    static const int TIME_TO_REGENERATE_HPBOXES;
+    static const int TIME_TO_BAD_HPBOX;
+    static const int ANY_BOX_HEIGHT;
+    static const int ANY_BOX_WIDTH;
     KernelGame(QRect rec);
     void update(QRect rec);
     QRect getPlayerRect(int pPlayerNum);
@@ -60,6 +74,8 @@ public:
     void updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition);
     bool isRunning();
     void stop();
+    void pauseGame();
+    bool isPaused();
     void notifyAll();
     //void setKeyYaxis(int pPlayer,int pKeyAxis);
     //void setKeyXaxis(int pPlayer,int pKeyAxis);

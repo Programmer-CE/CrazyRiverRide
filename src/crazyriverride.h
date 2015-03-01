@@ -3,6 +3,7 @@
 #include "QKeyEvent"
 #include "controlStructure/Queue.h"
 #include "keyupdater.h"
+#include "qmediaplayer.h"
 #ifndef CRAZYRIVERRIDE_H
 #define CRAZYRIVERRIDE_H
 
@@ -33,6 +34,9 @@ public:
     int getPlayermunition() const;
     void setPlayermunition(int value);
 
+    int getPlayerCombustible() const;
+    void setPlayerCombustible(int value);
+    void playmusic();
 protected:
     void closeEvent(QCloseEvent *);
     void paintEvent(QPaintEvent*);
@@ -41,11 +45,13 @@ protected:
 private:
     Ui::CrazyRiverRide *ui;
     int KeyXaxis,KeyYaxis,nextKeyXaxis,nextKeyYaxis;
-    bool _Pause, _Close, _Shoot, _ChangeMunition;
+    bool _PausedCalled,_Paused, _Close, _Shoot, _ChangeMunition;
     QPainter p;
     Queue<PaintTask> queue;
     KeyUpdater _KeyUpdater;
-    int playerlife,playerpoints,playermunition;
+    QFont indicadorPlayer;
+    QMediaPlayer music;
+    int playerlife,playerpoints,playermunition,playerCombustible;
 public slots:
     void render();
 };

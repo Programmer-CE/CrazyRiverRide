@@ -14,6 +14,7 @@ class GameManager:public Observer
     QPixmap enemyshot;
     QPixmap playershot;
     QPixmap indicadorSimpleshot,indicadorDifusionShot,indicadorMayhemShot;
+    QPixmap boxAmount,boxHp,boxBadHp,boxCombustible,boxBadCombustible;
     bool _Run;
 public:
     GameManager(CrazyRiverRide *);

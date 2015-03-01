@@ -13,7 +13,12 @@ GameManager::GameManager(CrazyRiverRide *gw):
     playershot(":/images/images/attack/attack.png"),
     indicadorSimpleshot(":/images/images/indicador/simpleshot.png"),
     indicadorDifusionShot(":/images/images/indicador/difusionshot.png"),
-    indicadorMayhemShot(":/images/images/indicador/mayhemsimpleshot.png")
+    indicadorMayhemShot(":/images/images/indicador/mayhemsimpleshot.png"),
+    boxAmount(":/images/images/boxes/amount.png"),
+    boxHp(":/images/images/boxes/healt.png"),
+    boxBadHp(":/images/images/boxes/unhealt.png"),
+    boxCombustible(":/images/images/boxes/cumbustible.png"),
+    boxBadCombustible(":/images/images/boxes/flame.png")
   ,_Run(true)
 {
     r = gw->rect();
@@ -47,20 +52,37 @@ void GameManager::update(google::protobuf::Message *pMessage)
             else if (gon->type() == 4){
                 _GameWindows->paintImage(QRect(gon->x(),gon->y(),gon->width(),gon->height()),&playershot);
             }
+            else if (gon->type() == 5){
+                _GameWindows->paintImage(QRect(gon->x(),gon->y(),gon->width(),gon->height()),&boxAmount);
+            }
+            else if (gon->type() == 6){
+                _GameWindows->paintImage(QRect(gon->x(),gon->y(),gon->width(),gon->height()),&boxCombustible);
+            }
+            else if (gon->type() == 7){
+                _GameWindows->paintImage(QRect(gon->x(),gon->y(),gon->width(),gon->height()),&boxBadCombustible);
+            }
+            else if (gon->type() == 8){
+                _GameWindows->paintImage(QRect(gon->x(),gon->y(),gon->width(),gon->height()),&boxHp);
+            }
+            else if (gon->type() == 9){
+                _GameWindows->paintImage(QRect(gon->x(),gon->y(),gon->width(),gon->height()),&boxBadHp);
+            }
+
         }
         else if (pMessage->GetTypeName() == PlayerStatus().GetTypeName()){
             PlayerStatus *playerstatus = (PlayerStatus*)pMessage;
             _GameWindows->setPlayerlife(playerstatus->playerlife());
             _GameWindows->setPlayerpoints(playerstatus->playerpoints());
             _GameWindows->setPlayermunition(playerstatus->numofmunition());
+            _GameWindows->setPlayerCombustible(playerstatus->combustible());
             if (playerstatus->typeofmunition() == Shot::LINEAR_SHOT){
-                _GameWindows->paintImage(QRect(950,0,50,50),&indicadorSimpleshot);
+                _GameWindows->paintImage(QRect(950,20,50,50),&indicadorSimpleshot);
             }
             else if ((playerstatus->typeofmunition() == Shot::ANGLE_SHOT)){
-                _GameWindows->paintImage(QRect(950,0,50,50),&indicadorDifusionShot);
+                _GameWindows->paintImage(QRect(950,20,50,50),&indicadorDifusionShot);
             }
             else if ((playerstatus->typeofmunition() == Shot::MAYHEM_SHOT)){
-                _GameWindows->paintImage(QRect(950,0,50,50),&indicadorMayhemShot);
+                _GameWindows->paintImage(QRect(950,20,50,50),&indicadorMayhemShot);
             }
 
         }

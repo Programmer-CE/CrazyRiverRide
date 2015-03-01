@@ -5,10 +5,16 @@
 #include <iostream>
 #include "protobufmessage/GameObjectNotify.pb.h"
 #include "protobufmessage/PlayerStatus.pb.h"
+#include "protobufmessage/Pause.pb.h"
 
 const int KernelGame::FPS = 24;
 const int KernelGame::POINTS_PER_ENEMY = 50;
 const int KernelGame::MAX_ENEMIES_PER_CYCLES = 9;
+const int KernelGame::TIME_TO_REGENERATE_HPBOXES =KernelGame::FPS*15;
+const int KernelGame::TIME_TO_BAD_HPBOX = 3*KernelGame::FPS;
+const int KernelGame::ANY_BOX_HEIGHT = 54;
+const int KernelGame::ANY_BOX_WIDTH = 54;
+
 
 //tiempo de stuneo cinco segundos
 const int KernelGame::STUN_TIME= 5;
@@ -26,10 +32,13 @@ const int KernelGame::TIME_TO_REGENERATE_ENEMIES = KernelGame::FPS*10;
 //==================================================================================================
 
 KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false),_isRunning(true),
-    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0){
+    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0),_CurrentTimeToBadBox(0), _CurrentTimeToRegenerateHpBox(0)
+{
     _Rec = rec;
-    _Paused = false;
     _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));
+    _AmountBox = 0;
+    _CombustibleBox = 0;
+    _HpBox = 0;
 }
 
 //==================================================================================================
@@ -90,6 +99,69 @@ void KernelGame::collisionPlayerShotsWithEnemies(Player *pPlayer)
                 }
                 break;
             }
+        }
+    }
+}
+
+
+void KernelGame::collisionPlayerWithBox(Player *pPlayer)
+{
+    if (_AmountBox){
+        if (_AmountBox->isCollide(pPlayer->getRocket())){
+            _AmountBox->addPointsToPlayer(pPlayer);
+            delete _AmountBox;
+            _AmountBox = 0;
+        }
+    }
+    if (_CombustibleBox){
+        if (_CombustibleBox->isCollide(pPlayer->getRocket())){
+            _CombustibleBox->addPointsToPlayer(pPlayer);
+            delete _CombustibleBox;
+            _CombustibleBox = 0;
+        }
+    }
+    if (_HpBox){
+        if (_HpBox->isCollide(pPlayer->getRocket())){
+            _HpBox->addPointsToPlayer(pPlayer);
+            delete _HpBox;
+            _HpBox = 0;
+        }
+
+    }
+}
+
+void KernelGame::collisionPlayerShotWithBox(Player *pPlayer)
+{
+    if (_AmountBox){
+        collisionPlayerShotWithBox(pPlayer,(Box**)&_AmountBox);
+    }
+    if (_CombustibleBox){
+        List<Shot*> *shots = pPlayer->getPlayerShots();
+        for(int x = 0; x < shots->getLenght();x++){
+            if (shots->get(x)->isCollide(_CombustibleBox)){
+                if (!_CombustibleBox->isBadBox())_CombustibleBox->turnAbadBox();
+                delete shots->get(x);
+                shots->remove(x);
+                break;
+            }
+        }
+
+    }
+    if (_HpBox){
+        collisionPlayerShotWithBox(pPlayer,&_HpBox);
+    }
+}
+
+void KernelGame::collisionPlayerShotWithBox(Player *pPlayer, Box **pBox)
+{
+    List<Shot*> *shots = pPlayer->getPlayerShots();
+    for(int x = 0; x < shots->getLenght();x++){
+        if (shots->get(x)->isCollide(*pBox)){
+            delete *pBox;
+            *pBox = 0;
+            delete shots->get(x);
+            shots->remove(x);
+            break;
         }
     }
 }
@@ -173,6 +245,8 @@ void KernelGame::update(QRect rec)
         updatePlayers(rec);
         updateEnemies(rec);
         addRandomEnemy(rec);
+        randomBoxes(rec);
+        updateBoxes(rec);
         _Map.update();
         notifyAll();
     }
@@ -194,6 +268,8 @@ void KernelGame::updatePlayers(QRect rec)
             collisionPlayerShotsWithEnemies(player);
             collisionPlayerWithEnemiesShots(player);
             collisionPlayerWithEnemies(player);
+            collisionPlayerShotWithBox(player);
+            collisionPlayerWithBox(player);
         }
     }
 }
@@ -220,6 +296,58 @@ void KernelGame::updateEnemies(QRect rec)
             _Enemies.get(x)->setYVelocity((1)*Rocket::ROCKET_VELOCITY);
         }
         _Enemies.get(x)->update();
+    }
+}
+
+void KernelGame::randomBoxes(QRect rec)
+{
+
+    if (!_AmountBox){
+        if (rand()%70 == rand()%70){
+            _AmountBox = new AmountBox(QRect(rand()%rec.width(),0,ANY_BOX_WIDTH,ANY_BOX_HEIGHT),1,(rand()%10) +5);
+        }
+
+    }
+    if (!_CombustibleBox){
+        if (rand()%70 == rand()%70){
+            _CombustibleBox = new CombustibleBox(QRect(rand()%rec.width(),0,ANY_BOX_WIDTH,ANY_BOX_HEIGHT),1,(rand()%50) +25);
+        }
+    }
+    if (!_HpBox){
+        if (_CurrentTimeToRegenerateHpBox++ == TIME_TO_REGENERATE_HPBOXES){
+            _CurrentTimeToRegenerateHpBox = 0;
+            _HpBox = new Box(QRect(rand()%rec.width(),0,ANY_BOX_WIDTH,ANY_BOX_HEIGHT),1,(rand()%30) +15);
+        }
+    }
+}
+
+void KernelGame::updateBoxes(QRect rec)
+{
+    if (_AmountBox){
+        _AmountBox->update();
+        if (!rec.intersects(_AmountBox->getRect())){
+            delete _AmountBox;
+            _AmountBox = 0;
+        }
+
+    }
+    if (_HpBox){
+        _HpBox->update();
+        if(_CurrentTimeToBadBox++ > KernelGame::TIME_TO_BAD_HPBOX){
+            _CurrentTimeToBadBox = 0;
+            _HpBox->turnAbadBox();
+        }
+        if (!rec.intersects(_HpBox->getRect())){
+            delete _HpBox;
+            _HpBox = 0;
+        }
+    }
+    if (_CombustibleBox){
+        if (!rec.intersects(_CombustibleBox->getRect())){
+            delete _CombustibleBox;
+            _CombustibleBox = 0;
+        }
+        else _CombustibleBox->update();
     }
 }
 
@@ -282,6 +410,47 @@ void KernelGame::notifyAll()
             delete message;
         }
     }
+    if (_AmountBox){
+        message = new GameObjectNotify();
+        message->set_x(_AmountBox->getX());
+        message->set_y(_AmountBox->getY());
+        message->set_width(_AmountBox->getWidth());
+        message->set_height(_AmountBox->getHeight());
+        message->set_type(5);
+        _UiDriver->update(message);
+        delete message;
+    }
+    if (_CombustibleBox){
+        message = new GameObjectNotify();
+        message->set_x(_CombustibleBox->getX());
+        message->set_y(_CombustibleBox->getY());
+        message->set_width(_CombustibleBox->getWidth());
+        message->set_height(_CombustibleBox->getHeight());
+        if (_CombustibleBox->isBadBox()){
+            message->set_type(7);
+        }
+        else{
+            message->set_type(6);
+        }
+        _UiDriver->update(message);
+        delete message;
+    }
+    if (_HpBox){
+        message = new GameObjectNotify();
+        message->set_x(_HpBox->getX());
+        message->set_y(_HpBox->getY());
+        message->set_width(_HpBox->getWidth());
+        message->set_height(_HpBox->getHeight());
+        if (_HpBox->isBadBox()){
+            message->set_type(9);
+        }
+        else{
+            message->set_type(8);
+        }
+        _UiDriver->update(message);
+        delete message;
+
+    }
 
     PlayerStatus *statusmessage = new PlayerStatus();
     statusmessage->set_playerpoints(_Players.get(0)->getPoints());
@@ -290,6 +459,7 @@ void KernelGame::notifyAll()
     statusmessage->set_playerlife(_Players.get(0)->getRocket()->getHitPoints());
     statusmessage->set_numofmunition(_Players.get(0)->getRocket()->getMunitions());
     statusmessage->set_typeofmunition(_Players.get(0)->getRocket()->getMunitionType());
+    statusmessage->set_combustible(_Players.get(0)->getRocket()->getCombustible());
     _UiDriver->update(statusmessage);
     delete statusmessage;
 
@@ -379,7 +549,7 @@ void KernelGame::updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, boo
         player->getRocket()->setXVelocity(vX*Rocket::ROCKET_VELOCITY);
         player->getRocket()->setYVelocity(vY*Rocket::ROCKET_VELOCITY);
         if (pShoot)player->shoot();
-        if (pPause)_Paused  = !_Paused;
+        if (pPause)this->pauseGame();
         if(pChangeMunition)player->changeMunition();
     }
 }
@@ -419,13 +589,13 @@ void KernelGame::createPlayer()
 // 06 PAUSA Y PLAY
 //==================================================================================================
 
-void KernelGame::pause()
+void KernelGame::pauseGame()
 {
-    _Paused = true;
+    _Paused = !_Paused;
 }
 
 void KernelGame::play(Player *pPlayer){
-    if (pPlayer->getPlayerNumber() == 1 || pPlayer->getPlayerNumber() == _PlayerPause)_Paused = true;
+    if (pPlayer->getPlayerNumber() == 1 || pPlayer->getPlayerNumber() == _PlayerPause)_Paused = false;
 }
 
 void KernelGame::stop()

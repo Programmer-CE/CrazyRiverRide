@@ -144,6 +144,13 @@ class PlayerStatus : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 typeofmunition() const;
   inline void set_typeofmunition(::google::protobuf::int32 value);
 
+  // required int32 Combustible = 7;
+  inline bool has_combustible() const;
+  inline void clear_combustible();
+  static const int kCombustibleFieldNumber = 7;
+  inline ::google::protobuf::int32 combustible() const;
+  inline void set_combustible(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PlayerStatus)
  private:
   inline void set_has_num_of_player();
@@ -158,6 +165,8 @@ class PlayerStatus : public ::google::protobuf::Message {
   inline void clear_has_numofmunition();
   inline void set_has_typeofmunition();
   inline void clear_has_typeofmunition();
+  inline void set_has_combustible();
+  inline void clear_has_combustible();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -171,6 +180,7 @@ class PlayerStatus : public ::google::protobuf::Message {
   bool isdead_;
   ::google::protobuf::int32 numofmunition_;
   ::google::protobuf::int32 typeofmunition_;
+  ::google::protobuf::int32 combustible_;
   friend void  protobuf_AddDesc_PlayerStatus_2eproto();
   friend void protobuf_AssignDesc_PlayerStatus_2eproto();
   friend void protobuf_ShutdownFile_PlayerStatus_2eproto();
@@ -327,6 +337,30 @@ inline void PlayerStatus::set_typeofmunition(::google::protobuf::int32 value) {
   set_has_typeofmunition();
   typeofmunition_ = value;
   // @@protoc_insertion_point(field_set:PlayerStatus.TypeOfMunition)
+}
+
+// required int32 Combustible = 7;
+inline bool PlayerStatus::has_combustible() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void PlayerStatus::set_has_combustible() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void PlayerStatus::clear_has_combustible() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void PlayerStatus::clear_combustible() {
+  combustible_ = 0;
+  clear_has_combustible();
+}
+inline ::google::protobuf::int32 PlayerStatus::combustible() const {
+  // @@protoc_insertion_point(field_get:PlayerStatus.Combustible)
+  return combustible_;
+}
+inline void PlayerStatus::set_combustible(::google::protobuf::int32 value) {
+  set_has_combustible();
+  combustible_ = value;
+  // @@protoc_insertion_point(field_set:PlayerStatus.Combustible)
 }
 
 

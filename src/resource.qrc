@@ -14,5 +14,13 @@
         <file>images/indicador/difusionshot.png</file>
         <file>images/indicador/mayhemsimpleshot.png</file>
         <file>images/indicador/simpleshot.png</file>
+        <file>images/boxes/amount.png</file>
+        <file>images/boxes/cumbustible.png</file>
+        <file>images/boxes/flame.png</file>
+        <file>images/boxes/healt.png</file>
+        <file>images/boxes/unhealt.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>sound/metalstarforce.mp3</file>
     </qresource>
 </RCC>

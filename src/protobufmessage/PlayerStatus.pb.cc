@@ -32,13 +32,14 @@ void protobuf_AssignDesc_PlayerStatus_2eproto() {
       "PlayerStatus.proto");
   GOOGLE_CHECK(file != NULL);
   PlayerStatus_descriptor_ = file->message_type(0);
-  static const int PlayerStatus_offsets_[6] = {
+  static const int PlayerStatus_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, num_of_player_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, playerpoints_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, playerlife_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, isdead_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, numofmunition_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, typeofmunition_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerStatus, combustible_),
   };
   PlayerStatus_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -81,11 +82,11 @@ void protobuf_AddDesc_PlayerStatus_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\022PlayerStatus.proto\"\216\001\n\014PlayerStatus\022\025\n"
+    "\n\022PlayerStatus.proto\"\243\001\n\014PlayerStatus\022\025\n"
     "\rNUM_OF_PLAYER\030\001 \002(\005\022\024\n\014playerPoints\030\002 \002"
     "(\005\022\022\n\nplayerLife\030\003 \002(\005\022\016\n\006isDead\030\004 \002(\010\022\025"
     "\n\rNumOfMunition\030\005 \002(\005\022\026\n\016TypeOfMunition\030"
-    "\006 \002(\005", 165);
+    "\006 \002(\005\022\023\n\013Combustible\030\007 \002(\005", 186);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "PlayerStatus.proto", &protobuf_RegisterTypes);
   PlayerStatus::default_instance_ = new PlayerStatus();
@@ -119,6 +120,7 @@ const int PlayerStatus::kPlayerLifeFieldNumber;
 const int PlayerStatus::kIsDeadFieldNumber;
 const int PlayerStatus::kNumOfMunitionFieldNumber;
 const int PlayerStatus::kTypeOfMunitionFieldNumber;
+const int PlayerStatus::kCombustibleFieldNumber;
 #endif  // !_MSC_VER
 
 PlayerStatus::PlayerStatus()
@@ -146,6 +148,7 @@ void PlayerStatus::SharedCtor() {
   isdead_ = false;
   numofmunition_ = 0;
   typeofmunition_ = 0;
+  combustible_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -195,8 +198,8 @@ void PlayerStatus::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 63) {
-    ZR_(num_of_player_, typeofmunition_);
+  if (_has_bits_[0 / 32] & 127) {
+    ZR_(num_of_player_, combustible_);
   }
 
 #undef OFFSET_OF_FIELD_
@@ -303,6 +306,21 @@ bool PlayerStatus::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(56)) goto parse_Combustible;
+        break;
+      }
+
+      // required int32 Combustible = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_Combustible:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &combustible_)));
+          set_has_combustible();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -362,6 +380,11 @@ void PlayerStatus::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->typeofmunition(), output);
   }
 
+  // required int32 Combustible = 7;
+  if (has_combustible()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->combustible(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -400,6 +423,11 @@ void PlayerStatus::SerializeWithCachedSizes(
   // required int32 TypeOfMunition = 6;
   if (has_typeofmunition()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->typeofmunition(), target);
+  }
+
+  // required int32 Combustible = 7;
+  if (has_combustible()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->combustible(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -453,12 +481,19 @@ int PlayerStatus::RequiredFieldsByteSizeFallback() const {
         this->typeofmunition());
   }
 
+  if (has_combustible()) {
+    // required int32 Combustible = 7;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->combustible());
+  }
+
   return total_size;
 }
 int PlayerStatus::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000007f) ^ 0x0000007f) == 0) {  // All required fields are present.
     // required int32 NUM_OF_PLAYER = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -486,6 +521,11 @@ int PlayerStatus::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->typeofmunition());
+
+    // required int32 Combustible = 7;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->combustible());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -534,6 +574,9 @@ void PlayerStatus::MergeFrom(const PlayerStatus& from) {
     if (from.has_typeofmunition()) {
       set_typeofmunition(from.typeofmunition());
     }
+    if (from.has_combustible()) {
+      set_combustible(from.combustible());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -553,7 +596,7 @@ void PlayerStatus::CopyFrom(const PlayerStatus& from) {
 }
 
 bool PlayerStatus::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
+  if ((_has_bits_[0] & 0x0000007f) != 0x0000007f) return false;
 
   return true;
 }
@@ -569,6 +612,7 @@ void PlayerStatus::InternalSwap(PlayerStatus* other) {
   std::swap(isdead_, other->isdead_);
   std::swap(numofmunition_, other->numofmunition_);
   std::swap(typeofmunition_, other->typeofmunition_);
+  std::swap(combustible_, other->combustible_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
