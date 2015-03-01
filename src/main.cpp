@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     w.show();
     GameLoop mthread(kernel);
     //Updater mthread(&w);
-    //w.connect(mthread.getGuiConector(),SIGNAL(renderGame()),&w,SLOT(render()));
+    w.connect(mthread.getGuiConector(),SIGNAL(renderGame()),&w,SLOT(render()));
     GameManager gm(&w);
     kernel->setObserver(&gm);
     mthread.start();
