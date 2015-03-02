@@ -1,0 +1,11 @@
+\hypertarget{_inverse_iterator_8h}{\section{list/\-Inverse\-Iterator.h File Reference}
+\label{_inverse_iterator_8h}\index{list/\-Inverse\-Iterator.\-h@{list/\-Inverse\-Iterator.\-h}}
+}
+{\ttfamily \#include \char`\"{}I\-Iterator.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Double\-Node.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$ostream$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_inverse_iterator}{Inverse\-Iterator$<$ E $>$}
+\begin{DoxyCompactList}\small\item\em Esta clase es un iterador de las listas doblemente enlazadas, ademas la actualizacion de la lista N\-O actualiza el iterador, por lo que el iterador es momentaneo. Es similar a una fotografia de una lista que no ha sido alterada si la lista se altera usando un iterador puede que el iterador falle. Por lo que es recomendable que la lista no se actualice mientras se usa un iterador. Ademas de que este iterador recorre la lista desde el dato final hasta el dato inicial. \end{DoxyCompactList}\end{DoxyCompactItemize}

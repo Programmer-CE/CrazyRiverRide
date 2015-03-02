@@ -1,0 +1,163 @@
+\hypertarget{class_linear_shot}{\section{Linear\-Shot Class Reference}
+\label{class_linear_shot}\index{Linear\-Shot@{Linear\-Shot}}
+}
+
+
+{\ttfamily \#include $<$linearshot.\-h$>$}
+
+Inheritance diagram for Linear\-Shot\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_linear_shot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_linear_shot_a353b1988983a192affd6913805b8403e}{Linear\-Shot} (Q\-Rect p\-Rectangle, bool p\-To\-Up, int p\-Damage)
+\item 
+bool \hyperlink{class_linear_shot_af5e24419776495f3b42381fe614a3bec}{is\-Useful\-Shot} (Q\-Rect p\-Area)
+\item 
+bool \hyperlink{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}{is\-Collide} (\hyperlink{class_game_object}{Game\-Object} $\ast$other\-Renderizable)
+\begin{DoxyCompactList}\small\item\em Verifica si un \hyperlink{class_game_object}{Game\-Object} esta colisionando con otro. \end{DoxyCompactList}\item 
+int \hyperlink{class_linear_shot_a9f7b9d654314185d6d89c8c24a64bc85}{get\-X\-Velocity} ()
+\item 
+int \hyperlink{class_linear_shot_ad0b2c8f2e67c4c8bf48895616c9f5683}{get\-Y\-Velocity} ()
+\item 
+int \hyperlink{class_linear_shot_a50717d095ffb35f445f909f0ef961a5a}{get\-Type} ()
+\item 
+void \hyperlink{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}{update} ()
+\begin{DoxyCompactList}\small\item\em Actualiza el objeto, es un metodo abstracto, y debe ser implementado por sus clases hijas. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_linear_shot_a3473e5a630bdd3d2d85e59899e66d0b5}{$\sim$\-Linear\-Shot} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_linear_shot_a07e655ed82603f917e1d84758871f5bd}{\-\_\-\-Velocity\-Y}
+\item 
+bool \hyperlink{class_linear_shot_add140652fdd02d964e8827559d83a8ac}{\-\_\-\-Is\-Touched}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_linear_shot_a353b1988983a192affd6913805b8403e}{\index{Linear\-Shot@{Linear\-Shot}!Linear\-Shot@{Linear\-Shot}}
+\index{Linear\-Shot@{Linear\-Shot}!LinearShot@{Linear\-Shot}}
+\subsubsection[{Linear\-Shot}]{\setlength{\rightskip}{0pt plus 5cm}Linear\-Shot\-::\-Linear\-Shot (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rectangle, }
+\item[{bool}]{p\-To\-Up, }
+\item[{int}]{p\-Damage}
+\end{DoxyParamCaption}
+)}}\label{class_linear_shot_a353b1988983a192affd6913805b8403e}
+\hypertarget{class_linear_shot_a3473e5a630bdd3d2d85e59899e66d0b5}{\index{Linear\-Shot@{Linear\-Shot}!$\sim$\-Linear\-Shot@{$\sim$\-Linear\-Shot}}
+\index{$\sim$\-Linear\-Shot@{$\sim$\-Linear\-Shot}!LinearShot@{Linear\-Shot}}
+\subsubsection[{$\sim$\-Linear\-Shot}]{\setlength{\rightskip}{0pt plus 5cm}Linear\-Shot\-::$\sim$\-Linear\-Shot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_a3473e5a630bdd3d2d85e59899e66d0b5}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_linear_shot_a50717d095ffb35f445f909f0ef961a5a}{\index{Linear\-Shot@{Linear\-Shot}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!LinearShot@{Linear\-Shot}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}int Linear\-Shot\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_a50717d095ffb35f445f909f0ef961a5a}
+
+
+Implements \hyperlink{class_shot_a3bf2af64550a0ee1d467bdec43ac6200}{Shot}.
+
+
+
+Reimplemented in \hyperlink{class_mayhem_shot_a2aa6e9bf2e931477ace1731d3eed0500}{Mayhem\-Shot}.
+
+\hypertarget{class_linear_shot_a9f7b9d654314185d6d89c8c24a64bc85}{\index{Linear\-Shot@{Linear\-Shot}!get\-X\-Velocity@{get\-X\-Velocity}}
+\index{get\-X\-Velocity@{get\-X\-Velocity}!LinearShot@{Linear\-Shot}}
+\subsubsection[{get\-X\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}int Linear\-Shot\-::get\-X\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_a9f7b9d654314185d6d89c8c24a64bc85}
+
+
+Implements \hyperlink{class_shot_a8cfb5cf554b6164f2dceef2e7263b8a0}{Shot}.
+
+\hypertarget{class_linear_shot_ad0b2c8f2e67c4c8bf48895616c9f5683}{\index{Linear\-Shot@{Linear\-Shot}!get\-Y\-Velocity@{get\-Y\-Velocity}}
+\index{get\-Y\-Velocity@{get\-Y\-Velocity}!LinearShot@{Linear\-Shot}}
+\subsubsection[{get\-Y\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}int Linear\-Shot\-::get\-Y\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_ad0b2c8f2e67c4c8bf48895616c9f5683}
+
+
+Implements \hyperlink{class_shot_adad108f4ef3c792dc09eeb60a32d7479}{Shot}.
+
+\hypertarget{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}{\index{Linear\-Shot@{Linear\-Shot}!is\-Collide@{is\-Collide}}
+\index{is\-Collide@{is\-Collide}!LinearShot@{Linear\-Shot}}
+\subsubsection[{is\-Collide}]{\setlength{\rightskip}{0pt plus 5cm}bool Linear\-Shot\-::is\-Collide (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} $\ast$}]{\-\_\-other\-Renderizable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}
+
+
+Verifica si un \hyperlink{class_game_object}{Game\-Object} esta colisionando con otro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-other\-Renderizable} & el otro objeto para verificar que se colisione \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si colisionan 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_game_object_a4d7f7506ab6fa6442367844cd8202fb6}{Game\-Object}.
+
+\hypertarget{class_linear_shot_af5e24419776495f3b42381fe614a3bec}{\index{Linear\-Shot@{Linear\-Shot}!is\-Useful\-Shot@{is\-Useful\-Shot}}
+\index{is\-Useful\-Shot@{is\-Useful\-Shot}!LinearShot@{Linear\-Shot}}
+\subsubsection[{is\-Useful\-Shot}]{\setlength{\rightskip}{0pt plus 5cm}bool Linear\-Shot\-::is\-Useful\-Shot (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Area}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_af5e24419776495f3b42381fe614a3bec}
+
+
+Implements \hyperlink{class_shot_aa8acb047c32e567e066e75782744de62}{Shot}.
+
+\hypertarget{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}{\index{Linear\-Shot@{Linear\-Shot}!update@{update}}
+\index{update@{update}!LinearShot@{Linear\-Shot}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Linear\-Shot\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}
+
+
+Actualiza el objeto, es un metodo abstracto, y debe ser implementado por sus clases hijas. 
+
+
+
+Implements \hyperlink{class_game_object_ae83128d0e0efef691417779605ee037c}{Game\-Object}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_linear_shot_add140652fdd02d964e8827559d83a8ac}{\index{Linear\-Shot@{Linear\-Shot}!\-\_\-\-Is\-Touched@{\-\_\-\-Is\-Touched}}
+\index{\-\_\-\-Is\-Touched@{\-\_\-\-Is\-Touched}!LinearShot@{Linear\-Shot}}
+\subsubsection[{\-\_\-\-Is\-Touched}]{\setlength{\rightskip}{0pt plus 5cm}bool Linear\-Shot\-::\-\_\-\-Is\-Touched\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linear_shot_add140652fdd02d964e8827559d83a8ac}
+\hypertarget{class_linear_shot_a07e655ed82603f917e1d84758871f5bd}{\index{Linear\-Shot@{Linear\-Shot}!\-\_\-\-Velocity\-Y@{\-\_\-\-Velocity\-Y}}
+\index{\-\_\-\-Velocity\-Y@{\-\_\-\-Velocity\-Y}!LinearShot@{Linear\-Shot}}
+\subsubsection[{\-\_\-\-Velocity\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int Linear\-Shot\-::\-\_\-\-Velocity\-Y\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_linear_shot_a07e655ed82603f917e1d84758871f5bd}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/shot/\hyperlink{linearshot_8h}{linearshot.\-h}\item 
+logic/shot/\hyperlink{linearshot_8cpp}{linearshot.\-cpp}\end{DoxyCompactItemize}

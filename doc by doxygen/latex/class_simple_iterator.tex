@@ -1,0 +1,183 @@
+\hypertarget{class_simple_iterator}{\section{Simple\-Iterator$<$ E $>$ Class Template Reference}
+\label{class_simple_iterator}\index{Simple\-Iterator$<$ E $>$@{Simple\-Iterator$<$ E $>$}}
+}
+
+
+Esta clase es un iterador de las listas simples, ademas la actualizacion de la lista N\-O actualiza el iterador, por lo que el iterador es momentaneo. Es similar a una fotografia de una lista que no ha sido alterada si la lista se altera usando un iterador puede que el iterador falle. Por lo que es recomendable que la lista no se actualice mientras se usa un iterador.  
+
+
+
+
+{\ttfamily \#include $<$Simple\-Iterator.\-h$>$}
+
+Inheritance diagram for Simple\-Iterator$<$ E $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_simple_iterator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_simple_iterator_a643cab8769a566826092a5db6ace3267}{Simple\-Iterator} (\hyperlink{class_node}{Node}$<$ E $>$ $\ast$, \hyperlink{class_node}{Node}$<$ E $>$ $\ast$)
+\begin{DoxyCompactList}\small\item\em Metodo constructor. \end{DoxyCompactList}\item 
+E \hyperlink{class_simple_iterator_ab01032dba9ff4f1a1c47af3082b717d5}{get\-Next} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el dato actual y actualiza al nodo siguiente. \end{DoxyCompactList}\item 
+E \hyperlink{class_simple_iterator_ac9460c98985a20f781f351c85b8a3ba2}{get\-Current} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene el dato actual. \end{DoxyCompactList}\item 
+bool \hyperlink{class_simple_iterator_ab946b3d707e32d4d53f15af201ea2113}{has\-Next} () const 
+\begin{DoxyCompactList}\small\item\em Verifica si tiene siguiente. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_simple_iterator_a02203109d263581340152408ebb120a2}{$\sim$\-Simple\-Iterator} ()
+\begin{DoxyCompactList}\small\item\em Liberador de memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node}{Node}$<$ E $>$ $\ast$ \hyperlink{class_simple_iterator_a0403100ab86dba958115cea4147508a7}{head}
+\item 
+\hyperlink{class_node}{Node}$<$ E $>$ $\ast$ \hyperlink{class_simple_iterator_a9bfb7d6c12bc1e8031b5c0869026415a}{tail}
+\item 
+\hyperlink{class_node}{Node}$<$ E $>$ $\ast$ \hyperlink{class_simple_iterator_a7777fefe265a5067ec9319d8c1a3e278}{current}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\class \hyperlink{class_simple_iterator_a8740adf5dfdafdc64940ab42ed663bd2}{List}
+\item 
+{\footnotesize template$<$class M $>$ }\\class \hyperlink{class_simple_iterator_ade98163865dd2cf1343ae0a4dbba6b29}{Circular\-List}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E$>$class Simple\-Iterator$<$ E $>$}
+
+Esta clase es un iterador de las listas simples, ademas la actualizacion de la lista N\-O actualiza el iterador, por lo que el iterador es momentaneo. Es similar a una fotografia de una lista que no ha sido alterada si la lista se altera usando un iterador puede que el iterador falle. Por lo que es recomendable que la lista no se actualice mientras se usa un iterador. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_simple_iterator_a643cab8769a566826092a5db6ace3267}{\index{Simple\-Iterator@{Simple\-Iterator}!Simple\-Iterator@{Simple\-Iterator}}
+\index{Simple\-Iterator@{Simple\-Iterator}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{Simple\-Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf Simple\-Iterator}$<$ E $>$\-::{\bf Simple\-Iterator} (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ E $>$ $\ast$}]{phead, }
+\item[{{\bf Node}$<$ E $>$ $\ast$}]{ptail}
+\end{DoxyParamCaption}
+)}}\label{class_simple_iterator_a643cab8769a566826092a5db6ace3267}
+
+
+Metodo constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & es la cabeza por donde se iniciara la iteracion \\
+\hline
+{\em tail} & es la cola el ultimo elemento de la iteracion \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_iterator_a02203109d263581340152408ebb120a2}{\index{Simple\-Iterator@{Simple\-Iterator}!$\sim$\-Simple\-Iterator@{$\sim$\-Simple\-Iterator}}
+\index{$\sim$\-Simple\-Iterator@{$\sim$\-Simple\-Iterator}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{$\sim$\-Simple\-Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf Simple\-Iterator}$<$ E $>$\-::$\sim${\bf Simple\-Iterator} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_iterator_a02203109d263581340152408ebb120a2}
+
+
+Liberador de memoria. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_simple_iterator_ac9460c98985a20f781f351c85b8a3ba2}{\index{Simple\-Iterator@{Simple\-Iterator}!get\-Current@{get\-Current}}
+\index{get\-Current@{get\-Current}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{get\-Current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E {\bf Simple\-Iterator}$<$ E $>$\-::get\-Current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_iterator_ac9460c98985a20f781f351c85b8a3ba2}
+
+
+Obtiene el dato actual. 
+
+\begin{DoxyReturn}{Returns}
+E el dato actual 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em donthavenext} & si el dato actual es nulo \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \hyperlink{class_i_iterator_a50f55ce1381378aad2c93f16c9b60822}{I\-Iterator$<$ E $>$}.
+
+\hypertarget{class_simple_iterator_ab01032dba9ff4f1a1c47af3082b717d5}{\index{Simple\-Iterator@{Simple\-Iterator}!get\-Next@{get\-Next}}
+\index{get\-Next@{get\-Next}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{get\-Next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E {\bf Simple\-Iterator}$<$ E $>$\-::get\-Next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_iterator_ab01032dba9ff4f1a1c47af3082b717d5}
+
+
+Obtiene el dato actual y actualiza al nodo siguiente. 
+
+\begin{DoxyReturn}{Returns}
+E el dato actual 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em donthavenext} & si el dato actual es nulo \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \hyperlink{class_i_iterator_ab1b13434e4fac20c74262dee51d1e870}{I\-Iterator$<$ E $>$}.
+
+\hypertarget{class_simple_iterator_ab946b3d707e32d4d53f15af201ea2113}{\index{Simple\-Iterator@{Simple\-Iterator}!has\-Next@{has\-Next}}
+\index{has\-Next@{has\-Next}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{has\-Next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf Simple\-Iterator}$<$ E $>$\-::has\-Next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_iterator_ab946b3d707e32d4d53f15af201ea2113}
+
+
+Verifica si tiene siguiente. 
+
+\begin{DoxyReturn}{Returns}
+true si tiene siguiente, false si no lo tiene 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em donthavenext} & si el dato actual es nulo \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \hyperlink{class_i_iterator_a8a73f0fb41a66fe98e5e636378759196}{I\-Iterator$<$ E $>$}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_simple_iterator_ade98163865dd2cf1343ae0a4dbba6b29}{\index{Simple\-Iterator@{Simple\-Iterator}!Circular\-List@{Circular\-List}}
+\index{Circular\-List@{Circular\-List}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{Circular\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ template$<$class M $>$ friend class {\bf Circular\-List}\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_simple_iterator_ade98163865dd2cf1343ae0a4dbba6b29}
+\hypertarget{class_simple_iterator_a8740adf5dfdafdc64940ab42ed663bd2}{\index{Simple\-Iterator@{Simple\-Iterator}!List@{List}}
+\index{List@{List}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ template$<$class T $>$ friend class {\bf List}\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_simple_iterator_a8740adf5dfdafdc64940ab42ed663bd2}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_simple_iterator_a7777fefe265a5067ec9319d8c1a3e278}{\index{Simple\-Iterator@{Simple\-Iterator}!current@{current}}
+\index{current@{current}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ {\bf Node}$<$E$>$ $\ast$ {\bf Simple\-Iterator}$<$ E $>$\-::current\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_simple_iterator_a7777fefe265a5067ec9319d8c1a3e278}
+T\-O\-D\-O \hypertarget{class_simple_iterator_a0403100ab86dba958115cea4147508a7}{\index{Simple\-Iterator@{Simple\-Iterator}!head@{head}}
+\index{head@{head}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ {\bf Node}$<$E$>$$\ast$ {\bf Simple\-Iterator}$<$ E $>$\-::head\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_simple_iterator_a0403100ab86dba958115cea4147508a7}
+\hypertarget{class_simple_iterator_a9bfb7d6c12bc1e8031b5c0869026415a}{\index{Simple\-Iterator@{Simple\-Iterator}!tail@{tail}}
+\index{tail@{tail}!SimpleIterator@{Simple\-Iterator}}
+\subsubsection[{tail}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ {\bf Node}$<$E$>$ $\ast$ {\bf Simple\-Iterator}$<$ E $>$\-::tail\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_simple_iterator_a9bfb7d6c12bc1e8031b5c0869026415a}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+list/\hyperlink{_simple_iterator_8h}{Simple\-Iterator.\-h}\end{DoxyCompactItemize}

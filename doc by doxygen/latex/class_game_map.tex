@@ -1,0 +1,78 @@
+\hypertarget{class_game_map}{\section{Game\-Map Class Reference}
+\label{class_game_map}\index{Game\-Map@{Game\-Map}}
+}
+
+
+Es el mapa del nivel.  
+
+
+
+
+{\ttfamily \#include $<$gamemap.\-h$>$}
+
+Inheritance diagram for Game\-Map\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_map}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_map_aa62bdfa76f7c48dc6b384870491747c7}{Game\-Map} (Q\-Rect p\-Rect, int p\-Vy, int p\-Limit)
+\begin{DoxyCompactList}\small\item\em Es el constructor de la clase, da un rectangulo que da la posicion y dimensiones del objeto, tambien la velocidad en el eje Y que se movera el objeto y un limite que le diga hasta que punto llegar en el eje Y. \end{DoxyCompactList}\item 
+void \hyperlink{class_game_map_a6497b5f848c5ac2945c0beabb896bead}{update} ()
+\begin{DoxyCompactList}\small\item\em Actualiza la posicion del mapa hasta llegar al limite impuesto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Es el mapa del nivel. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_game_map_aa62bdfa76f7c48dc6b384870491747c7}{\index{Game\-Map@{Game\-Map}!Game\-Map@{Game\-Map}}
+\index{Game\-Map@{Game\-Map}!GameMap@{Game\-Map}}
+\subsubsection[{Game\-Map}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Map\-::\-Game\-Map (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rect, }
+\item[{int}]{p\-Vy, }
+\item[{int}]{p\-Limit}
+\end{DoxyParamCaption}
+)}}\label{class_game_map_aa62bdfa76f7c48dc6b384870491747c7}
+
+
+Es el constructor de la clase, da un rectangulo que da la posicion y dimensiones del objeto, tambien la velocidad en el eje Y que se movera el objeto y un limite que le diga hasta que punto llegar en el eje Y. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Rect} & contiene las dimensiones del objeto a crear \\
+\hline
+{\em p\-Vy} & es la velocidad en el eje Y \\
+\hline
+{\em p\-Limit} & es el limite hasta el cual se movera el objeto \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_map_a6497b5f848c5ac2945c0beabb896bead}{\index{Game\-Map@{Game\-Map}!update@{update}}
+\index{update@{update}!GameMap@{Game\-Map}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Map\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_map_a6497b5f848c5ac2945c0beabb896bead}
+
+
+Actualiza la posicion del mapa hasta llegar al limite impuesto. 
+
+
+
+Implements \hyperlink{class_game_object_ae83128d0e0efef691417779605ee037c}{Game\-Object}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/mapobjects/\hyperlink{gamemap_8h}{gamemap.\-h}\item 
+logic/mapobjects/\hyperlink{gamemap_8cpp}{gamemap.\-cpp}\end{DoxyCompactItemize}

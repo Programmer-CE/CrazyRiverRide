@@ -1,0 +1,160 @@
+\hypertarget{class_node}{\section{Node$<$ E $>$ Class Template Reference}
+\label{class_node}\index{Node$<$ E $>$@{Node$<$ E $>$}}
+}
+
+
+Es la parte elemental de una lista simple.  
+
+
+
+
+{\ttfamily \#include $<$Node.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node_a74d41f93c30d8c3036d24894f0e4314e}{Node} (E)
+\begin{DoxyCompactList}\small\item\em Constructor del Nodo, el next se setea como un puntero nulo para evitar punteros colgados. \end{DoxyCompactList}\item 
+\hyperlink{class_node_adc1b4c81c3fb6d0580f138650629a41e}{Node} (E data, \hyperlink{class_node}{Node}$<$ E $>$ $\ast$next)
+\begin{DoxyCompactList}\small\item\em Constructor del Nodo. \end{DoxyCompactList}\item 
+void \hyperlink{class_node_ae13418a552fa36eddbaa5dfb767aa664}{set\-Data} (E)
+\begin{DoxyCompactList}\small\item\em Setea el dato contenido en el nodo. \end{DoxyCompactList}\item 
+E \hyperlink{class_node_a02a4e5126542aaa1a2150932cfa2b8ce}{get\-Data} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene el dato contenido en el nodo. \end{DoxyCompactList}\item 
+E \& \hyperlink{class_node_adec417c9f6f7d2cbd0fc7a72508e9c3d}{get\-Reference\-Data} ()
+\item 
+void \hyperlink{class_node_a2ce12b4f2605972720e1c56fe80014a0}{set\-Next} (\hyperlink{class_node}{Node}$<$ E $>$ $\ast$)
+\begin{DoxyCompactList}\small\item\em Setea el puntero del nodo siguiente. \end{DoxyCompactList}\item 
+\hyperlink{class_node}{Node}$<$ E $>$ $\ast$ \hyperlink{class_node_aeb063e5172867e988550ab7d6c280db7}{get\-Next} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene el nodo siguiente. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_node_af907944256d9fca41c6a1c783a3a6536}{$\sim$\-Node} ()
+\begin{DoxyCompactList}\small\item\em Liberador de memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E$>$class Node$<$ E $>$}
+
+Es la parte elemental de una lista simple. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_node_a74d41f93c30d8c3036d24894f0e4314e}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ {\bf Node}$<$ E $>$\-::{\bf Node} (
+\begin{DoxyParamCaption}
+\item[{E}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_node_a74d41f93c30d8c3036d24894f0e4314e}
+
+
+Constructor del Nodo, el next se setea como un puntero nulo para evitar punteros colgados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el dato que contrendra el nodo \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_node_adc1b4c81c3fb6d0580f138650629a41e}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ {\bf Node}$<$ E $>$\-::{\bf Node} (
+\begin{DoxyParamCaption}
+\item[{E}]{data, }
+\item[{{\bf Node}$<$ E $>$ $\ast$}]{next}
+\end{DoxyParamCaption}
+)}}\label{class_node_adc1b4c81c3fb6d0580f138650629a41e}
+
+
+Constructor del Nodo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el dato que contendra el dato \\
+\hline
+{\em next} & el puntero al nodo siguiente \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_node_af907944256d9fca41c6a1c783a3a6536}{\index{Node@{Node}!$\sim$\-Node@{$\sim$\-Node}}
+\index{$\sim$\-Node@{$\sim$\-Node}!Node@{Node}}
+\subsubsection[{$\sim$\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf Node}$<$ E $>$\-::$\sim${\bf Node} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_node_af907944256d9fca41c6a1c783a3a6536}
+
+
+Liberador de memoria. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_node_a02a4e5126542aaa1a2150932cfa2b8ce}{\index{Node@{Node}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!Node@{Node}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E {\bf Node}$<$ E $>$\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a02a4e5126542aaa1a2150932cfa2b8ce}
+
+
+Obtiene el dato contenido en el nodo. 
+
+\begin{DoxyReturn}{Returns}
+E el dato contenido 
+\end{DoxyReturn}
+\hypertarget{class_node_aeb063e5172867e988550ab7d6c280db7}{\index{Node@{Node}!get\-Next@{get\-Next}}
+\index{get\-Next@{get\-Next}!Node@{Node}}
+\subsubsection[{get\-Next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf Node}$<$ E $>$ $\ast$ {\bf Node}$<$ E $>$\-::get\-Next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_node_aeb063e5172867e988550ab7d6c280db7}
+
+
+Obtiene el nodo siguiente. 
+
+\begin{DoxyReturn}{Returns}
+Double\-Node$<$\-E$>$ el nodo siguiente 
+\end{DoxyReturn}
+\hypertarget{class_node_adec417c9f6f7d2cbd0fc7a72508e9c3d}{\index{Node@{Node}!get\-Reference\-Data@{get\-Reference\-Data}}
+\index{get\-Reference\-Data@{get\-Reference\-Data}!Node@{Node}}
+\subsubsection[{get\-Reference\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E \& {\bf Node}$<$ E $>$\-::get\-Reference\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_node_adec417c9f6f7d2cbd0fc7a72508e9c3d}
+\hypertarget{class_node_ae13418a552fa36eddbaa5dfb767aa664}{\index{Node@{Node}!set\-Data@{set\-Data}}
+\index{set\-Data@{set\-Data}!Node@{Node}}
+\subsubsection[{set\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ void {\bf Node}$<$ E $>$\-::set\-Data (
+\begin{DoxyParamCaption}
+\item[{E}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_node_ae13418a552fa36eddbaa5dfb767aa664}
+
+
+Setea el dato contenido en el nodo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el dato nuevo \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_node_a2ce12b4f2605972720e1c56fe80014a0}{\index{Node@{Node}!set\-Next@{set\-Next}}
+\index{set\-Next@{set\-Next}!Node@{Node}}
+\subsubsection[{set\-Next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ void {\bf Node}$<$ E $>$\-::set\-Next (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ E $>$ $\ast$}]{next}
+\end{DoxyParamCaption}
+)}}\label{class_node_a2ce12b4f2605972720e1c56fe80014a0}
+
+
+Setea el puntero del nodo siguiente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next} & el nuevo nodo que representa el nodo siguiente \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+list/\hyperlink{_node_8h}{Node.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,263 @@
+\hypertarget{class_game_object}{\section{Game\-Object Class Reference}
+\label{class_game_object}\index{Game\-Object@{Game\-Object}}
+}
+
+
+Es el objeto principal del programa contiene todas las abstracciones posibles y pensadas por los programadores que trabajaron en ella. El objetivo de esta clase es abstraer la mayoria de las operaciones basicas y comunes entre objetos que contengan rectangulos y deban verificar si colisionan, no olvidando la caracteristica basica de los objetos de este juego,, la tendencia a estar en movimiento, a ser D\-I\-N\-A\-M\-I\-C\-O\-S. De esta clase derivan un monton, y son pocas en comparacion a su utilidad.  
+
+
+
+
+{\ttfamily \#include $<$gameobject.\-h$>$}
+
+Inheritance diagram for Game\-Object\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.674541cm]{class_game_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_object_a439d121ac13b4727d0bbb850e1ada980}{Game\-Object} (Q\-Rect p\-Rect)
+\begin{DoxyCompactList}\small\item\em Es el constructor de la clase es encarga de asignar un rectangulo al objeto que se va a instanciar con este metodo. \end{DoxyCompactList}\item 
+\hyperlink{class_game_object_aefff75a70a358b683a9e698b05abd3dd}{Game\-Object} (\hyperlink{class_game_object}{Game\-Object} \&go)
+\begin{DoxyCompactList}\small\item\em Es el constructor de copia. \end{DoxyCompactList}\item 
+virtual Q\-Rect \hyperlink{class_game_object_a529e5908a2c7a95fe3cd0f47958471b4}{get\-Rect} ()
+\begin{DoxyCompactList}\small\item\em obtiene una copia del rectangulo contenido en esta clase \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_game_object_a4d7f7506ab6fa6442367844cd8202fb6}{is\-Collide} (\hyperlink{class_game_object}{Game\-Object} $\ast$\-\_\-other\-Renderizable)
+\begin{DoxyCompactList}\small\item\em Verifica si un \hyperlink{class_game_object}{Game\-Object} esta colisionando con otro. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_game_object_ae83128d0e0efef691417779605ee037c}{update} ()=0
+\begin{DoxyCompactList}\small\item\em Actualiza el objeto, es un metodo abstracto, y debe ser implementado por sus clases hijas. \end{DoxyCompactList}\item 
+virtual string \hyperlink{class_game_object_a340e4594b8eafacc5bd6f7e390b43f53}{get\-Id} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el I\-D unico del objeto. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_game_object_a2553f445dc1aa30defaa3bc0875927ba}{get\-Height} () const 
+\begin{DoxyCompactList}\small\item\em obtiene el alto del objeto de juego \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_game_object_a3c6c20c513c069dc2cf6aee2649581b2}{get\-Width} () const 
+\begin{DoxyCompactList}\small\item\em o¡obtiene el ancho del objeto de juego \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_game_object_a8f9c430b6cef5177a0a7f8649e749d10}{get\-X} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene la posicion en el eje X del objeto de juego. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_game_object_a3ae8f58696691791813f0c58af6fffd8}{get\-Y} () const 
+\item 
+virtual \hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{$\sim$\-Game\-Object} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_game_object_ae8bb850eb78ebf34e764b8dbd3ea5fab}{move\-In\-Place} (int p\-X, int p\-Y)
+\begin{DoxyCompactList}\small\item\em Se encarga de mover el objeto desde la direccion de donde esta, no se encarga de mover el objeto a un punto especifico, si no, de la posicion de la que se encuentra, moverlo lo que se desea en el eje y como en el x. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\-Rect \hyperlink{class_game_object_a38a2dff83aae28ebffee5c4b833626a2}{\-\_\-\-Rectangle}
+\item 
+string \hyperlink{class_game_object_a74075bae5de6b22a17098e60964e676b}{\-\_\-\-Id}
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{class_game_object_aeeec17db7fc77fe70148a9d6edd99ea4}{\-\_\-\-Serial} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Es el objeto principal del programa contiene todas las abstracciones posibles y pensadas por los programadores que trabajaron en ella. El objetivo de esta clase es abstraer la mayoria de las operaciones basicas y comunes entre objetos que contengan rectangulos y deban verificar si colisionan, no olvidando la caracteristica basica de los objetos de este juego,, la tendencia a estar en movimiento, a ser D\-I\-N\-A\-M\-I\-C\-O\-S. De esta clase derivan un monton, y son pocas en comparacion a su utilidad. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_game_object_a439d121ac13b4727d0bbb850e1ada980}{\index{Game\-Object@{Game\-Object}!Game\-Object@{Game\-Object}}
+\index{Game\-Object@{Game\-Object}!GameObject@{Game\-Object}}
+\subsubsection[{Game\-Object}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Object\-::\-Game\-Object (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rect}
+\end{DoxyParamCaption}
+)}}\label{class_game_object_a439d121ac13b4727d0bbb850e1ada980}
+
+
+Es el constructor de la clase es encarga de asignar un rectangulo al objeto que se va a instanciar con este metodo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Rect} & el rectangulo que desea asignarse al objeto que desea crearse con este constructor \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_game_object_aefff75a70a358b683a9e698b05abd3dd}{\index{Game\-Object@{Game\-Object}!Game\-Object@{Game\-Object}}
+\index{Game\-Object@{Game\-Object}!GameObject@{Game\-Object}}
+\subsubsection[{Game\-Object}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Object\-::\-Game\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{go}
+\end{DoxyParamCaption}
+)}}\label{class_game_object_aefff75a70a358b683a9e698b05abd3dd}
+
+
+Es el constructor de copia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em go} & es el objeto que desea copiarse \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\index{Game\-Object@{Game\-Object}!$\sim$\-Game\-Object@{$\sim$\-Game\-Object}}
+\index{$\sim$\-Game\-Object@{$\sim$\-Game\-Object}!GameObject@{Game\-Object}}
+\subsubsection[{$\sim$\-Game\-Object}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Object\-::$\sim$\-Game\-Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_object_a2553f445dc1aa30defaa3bc0875927ba}{\index{Game\-Object@{Game\-Object}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a2553f445dc1aa30defaa3bc0875927ba}
+
+
+obtiene el alto del objeto de juego 
+
+\begin{DoxyReturn}{Returns}
+int el alto del objeto del juego 
+\end{DoxyReturn}
+\hypertarget{class_game_object_a340e4594b8eafacc5bd6f7e390b43f53}{\index{Game\-Object@{Game\-Object}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}string Game\-Object\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a340e4594b8eafacc5bd6f7e390b43f53}
+
+
+Obtiene el I\-D unico del objeto. 
+
+\begin{DoxyReturn}{Returns}
+string el id del objeto de juego 
+\end{DoxyReturn}
+\hypertarget{class_game_object_a529e5908a2c7a95fe3cd0f47958471b4}{\index{Game\-Object@{Game\-Object}!get\-Rect@{get\-Rect}}
+\index{get\-Rect@{get\-Rect}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Rect}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Rect Game\-Object\-::get\-Rect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a529e5908a2c7a95fe3cd0f47958471b4}
+
+
+obtiene una copia del rectangulo contenido en esta clase 
+
+\begin{DoxyReturn}{Returns}
+Q\-Rect el rectangulo del objeto 
+\end{DoxyReturn}
+\hypertarget{class_game_object_a3c6c20c513c069dc2cf6aee2649581b2}{\index{Game\-Object@{Game\-Object}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a3c6c20c513c069dc2cf6aee2649581b2}
+
+
+o¡obtiene el ancho del objeto de juego 
+
+\begin{DoxyReturn}{Returns}
+int el ancho del objeto de juego 
+\end{DoxyReturn}
+\hypertarget{class_game_object_a8f9c430b6cef5177a0a7f8649e749d10}{\index{Game\-Object@{Game\-Object}!get\-X@{get\-X}}
+\index{get\-X@{get\-X}!GameObject@{Game\-Object}}
+\subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::get\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a8f9c430b6cef5177a0a7f8649e749d10}
+
+
+Obtiene la posicion en el eje X del objeto de juego. 
+
+\begin{DoxyReturn}{Returns}
+int las posicion en x 
+\end{DoxyReturn}
+\hypertarget{class_game_object_a3ae8f58696691791813f0c58af6fffd8}{\index{Game\-Object@{Game\-Object}!get\-Y@{get\-Y}}
+\index{get\-Y@{get\-Y}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::get\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a3ae8f58696691791813f0c58af6fffd8}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\hypertarget{class_game_object_a4d7f7506ab6fa6442367844cd8202fb6}{\index{Game\-Object@{Game\-Object}!is\-Collide@{is\-Collide}}
+\index{is\-Collide@{is\-Collide}!GameObject@{Game\-Object}}
+\subsubsection[{is\-Collide}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-Object\-::is\-Collide (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} $\ast$}]{\-\_\-other\-Renderizable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_game_object_a4d7f7506ab6fa6442367844cd8202fb6}
+
+
+Verifica si un \hyperlink{class_game_object}{Game\-Object} esta colisionando con otro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-other\-Renderizable} & el otro objeto para verificar que se colisione \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si colisionan 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}{Linear\-Shot}.
+
+\hypertarget{class_game_object_ae8bb850eb78ebf34e764b8dbd3ea5fab}{\index{Game\-Object@{Game\-Object}!move\-In\-Place@{move\-In\-Place}}
+\index{move\-In\-Place@{move\-In\-Place}!GameObject@{Game\-Object}}
+\subsubsection[{move\-In\-Place}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::move\-In\-Place (
+\begin{DoxyParamCaption}
+\item[{int}]{p\-X, }
+\item[{int}]{p\-Y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_game_object_ae8bb850eb78ebf34e764b8dbd3ea5fab}
+
+
+Se encarga de mover el objeto desde la direccion de donde esta, no se encarga de mover el objeto a un punto especifico, si no, de la posicion de la que se encuentra, moverlo lo que se desea en el eje y como en el x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-X} & es la cantidad de pixeles que se quiere mover el objeto en el eje x desde la posicion en la que se encuentra \\
+\hline
+{\em p\-Y} & es la cantidad de pixeles que se quiere mover el objeto en el eje y desde la posicion en la que se encuentra \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_game_object_ae83128d0e0efef691417779605ee037c}{\index{Game\-Object@{Game\-Object}!update@{update}}
+\index{update@{update}!GameObject@{Game\-Object}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\-Object\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_game_object_ae83128d0e0efef691417779605ee037c}
+
+
+Actualiza el objeto, es un metodo abstracto, y debe ser implementado por sus clases hijas. 
+
+
+
+Implemented in \hyperlink{class_box_a779104150a6f06da2bf1500489a58530}{Box}, \hyperlink{class_combustible_box_ac3bcbb721576f4b00b0f2d7e48994657}{Combustible\-Box}, \hyperlink{class_rocket_aa0f4dcf673358e841e4b4b2fa0b1462e}{Rocket}, \hyperlink{class_game_map_a6497b5f848c5ac2945c0beabb896bead}{Game\-Map}, \hyperlink{class_player_rocket_a158f4ff0dd89fd4075688fa2b7d9e693}{Player\-Rocket}, \hyperlink{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}{Linear\-Shot}, \hyperlink{class_kamikaze_a9af97de13e4f0306c95124f56580a8aa}{Kamikaze}, \hyperlink{class_angle_shot_a15e9f45aedf1a47836b0c603a758dd20}{Angle\-Shot}, and \hyperlink{class_movil_enemy_rocket_af18f4b9b815e7fe4a3817845a644df40}{Movil\-Enemy\-Rocket}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_game_object_a74075bae5de6b22a17098e60964e676b}{\index{Game\-Object@{Game\-Object}!\-\_\-\-Id@{\-\_\-\-Id}}
+\index{\-\_\-\-Id@{\-\_\-\-Id}!GameObject@{Game\-Object}}
+\subsubsection[{\-\_\-\-Id}]{\setlength{\rightskip}{0pt plus 5cm}string Game\-Object\-::\-\_\-\-Id\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_game_object_a74075bae5de6b22a17098e60964e676b}
+T\-O\-D\-O es el identificador unico de cada objeto se pensaba usar en versiones pasadas, ahora es obsoleto \hypertarget{class_game_object_a38a2dff83aae28ebffee5c4b833626a2}{\index{Game\-Object@{Game\-Object}!\-\_\-\-Rectangle@{\-\_\-\-Rectangle}}
+\index{\-\_\-\-Rectangle@{\-\_\-\-Rectangle}!GameObject@{Game\-Object}}
+\subsubsection[{\-\_\-\-Rectangle}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Rect Game\-Object\-::\-\_\-\-Rectangle\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_game_object_a38a2dff83aae28ebffee5c4b833626a2}
+T\-O\-D\-O Es el rectangulo que posee las coordenadas y dimensiones del objeto \hypertarget{class_game_object_aeeec17db7fc77fe70148a9d6edd99ea4}{\index{Game\-Object@{Game\-Object}!\-\_\-\-Serial@{\-\_\-\-Serial}}
+\index{\-\_\-\-Serial@{\-\_\-\-Serial}!GameObject@{Game\-Object}}
+\subsubsection[{\-\_\-\-Serial}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::\-\_\-\-Serial = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}}\label{class_game_object_aeeec17db7fc77fe70148a9d6edd99ea4}
+T\-O\-D\-O 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/mapobjects/\hyperlink{gameobject_8h}{gameobject.\-h}\item 
+logic/mapobjects/\hyperlink{gameobject_8cpp}{gameobject.\-cpp}\end{DoxyCompactItemize}

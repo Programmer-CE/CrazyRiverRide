@@ -1,0 +1,265 @@
+\hypertarget{class_i_list}{\section{I\-List$<$ E $>$ Class Template Reference}
+\label{class_i_list}\index{I\-List$<$ E $>$@{I\-List$<$ E $>$}}
+}
+
+
+Es la interfaz de las listas.  
+
+
+
+
+{\ttfamily \#include $<$I\-List.\-h$>$}
+
+Inheritance diagram for I\-List$<$ E $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{class_i_list}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_i_list_af202dc9e748ee32238d80e57dfbcae20}{addi} (E)=0
+\begin{DoxyCompactList}\small\item\em Agrega un elemento al principio de la lista. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_list_a27500caa3d9da05aa6437d5ff56b09e2}{add} (E)=0
+\begin{DoxyCompactList}\small\item\em Agregar un elemento al final de la lista. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_i_list_a70140dbc9de2b9f6e5ffd2212d5ea8b0}{add} (E, int)=0
+\begin{DoxyCompactList}\small\item\em Agrega el elemento en el indice indicado. Si el indice es incorrecto no se agrega el elemento. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_i_list_a9bf7d737252dfbd4c9a5d7be36ea4231}{remove} (int)=0
+\begin{DoxyCompactList}\small\item\em Remueve el dato en la posicion indicada por el parametro, en caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista no alterara la lista. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_list_a119ed658d2804aec0b9fef9325c03073}{set} (int, E)=0
+\begin{DoxyCompactList}\small\item\em Setea el valor del dato que se encuentre en el indice citado con un nuevo valor. \end{DoxyCompactList}\item 
+virtual E \hyperlink{class_i_list_a60570f7ee0e7474d01b2f364bad996a0}{get} (int)=0
+\begin{DoxyCompactList}\small\item\em Obtiene un dato el la posicion indicada. En caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista arrojara un error pues el dato esta fuera de los limites de la lista. \end{DoxyCompactList}\item 
+int \hyperlink{class_i_list_a6d43df225c304c3a0abdb4c7d81274b5}{get\-Lenght} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene el largo de la lista. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_i_iterator}{I\-Iterator}$<$ E $>$ $\ast$ \hyperlink{class_i_list_a997815664cc6b20eb5dfa9968251d2cd}{get\-Iterator} ()=0
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia de un nuevo iterador de esta lista, y pueden obtenerse cuantas sean necesarias. pero es responsabilidad del programador eliminar mediante la palabra reservada delete. Ademas este puede ser un iterador inverso o normal, eso quiere decir que el iterador puede recorrer la lista al reves o al derecho respectivamente a los iteradores anteriormente citados. El tipo de iterador puede ser señalado con la funcion \hyperlink{class_double_circular_list_a77212c5d6ad148c99a06009a8c44128b}{Double\-Circular\-List\-::inverse\-Iteration(bool)}\end{DoxyCompactList}\item 
+bool \hyperlink{class_i_list_ad21f4969c574c87a4715d45496d81d5c}{is\-Empty} () const 
+\begin{DoxyCompactList}\small\item\em Verifica si la lista esta vacia. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_i_list_a6ff12f7e891ea75a5554b70ed3fa0de8}{$\sim$\-I\-List} ()
+\begin{DoxyCompactList}\small\item\em Liberador de memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_i_list_a64ce981ba1104bbb482068983cb5a3bc}{lenght}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E$>$class I\-List$<$ E $>$}
+
+Es la interfaz de las listas. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_i_list_a6ff12f7e891ea75a5554b70ed3fa0de8}{\index{I\-List@{I\-List}!$\sim$\-I\-List@{$\sim$\-I\-List}}
+\index{$\sim$\-I\-List@{$\sim$\-I\-List}!IList@{I\-List}}
+\subsubsection[{$\sim$\-I\-List}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual {\bf I\-List}$<$ E $>$\-::$\sim${\bf I\-List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_list_a6ff12f7e891ea75a5554b70ed3fa0de8}
+
+
+Liberador de memoria. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_list_a27500caa3d9da05aa6437d5ff56b09e2}{\index{I\-List@{I\-List}!add@{add}}
+\index{add@{add}!IList@{I\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual void {\bf I\-List}$<$ E $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{E}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_a27500caa3d9da05aa6437d5ff56b09e2}
+
+
+Agregar un elemento al final de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el elemento a agregar \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_double_circular_list_a7691d38e77ea44d222c465f27e7d05b6}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_a892b493309f36fb083fdd257388cfa36}{Circular\-List$<$ E $>$}, \hyperlink{class_double_list_adb96e6908d3d564722225b848350aa82}{Double\-List$<$ E $>$}, and \hyperlink{class_list_a2a130b7bc38cd968136f1f847e42d0cc}{List$<$ E $>$}.
+
+\hypertarget{class_i_list_a70140dbc9de2b9f6e5ffd2212d5ea8b0}{\index{I\-List@{I\-List}!add@{add}}
+\index{add@{add}!IList@{I\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual bool {\bf I\-List}$<$ E $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{E}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_a70140dbc9de2b9f6e5ffd2212d5ea8b0}
+
+
+Agrega el elemento en el indice indicado. Si el indice es incorrecto no se agrega el elemento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el elemento a agregar \\
+\hline
+{\em index} & el indice que indica el lugar donde se agragegara \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si el elemento se agrega retorna true, en caso contrario retorna false 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_double_circular_list_a6d76f7045dd9997f55c6c2feb80678da}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_af184d3ac2e3bba683a44a6cc19392b12}{Circular\-List$<$ E $>$}, \hyperlink{class_double_list_a84e3bb8be7d67b43dd3b63d5a47f80ed}{Double\-List$<$ E $>$}, and \hyperlink{class_list_a530267346ebec244900c162de6f467e1}{List$<$ E $>$}.
+
+\hypertarget{class_i_list_af202dc9e748ee32238d80e57dfbcae20}{\index{I\-List@{I\-List}!addi@{addi}}
+\index{addi@{addi}!IList@{I\-List}}
+\subsubsection[{addi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual void {\bf I\-List}$<$ E $>$\-::addi (
+\begin{DoxyParamCaption}
+\item[{E}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_af202dc9e748ee32238d80e57dfbcae20}
+
+
+Agrega un elemento al principio de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el elemento a agregar \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_double_circular_list_ade2ef68a86a8deef4cb43d38e031906b}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_a275c75e142e791de9a1a00691af56a73}{Circular\-List$<$ E $>$}, \hyperlink{class_double_list_a621684e61b8d9d41cd107174d9877b1e}{Double\-List$<$ E $>$}, \hyperlink{class_list_a4f0fb366c1153a4fd01826e9e6de5afc}{List$<$ E $>$}, \hyperlink{class_circular_list_a6f405f4be7946286a958e0b83937b3e2}{Circular\-List$<$ E $>$}, \hyperlink{class_double_circular_list_aee387acc4f53773302be4aa98bc779dc}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_double_list_a01623cc4b04d94c655de62ae373963b2}{Double\-List$<$ E $>$}, and \hyperlink{class_list_a92ad933f8d3a033b84a517fb6cc4111a}{List$<$ E $>$}.
+
+\hypertarget{class_i_list_a60570f7ee0e7474d01b2f364bad996a0}{\index{I\-List@{I\-List}!get@{get}}
+\index{get@{get}!IList@{I\-List}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual E {\bf I\-List}$<$ E $>$\-::get (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_a60570f7ee0e7474d01b2f364bad996a0}
+
+
+Obtiene un dato el la posicion indicada. En caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista arrojara un error pues el dato esta fuera de los limites de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & el indice indicado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data el dato buscado por el indice indicado 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em indexoutbounds} & fuera de rango si index es menor que cero o index es mayor o igual que el largo de la lista \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \hyperlink{class_double_circular_list_aa00bc8fd524af1ba208f85d8816dec52}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_double_list_a230a8c9c574abe9c72f8daae35127d9c}{Double\-List$<$ E $>$}, \hyperlink{class_circular_list_ad6783339c7ff05841fc62f74f809644d}{Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_ad6783339c7ff05841fc62f74f809644d}{Circular\-List$<$ Shot\-Fabric $\ast$ $>$}, \hyperlink{class_list_ab081a52d7a62aa6c5550ff9762f9427f}{List$<$ E $>$}, \hyperlink{class_list_ab081a52d7a62aa6c5550ff9762f9427f}{List$<$ Player $\ast$ $>$}, \hyperlink{class_list_ab081a52d7a62aa6c5550ff9762f9427f}{List$<$ Shot $\ast$ $>$}, \hyperlink{class_list_ab081a52d7a62aa6c5550ff9762f9427f}{List$<$ Q\-Rect $>$}, and \hyperlink{class_list_ab081a52d7a62aa6c5550ff9762f9427f}{List$<$ Enemy\-Rocket $\ast$ $>$}.
+
+\hypertarget{class_i_list_a997815664cc6b20eb5dfa9968251d2cd}{\index{I\-List@{I\-List}!get\-Iterator@{get\-Iterator}}
+\index{get\-Iterator@{get\-Iterator}!IList@{I\-List}}
+\subsubsection[{get\-Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual {\bf I\-Iterator}$<$E$>$$\ast$ {\bf I\-List}$<$ E $>$\-::get\-Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_a997815664cc6b20eb5dfa9968251d2cd}
+
+
+Obtiene una instancia de un nuevo iterador de esta lista, y pueden obtenerse cuantas sean necesarias. pero es responsabilidad del programador eliminar mediante la palabra reservada delete. Ademas este puede ser un iterador inverso o normal, eso quiere decir que el iterador puede recorrer la lista al reves o al derecho respectivamente a los iteradores anteriormente citados. El tipo de iterador puede ser señalado con la funcion \hyperlink{class_double_circular_list_a77212c5d6ad148c99a06009a8c44128b}{Double\-Circular\-List\-::inverse\-Iteration(bool)}
+
+\begin{DoxyReturn}{Returns}
+I\-Iterator$<$\-E$>$ un puntero del iterador indicado 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_double_circular_list_abba1430e956c7660a88f786bfd8d87ad}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_double_list_aa14e383a97e054016a6c5178165b20df}{Double\-List$<$ E $>$}, \hyperlink{class_circular_list_a43e6cf1632001b3f409c6ce531529c6e}{Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_a43e6cf1632001b3f409c6ce531529c6e}{Circular\-List$<$ Shot\-Fabric $\ast$ $>$}, \hyperlink{class_list_accb5fe71cb60ba7bf0ccab362b1f87cb}{List$<$ E $>$}, \hyperlink{class_list_accb5fe71cb60ba7bf0ccab362b1f87cb}{List$<$ Player $\ast$ $>$}, \hyperlink{class_list_accb5fe71cb60ba7bf0ccab362b1f87cb}{List$<$ Shot $\ast$ $>$}, \hyperlink{class_list_accb5fe71cb60ba7bf0ccab362b1f87cb}{List$<$ Q\-Rect $>$}, and \hyperlink{class_list_accb5fe71cb60ba7bf0ccab362b1f87cb}{List$<$ Enemy\-Rocket $\ast$ $>$}.
+
+\hypertarget{class_i_list_a6d43df225c304c3a0abdb4c7d81274b5}{\index{I\-List@{I\-List}!get\-Lenght@{get\-Lenght}}
+\index{get\-Lenght@{get\-Lenght}!IList@{I\-List}}
+\subsubsection[{get\-Lenght}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ int {\bf I\-List}$<$ E $>$\-::get\-Lenght (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_i_list_a6d43df225c304c3a0abdb4c7d81274b5}
+
+
+Obtiene el largo de la lista. 
+
+\begin{DoxyReturn}{Returns}
+lenght el largo de la lista 
+\end{DoxyReturn}
+\hypertarget{class_i_list_ad21f4969c574c87a4715d45496d81d5c}{\index{I\-List@{I\-List}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!IList@{I\-List}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf I\-List}$<$ E $>$\-::is\-Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_i_list_ad21f4969c574c87a4715d45496d81d5c}
+
+
+Verifica si la lista esta vacia. 
+
+\begin{DoxyReturn}{Returns}
+true si la lista esta vacia 
+\end{DoxyReturn}
+\hypertarget{class_i_list_a9bf7d737252dfbd4c9a5d7be36ea4231}{\index{I\-List@{I\-List}!remove@{remove}}
+\index{remove@{remove}!IList@{I\-List}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual bool {\bf I\-List}$<$ E $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_a9bf7d737252dfbd4c9a5d7be36ea4231}
+
+
+Remueve el dato en la posicion indicada por el parametro, en caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista no alterara la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & la posicion indicada del objeto a borrar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si borra algo, false si el indice indicado es incorrecto 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_double_circular_list_ae7ed8b6714720cb7daafa639f232ecc3}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_a4a6acfd818a0ae9055957ec80258c60a}{Circular\-List$<$ E $>$}, \hyperlink{class_double_list_a844c2c4c3b8260bd58ab94307359fb62}{Double\-List$<$ E $>$}, \hyperlink{class_circular_list_a4a6acfd818a0ae9055957ec80258c60a}{Circular\-List$<$ Shot\-Fabric $\ast$ $>$}, \hyperlink{class_list_a46cec78299d3e23469276adf46adf9c1}{List$<$ E $>$}, \hyperlink{class_list_a46cec78299d3e23469276adf46adf9c1}{List$<$ Player $\ast$ $>$}, \hyperlink{class_list_a46cec78299d3e23469276adf46adf9c1}{List$<$ Shot $\ast$ $>$}, \hyperlink{class_list_a46cec78299d3e23469276adf46adf9c1}{List$<$ Q\-Rect $>$}, and \hyperlink{class_list_a46cec78299d3e23469276adf46adf9c1}{List$<$ Enemy\-Rocket $\ast$ $>$}.
+
+\hypertarget{class_i_list_a119ed658d2804aec0b9fef9325c03073}{\index{I\-List@{I\-List}!set@{set}}
+\index{set@{set}!IList@{I\-List}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ virtual void {\bf I\-List}$<$ E $>$\-::set (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{E}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_list_a119ed658d2804aec0b9fef9325c03073}
+
+
+Setea el valor del dato que se encuentre en el indice citado con un nuevo valor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & el indice en el que se encuetra el dato \\
+\hline
+{\em data} & el dato por el que se cambiara \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_double_circular_list_a95e0f27bda1158233015ee3ff27b3ade}{Double\-Circular\-List$<$ E $>$}, \hyperlink{class_circular_list_aa54489e11ad76bf929f92b1dce97a3a3}{Circular\-List$<$ E $>$}, \hyperlink{class_double_list_a3c95ac3c3190b347c4a343776264bf67}{Double\-List$<$ E $>$}, and \hyperlink{class_list_ac8b31be96806bd56f655436629ac2e7a}{List$<$ E $>$}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_i_list_a64ce981ba1104bbb482068983cb5a3bc}{\index{I\-List@{I\-List}!lenght@{lenght}}
+\index{lenght@{lenght}!IList@{I\-List}}
+\subsubsection[{lenght}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ int {\bf I\-List}$<$ E $>$\-::lenght\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_i_list_a64ce981ba1104bbb482068983cb5a3bc}
+T\-O\-D\-O T\-O\-D\-O 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+list/\hyperlink{_i_list_8h}{I\-List.\-h}\end{DoxyCompactItemize}
