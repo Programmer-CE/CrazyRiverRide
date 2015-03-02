@@ -12,7 +12,7 @@ void GameLoop::internalRun()
             emit guiConector->renderGame();
             _KernelGame->update(_KernelGame->getRect());
         }
-        usleep(KernelGame::FPS*1000);
+        usleep(42*1000);
     }
     delete _KernelGame;
 }

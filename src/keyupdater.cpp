@@ -19,7 +19,7 @@ void KeyUpdater::update(google::protobuf::Message *pMessage)
     //m.lock();
     if(ControlPlayer().GetTypeName() == pMessage->GetTypeName()){
         ControlPlayer *cp = (ControlPlayer*)pMessage;
-        _KernelGame->updatePlayerPosition(cp->num_of_player(),cp->xvelocity(),cp->yvelocity(),cp->shoot(),cp->pause(),cp->changemunition());
+        _KernelGame->updateGameData(cp->num_of_player(),cp->xvelocity(),cp->yvelocity(),cp->shoot(),cp->pause(),cp->changemunition());
     }
     else if(Close().GetTypeName() == pMessage->GetTypeName()){
         _KernelGame->stop();

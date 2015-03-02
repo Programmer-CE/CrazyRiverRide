@@ -18,18 +18,20 @@ private:
     int _NumOfPlayer;
     bool _Paused,_isRunning;
     int _CurrentTimeToRegenerateEnemies;
-    bool _OnMenu;
+    bool _OnMenu,_OnGameTime,_OnBossTime,_OnGameOverTime;
     QRect _Rec;
     GameMap _Map;
     List<EnemyRocket*> _Enemies;
     List<Player*> _Players;
     List<Shot*> _EnemiesShots;
+    List<QRect> _SelectionMenu;
     CombustibleBox *_CombustibleBox;
     Box *_HpBox;
     AmountBox *_AmountBox;
     Observer * _UiDriver;
     int _CurrentTimeToBadBox;
     int _CurrentTimeToRegenerateHpBox;
+    int _SelectedMenuBotton;
     //List<Box> _Boxes;
 
 
@@ -56,6 +58,8 @@ private:
     void updateEnemies(QRect rec);
     void randomBoxes(QRect rec);
     void updateBoxes(QRect rec);
+    bool allPlayerasDead();
+    void inPlayTimeNotify();
 public:
     static const int FPS;
     static const int POINTS_PER_ENEMY;
@@ -71,7 +75,7 @@ public:
     QRect getPlayerRect(int pPlayerNum);
     QRect getRect(){return _Rec;}
     void setObserver(Observer *observer);
-    void updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition);
+    void updateGameData(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition);
     bool isRunning();
     void stop();
     void pauseGame();

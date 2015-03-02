@@ -6,7 +6,6 @@ AngleShot::AngleShot(QRect pRectangle, int pDamage, float pAngle):LinearShot(pRe
     if (0 < pAngle && pAngle < 180){ 
         _VelocityX = double(VELOCITY)*cos(pAngle*M_PI/double(180));
         _VelocityY = double(-VELOCITY)*sin(pAngle*M_PI/double(180));
-        std::cout << "velocidad x: "<<_VelocityX<< " velocidad y: "<<_VelocityY << std::endl;
     }
     else{
         _VelocityX = 0;

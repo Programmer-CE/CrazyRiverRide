@@ -10,9 +10,10 @@ class GameManager:public Observer
     QRect r;
     QPixmap player1;
     QPixmap enemies;
-    QPixmap level;
+    QPixmap level,level2,level3,level4,level5;
     QPixmap enemyshot;
     QPixmap playershot;
+    QPixmap *currentMap;
     QPixmap indicadorSimpleshot,indicadorDifusionShot,indicadorMayhemShot;
     QPixmap boxAmount,boxHp,boxBadHp,boxCombustible,boxBadCombustible;
     bool _Run;
@@ -23,6 +24,7 @@ public:
     int getYAxis();
     bool shoot();
     bool pause();
+    void select(int Map);
     void update(google::protobuf::Message *pMessage);
     ~GameManager();
 };

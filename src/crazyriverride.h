@@ -33,9 +33,10 @@ public:
 
     int getPlayermunition() const;
     void setPlayermunition(int value);
-
+    void setRenderinType(bool isOnMenu,bool isGameOver);
     int getPlayerCombustible() const;
     void setPlayerCombustible(int value);
+    void addRectangle(QRect dimension, bool isSelected, int text);
     void playmusic();
 protected:
     void closeEvent(QCloseEvent *);
@@ -44,14 +45,15 @@ protected:
     void keyReleaseEvent(QKeyEvent *);
 private:
     Ui::CrazyRiverRide *ui;
-    int KeyXaxis,KeyYaxis,nextKeyXaxis,nextKeyYaxis;
     bool _PausedCalled,_Paused, _Close, _Shoot, _ChangeMunition;
+    int KeyXaxis,KeyYaxis,nextKeyXaxis,nextKeyYaxis;
+    int playerlife,playerpoints,playermunition,playerCombustible;
+    bool _Menu,_GameOver;
     QPainter p;
     Queue<PaintTask> queue;
     KeyUpdater _KeyUpdater;
     QFont indicadorPlayer;
     QMediaPlayer music;
-    int playerlife,playerpoints,playermunition,playerCombustible;
 public slots:
     void render();
 };

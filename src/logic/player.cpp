@@ -2,7 +2,7 @@
 #include "iostream"
 
 
-Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber),shotcounter(12),_ChangeAmmount(0)
+Player::Player(int pX, int pY,int pPlayerNumber):_StunTime(0),_Points(0),_PlayerNumber(pPlayerNumber),shotcounter(5),_ChangeAmmount(0)
 {
     _PlayerShots = new List<Shot*>();
     _Rocket = new PlayerRocket(QRect(pX,pY,Rocket::ROCKET_WIDTH,Rocket::ROCKET_HEIGHT),Rocket::MAX_HP);
@@ -31,7 +31,6 @@ int Player::getPlayerNumber() const
 
 void Player::changeMunition()
 {
-    std::cout << "changeMuntion: " << _ChangeAmmount << std::endl;
     if(_ChangeAmmount == 0){
         _ChangeAmmount = 4;
         _Rocket->nextMunition();
@@ -55,7 +54,7 @@ bool Player::revive()
 void Player::shoot()
 {
     if (shotcounter-- == 0){
-        shotcounter = 7;
+        shotcounter = 5;
         Shot* shot = _Rocket->shoot();
         if (shot){
             _PlayerShots->add(shot);

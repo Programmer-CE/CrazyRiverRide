@@ -8,8 +8,9 @@
 
 CrazyRiverRide::CrazyRiverRide(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::CrazyRiverRide), _PausedCalled(false),_Paused(false),_Close(false),_Shoot(false),_ChangeMunition(false),
-    playerlife(0),playerpoints(0),playermunition(0),playerCombustible(0)
+    ui(new Ui::CrazyRiverRide),
+    _PausedCalled(false),_Paused(false),_Close(false),_Shoot(false),_ChangeMunition(false),
+    playerlife(0),playerpoints(0),playermunition(0),playerCombustible(0),_Menu(true),_GameOver(false)
 {
     ui->setupUi(this);
     KeyXaxis = 0;
@@ -20,8 +21,11 @@ CrazyRiverRide::CrazyRiverRide(QWidget *parent) :
     indicadorPlayer.setPixelSize(14);
     indicadorPlayer.setBold(true);
     music.setMedia(QUrl("qrc:/music/sound/metalstarforce.mp3"));
-    music.play();
     setGeometry(0,0,1024,800);
+    setWindowTitle("Crazy River Ride");
+    setFixedWidth(1024);
+    setFixedHeight(800);
+
 }
 
 void CrazyRiverRide::paintImage(QRect rec, QPixmap *pImage)
@@ -67,34 +71,59 @@ void CrazyRiverRide::closeEvent(QCloseEvent *)
 void CrazyRiverRide::paintEvent(QPaintEvent *)
 {
     p.begin(this);
-    if (!_Paused){
-        while(!queue.isEmpty()){
-            PaintTask pt= queue.dequeue();
-            p.drawPixmap(pt.getRec().topLeft(),*pt.getPix());
-        }
-        p.setBrush(QBrush(QColor(Qt::black)));
-        p.setFont(indicadorPlayer);
-        QString info("HP: ");
-        QVariant variant(playerlife);
-        p.drawText(20,20,info.append(variant.toString()));
-        info = "Points: ";
-        variant = QVariant(playerpoints);
-        p.drawText(20,35,info.append(variant.toString()));
-        info = "Munitions: ";
-        variant = QVariant(playermunition);
-        p.drawText(20,50,info.append(variant.toString()));
-        info = "Combustible: ";
-        variant = QVariant(playerCombustible);
-        p.drawText(20,65,info.append(variant.toString()));
+    QBrush b;
+
+    while(!queue.isEmpty()){
+        PaintTask pt= queue.dequeue();
+        p.drawPixmap(pt.getRec().topLeft(),*pt.getPix());
     }
-    else{
-        indicadorPlayer.setPixelSize(150);
-        QBrush b;
+    if (_Menu){
+        std::cout << "also hello!" << std::endl;
         b.setColor(Qt::black);
         p.setBrush(b);
         p.setFont(indicadorPlayer);
         p.fillRect(rect(),Qt::black);
-        p.drawText(200,500,"PAUSED");
+    }
+    if (!_Menu && !_GameOver){
+        if(music.state() == QMediaPlayer::StoppedState)music.play();
+
+        if(_Paused){
+            indicadorPlayer.setPixelSize(150);
+            b.setColor(Qt::black);
+            p.setBrush(b);
+            p.setFont(indicadorPlayer);
+            p.fillRect(rect(),Qt::black);
+            p.drawText(200,500,"PAUSED");
+            indicadorPlayer.setPixelSize(14);
+        }
+        else{
+            p.setBrush(QBrush(QColor(Qt::black)));
+            p.setFont(indicadorPlayer);
+            QString info("HP: ");
+            QVariant variant(playerlife);
+            p.drawText(20,20,info.append(variant.toString()));
+            info = "Points: ";
+            variant = QVariant(playerpoints);
+            p.drawText(20,35,info.append(variant.toString()));
+            info = "Munitions: ";
+            variant = QVariant(playermunition);
+            p.drawText(20,50,info.append(variant.toString()));
+            info = "Combustible: ";
+            variant = QVariant(playerCombustible);
+            p.drawText(20,65,info.append(variant.toString()));
+        }
+    }
+    else if (_GameOver){
+        indicadorPlayer.setPixelSize(150);
+        b.setColor(Qt::black);
+        p.setBrush(b);
+        p.setFont(indicadorPlayer);
+        p.fillRect(rect(),Qt::black);
+        p.drawText(50,500,"GAME OVER");
+        indicadorPlayer.setPixelSize(80);
+        p.setFont(indicadorPlayer);
+        p.drawText(50,650,"press return to continue");
+
         indicadorPlayer.setPixelSize(14);
     }
     p.end();
@@ -140,9 +169,10 @@ void CrazyRiverRide::keyPressEvent(QKeyEvent *k)
                 nextKeyXaxis = 1;
             }
             break;
-        case Qt::Key_P:
+        case Qt::Key_Return:
+
+            if (!_Menu && !_GameOver || _GameOver) _Paused = !_Paused;
             _PausedCalled = !_PausedCalled;
-            _Paused = !_Paused;
             if (_Paused){
                 music.pause();
             }
@@ -182,6 +212,20 @@ void CrazyRiverRide::keyReleaseEvent(QKeyEvent *k)
 
     }
 }
+
+void CrazyRiverRide::setRenderinType(bool isOnMenu,bool isGameOver){
+    _Menu = isOnMenu;
+    _GameOver = isGameOver;
+    if (!_Menu && _GameOver){
+        _Paused = false;
+        music.stop();
+    }
+    if (_Menu && !_GameOver){
+        std::cout << "im say hello!" << std::endl;
+        _Paused = false;
+    }
+}
+
 int CrazyRiverRide::getPlayerCombustible() const
 {
     return playerCombustible;
@@ -190,6 +234,11 @@ int CrazyRiverRide::getPlayerCombustible() const
 void CrazyRiverRide::setPlayerCombustible(int value)
 {
     playerCombustible = value;
+}
+
+void CrazyRiverRide::addRectangle(QRect dimension, bool isSelected, int text)
+{
+
 }
 
 void CrazyRiverRide::playmusic()

@@ -6,6 +6,9 @@
 #include "protobufmessage/GameObjectNotify.pb.h"
 #include "protobufmessage/PlayerStatus.pb.h"
 #include "protobufmessage/Pause.pb.h"
+#include "protobufmessage/GameMenu.pb.h"
+#include "protobufmessage/SelectMap.pb.h"
+#include "protobufmessage/ChangePhase.pb.h"
 
 const int KernelGame::FPS = 24;
 const int KernelGame::POINTS_PER_ENEMY = 50;
@@ -32,13 +35,16 @@ const int KernelGame::TIME_TO_REGENERATE_ENEMIES = KernelGame::FPS*10;
 //==================================================================================================
 
 KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false),_isRunning(true),
-    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0),_CurrentTimeToBadBox(0), _CurrentTimeToRegenerateHpBox(0)
+    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0),_CurrentTimeToBadBox(0), _CurrentTimeToRegenerateHpBox(0),
+    _OnMenu(true),_OnGameTime(false),_OnBossTime(false),_OnGameOverTime(false)
 {
     _Rec = rec;
     _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));
     _AmountBox = 0;
     _CombustibleBox = 0;
     _HpBox = 0;
+    for (int x= 0; x < 5;x++)_SelectionMenu.add(QRect(412,300 + x*80,200,70));
+    _SelectedMenuBotton = 0;
 }
 
 //==================================================================================================
@@ -126,8 +132,8 @@ void KernelGame::collisionPlayerWithBox(Player *pPlayer)
             delete _HpBox;
             _HpBox = 0;
         }
-
     }
+    if (pPlayer->isDead())killPlayer(pPlayer);
 }
 
 void KernelGame::collisionPlayerShotWithBox(Player *pPlayer)
@@ -241,15 +247,53 @@ void KernelGame::addRandomEnemy(QRect rec)
 
 void KernelGame::update(QRect rec)
 {
-    if(!isPaused()){
-        updatePlayers(rec);
-        updateEnemies(rec);
-        addRandomEnemy(rec);
-        randomBoxes(rec);
-        updateBoxes(rec);
-        _Map.update();
+    if(_OnMenu){
         notifyAll();
     }
+
+    else if (_OnGameTime){
+        if (!allPlayerasDead()){
+            if(!isPaused()){
+                updatePlayers(rec);
+                updateEnemies(rec);
+                addRandomEnemy(rec);
+                randomBoxes(rec);
+                updateBoxes(rec);
+                _Map.update();
+                notifyAll();
+            }
+        }
+        else{
+            _OnGameTime = false;
+            _OnGameOverTime = true;
+            ChangePhase *mensaje = new ChangePhase();
+            // 5 game over
+            mensaje->set_numofphase(5);
+            _UiDriver->update(mensaje);
+            delete mensaje;
+        }
+    }
+    else if(_OnBossTime){
+        if (!allPlayerasDead()){
+            if(!isPaused()){
+                updatePlayers(rec);
+                randomBoxes(rec);
+                updateBoxes(rec);
+                _Map.update();
+                notifyAll();
+            }
+        }
+        else{
+            _OnGameTime = false;
+            _OnGameOverTime = true;
+            ChangePhase *mensaje = new ChangePhase();
+            // 5 game over
+            mensaje->set_numofphase(5);
+            _UiDriver->update(mensaje);
+            delete mensaje;
+        }
+    }
+
     /**
     std::cout << "cantidad de disparos jugador" << _Players.get(0)->getPlayerShots()->getLenght() << std::endl;
     std::cout << "cantidad de disparos enemigos" << _EnemiesShots.getLenght() << std::endl;
@@ -351,8 +395,15 @@ void KernelGame::updateBoxes(QRect rec)
     }
 }
 
+bool KernelGame::allPlayerasDead()
+{
+    for(int x= 0; x < _Players.getLenght();x++){
+        if (!_Players.get(x)->isDead())return false;
+    }
+    return true;
+}
 
-void KernelGame::notifyAll()
+void KernelGame::inPlayTimeNotify()
 {
     GameObjectNotify *message;
     message = new GameObjectNotify();
@@ -466,6 +517,33 @@ void KernelGame::notifyAll()
 }
 
 
+void KernelGame::notifyAll()
+{
+    if(_OnMenu){
+        for (int x = 0; x < _SelectionMenu.getLenght();x++){
+            GameMenu *message;
+            message = new GameMenu();
+            message->set_buttonheight(_SelectionMenu.get(x).height());
+            message->set_buttonwidth(_SelectionMenu.get(x).width());
+            message->set_buttonx(_SelectionMenu.get(x).x());
+            message->set_buttony(_SelectionMenu.get(x).y());
+            message->set_buttonactive(x == _SelectedMenuBotton);
+            _UiDriver->update(message);
+            delete message;
+        }
+    }
+    else if (_OnGameTime){
+        inPlayTimeNotify();
+    }
+    else if (_OnBossTime){
+
+    }
+    else if (_OnGameOverTime){
+
+    }
+}
+
+
 //==================================================================================================
 // 04 FINAL DE ACTUALIZACIONES DEL JUEGO
 //==================================================================================================
@@ -542,15 +620,45 @@ void KernelGame::setObserver(Observer *observer)
     _UiDriver = observer;
 }
 
-void KernelGame::updatePlayerPosition(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition)
+void KernelGame::updateGameData(int pPlayer,int vX,int vY,bool pShoot, bool pPause,bool pChangeMunition)
 {
-    Player * player = getPlayer(pPlayer);
-    if(player && !player->isDead()){
-        player->getRocket()->setXVelocity(vX*Rocket::ROCKET_VELOCITY);
-        player->getRocket()->setYVelocity(vY*Rocket::ROCKET_VELOCITY);
-        if (pShoot)player->shoot();
-        if (pPause)this->pauseGame();
-        if(pChangeMunition)player->changeMunition();
+    if (_OnMenu){
+        if(pPause){
+            SelectMap *message = new SelectMap();
+            message->set_numofmap(_SelectedMenuBotton);
+            _UiDriver->update(message);
+            _SelectedMenuBotton = 0;
+            delete message;
+            _OnMenu = false;
+            _OnGameTime = true;
+            _Players.get(0)->getRocket()->addHitPoints(100);
+
+        }
+        else if (vY + _SelectedMenuBotton >=0 || vY + _SelectedMenuBotton < _SelectionMenu.getLenght()){
+            _SelectedMenuBotton +=vY;
+        }
+    }
+    else if(_OnGameTime || _OnBossTime){
+        Player * player = getPlayer(pPlayer);
+        if(player && !player->isDead()){
+            player->getRocket()->setXVelocity(vX*Rocket::ROCKET_VELOCITY);
+            player->getRocket()->setYVelocity(vY*Rocket::ROCKET_VELOCITY);
+            if (pShoot)player->shoot();
+            if (pPause)this->pauseGame();
+            if(pChangeMunition)player->changeMunition();
+        }
+    }
+    else if(_OnGameOverTime){
+        if (pPause){
+            ChangePhase *mensaje = new ChangePhase();
+            // 1 Menu
+            mensaje->set_numofphase(1);
+            _UiDriver->update(mensaje);
+            delete mensaje;
+            _OnGameOverTime = false;
+            _OnMenu = true;
+
+        }
     }
 }
 
