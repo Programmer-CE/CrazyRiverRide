@@ -1,0 +1,84 @@
+\hypertarget{class_kamikaze}{\section{Kamikaze Class Reference}
+\label{class_kamikaze}\index{Kamikaze@{Kamikaze}}
+}
+
+
+La clase kamikaze representa a una nave detectora sige al jugador y detecta su posicion.  
+
+
+
+
+{\ttfamily \#include $<$kamikaze.\-h$>$}
+
+Inheritance diagram for Kamikaze\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_kamikaze}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_kamikaze_a11b1e38216e4d3da5821b1ea31f326b0}{Kamikaze} (Q\-Rect p\-Rectangle, int p\-Max\-Hp, \hyperlink{class_player}{Player} $\ast$p\-Player\-To\-Follow)
+\begin{DoxyCompactList}\small\item\em Es el metodo constructor al igual que su clase padre contiene el rectangulo que ubica la nave y tiene sus dimensiones, un entero que representa la vida maxima de este tipo de nave y finalmente incorpora un parametro nuevo un puntero al jugador que va a seguir. \end{DoxyCompactList}\item 
+int \hyperlink{class_kamikaze_ae82e6a48d3e927c65fcd64269a533377}{get\-Enemy\-Type} ()
+\begin{DoxyCompactList}\small\item\em Es un metodo sobrescrito y retorna la constante que representa a las naves kamizake. \end{DoxyCompactList}\item 
+\hypertarget{class_kamikaze_a9af97de13e4f0306c95124f56580a8aa}{void \hyperlink{class_kamikaze_a9af97de13e4f0306c95124f56580a8aa}{update} ()}\label{class_kamikaze_a9af97de13e4f0306c95124f56580a8aa}
+
+\begin{DoxyCompactList}\small\item\em Se sobrescribe el metodo de la clase superior y por medio de este es que se calcula la posicion de la nave kamikaze para poder seguir al jugador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+La clase kamikaze representa a una nave detectora sige al jugador y detecta su posicion. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_kamikaze_a11b1e38216e4d3da5821b1ea31f326b0}{\index{Kamikaze@{Kamikaze}!Kamikaze@{Kamikaze}}
+\index{Kamikaze@{Kamikaze}!Kamikaze@{Kamikaze}}
+\subsubsection[{Kamikaze}]{\setlength{\rightskip}{0pt plus 5cm}Kamikaze\-::\-Kamikaze (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rectangle, }
+\item[{int}]{p\-Max\-Hp, }
+\item[{{\bf Player} $\ast$}]{p\-Player\-To\-Follow}
+\end{DoxyParamCaption}
+)}}\label{class_kamikaze_a11b1e38216e4d3da5821b1ea31f326b0}
+
+
+Es el metodo constructor al igual que su clase padre contiene el rectangulo que ubica la nave y tiene sus dimensiones, un entero que representa la vida maxima de este tipo de nave y finalmente incorpora un parametro nuevo un puntero al jugador que va a seguir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Rectangle} & representa el tamaño y ubicacion del objeto a instanciar con el constructor \\
+\hline
+{\em p\-Max\-Hp} & la vida maxima de la nave kamikaze \\
+\hline
+{\em p\-Player\-To\-Follow} & es el puntero al jugador a seguir \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_kamikaze_ae82e6a48d3e927c65fcd64269a533377}{\index{Kamikaze@{Kamikaze}!get\-Enemy\-Type@{get\-Enemy\-Type}}
+\index{get\-Enemy\-Type@{get\-Enemy\-Type}!Kamikaze@{Kamikaze}}
+\subsubsection[{get\-Enemy\-Type}]{\setlength{\rightskip}{0pt plus 5cm}int Kamikaze\-::get\-Enemy\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_kamikaze_ae82e6a48d3e927c65fcd64269a533377}
+
+
+Es un metodo sobrescrito y retorna la constante que representa a las naves kamizake. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_enemy_rocket_a15caca840f5e774985fecf4295d9446d}{Enemy\-Rocket\-::\-K\-A\-M\-I\-K\-A\-Z\-E}\} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_enemy_rocket_a44e857f29c0846545743e21638391527}{Enemy\-Rocket}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/rocket/kamikaze.\-h\item 
+logic/rocket/kamikaze.\-cpp\end{DoxyCompactItemize}

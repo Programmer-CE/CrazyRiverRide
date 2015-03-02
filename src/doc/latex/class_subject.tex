@@ -1,0 +1,61 @@
+\hypertarget{class_subject}{\section{Subject Class Reference}
+\label{class_subject}\index{Subject@{Subject}}
+}
+
+
+Es la clase \hyperlink{class_subject}{Subject} que se suscribe a un objeto de tipo observer y envia las notificaciones necesarias.  
+
+
+
+
+{\ttfamily \#include $<$subject.\-h$>$}
+
+Inheritance diagram for Subject\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_subject}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_subject_ab468044832c824c6d6c2f46272655207}{\hyperlink{class_subject_ab468044832c824c6d6c2f46272655207}{Subject} ()}\label{class_subject_ab468044832c824c6d6c2f46272655207}
+
+\begin{DoxyCompactList}\small\item\em Es el metodo constructor por defecto. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_subject_a6d5613efb046d8db0fe467a5314f1e66}{set\-Observer} (\hyperlink{class_observer}{Observer} $\ast$p\-Observer)=0
+\begin{DoxyCompactList}\small\item\em agrega al observador para notificarle cambios \end{DoxyCompactList}\item 
+\hypertarget{class_subject_a7ef335c1bea008ee4d3dada9db2db50d}{virtual void {\bfseries notify\-All} ()=0}\label{class_subject_a7ef335c1bea008ee4d3dada9db2db50d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Es la clase \hyperlink{class_subject}{Subject} que se suscribe a un objeto de tipo observer y envia las notificaciones necesarias. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_subject_a6d5613efb046d8db0fe467a5314f1e66}{\index{Subject@{Subject}!set\-Observer@{set\-Observer}}
+\index{set\-Observer@{set\-Observer}!Subject@{Subject}}
+\subsubsection[{set\-Observer}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Subject\-::set\-Observer (
+\begin{DoxyParamCaption}
+\item[{{\bf Observer} $\ast$}]{p\-Observer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_subject_a6d5613efb046d8db0fe467a5314f1e66}
+
+
+agrega al observador para notificarle cambios 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Observer} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_kernel_game_a57642ef798e299e27b18c392fbba563f}{Kernel\-Game}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/patterdesing/subject.\-h\item 
+logic/patterdesing/subject.\-cpp\end{DoxyCompactItemize}

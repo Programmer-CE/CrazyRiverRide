@@ -1,0 +1,86 @@
+\hypertarget{class_amount_box}{\section{Amount\-Box Class Reference}
+\label{class_amount_box}\index{Amount\-Box@{Amount\-Box}}
+}
+
+
+Esta clase es la que se encarga de dar municiones al personaje, es la caja que aparece aleatoriamente sobre la ventana y da las municiones o disparos.  
+
+
+
+
+{\ttfamily \#include $<$amountbox.\-h$>$}
+
+Inheritance diagram for Amount\-Box\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_amount_box}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_amount_box_a19f89bb62420a75212487fd191f256c4}{Amount\-Box} (Q\-Rect p\-Rect, int p\-Max\-Hp, int p\-Points\-To\-Add)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase, le da una posicion, una vida maxima que pueda soportar y la cantidad de disparos que le agrega al jugador que colisione con esta. \end{DoxyCompactList}\item 
+void \hyperlink{class_amount_box_a006ae7739b2e6dbbb19c0a2a09936a71}{add\-Points\-To\-Player} (\hyperlink{class_player}{Player} $\ast$p\-Player)
+\begin{DoxyCompactList}\small\item\em es el metodo que se encarga de agregar o quitar los puntos actuales de la caja sumara o dejara intacto la vida de este, dependiendo de los puntos que esta tenga \end{DoxyCompactList}\item 
+\hypertarget{class_amount_box_a4d6ec95818bed923b6c19e1df6b50db8}{virtual \hyperlink{class_amount_box_a4d6ec95818bed923b6c19e1df6b50db8}{$\sim$\-Amount\-Box} ()}\label{class_amount_box_a4d6ec95818bed923b6c19e1df6b50db8}
+
+\begin{DoxyCompactList}\small\item\em constructor virtual de la clase \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Esta clase es la que se encarga de dar municiones al personaje, es la caja que aparece aleatoriamente sobre la ventana y da las municiones o disparos. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_amount_box_a19f89bb62420a75212487fd191f256c4}{\index{Amount\-Box@{Amount\-Box}!Amount\-Box@{Amount\-Box}}
+\index{Amount\-Box@{Amount\-Box}!AmountBox@{Amount\-Box}}
+\subsubsection[{Amount\-Box}]{\setlength{\rightskip}{0pt plus 5cm}Amount\-Box\-::\-Amount\-Box (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rect, }
+\item[{int}]{p\-Max\-Hp, }
+\item[{int}]{p\-Points\-To\-Add}
+\end{DoxyParamCaption}
+)}}\label{class_amount_box_a19f89bb62420a75212487fd191f256c4}
+
+
+Constructor de la clase, le da una posicion, una vida maxima que pueda soportar y la cantidad de disparos que le agrega al jugador que colisione con esta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Rect} & el rectangulo que contiene las dimensiones y la posicion del mismo \\
+\hline
+{\em p\-Max\-Hp} & es la vida maxima del la caja \\
+\hline
+{\em p\-Points\-To\-Add} & la cantidad de puntos agregara al jugador con el que colisione \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_amount_box_a006ae7739b2e6dbbb19c0a2a09936a71}{\index{Amount\-Box@{Amount\-Box}!add\-Points\-To\-Player@{add\-Points\-To\-Player}}
+\index{add\-Points\-To\-Player@{add\-Points\-To\-Player}!AmountBox@{Amount\-Box}}
+\subsubsection[{add\-Points\-To\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Amount\-Box\-::add\-Points\-To\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{p\-Player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_amount_box_a006ae7739b2e6dbbb19c0a2a09936a71}
+
+
+es el metodo que se encarga de agregar o quitar los puntos actuales de la caja sumara o dejara intacto la vida de este, dependiendo de los puntos que esta tenga 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Player} & es el jugador al cual se le sumaran o sustraera las municiones \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_box_a536c605982fc2000fbda0388d0a2fb2b}{Box}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/mapobjects/amountbox.\-h\item 
+logic/mapobjects/amountbox.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+\hypertarget{class_h_p_entity}{\section{H\-P\-Entity Class Reference}
+\label{class_h_p_entity}\index{H\-P\-Entity@{H\-P\-Entity}}
+}
+
+
+Es una derivacion de la clase \hyperlink{class_game_object}{Game\-Object}\} se encarga de estructurar aun mas el proyecto especializando algunos tipos de \hyperlink{class_game_object}{Game\-Object} y haciendo que estos tengan controles de vida, las clases que deriven de esta seran las que posean atributos de vida.  
+
+
+
+
+{\ttfamily \#include $<$hpentity.\-h$>$}
+
+Inheritance diagram for H\-P\-Entity\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_h_p_entity}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_h_p_entity_a3351ec6d47cbf4e5c178b54e056adcbe}{H\-P\-Entity} (Q\-Rect p\-Rectangle, int p\-Max\-Hp)
+\begin{DoxyCompactList}\small\item\em Es el metodo constructor se encarga, darle dimensiones y posicion a la entidad con hit points ademas de otorgarle una vida maxima de la entidad. \end{DoxyCompactList}\item 
+bool \hyperlink{class_h_p_entity_a43761d5af8e1883911c3e3b7ad9170df}{is\-Dead} () const 
+\begin{DoxyCompactList}\small\item\em Verifica si la entidad tiene puntos de vida, si esta tiene entonces no esta muerta, eso si la cantidad de vida tiene que ser mayor que cero para que la entidad se considere viva. \end{DoxyCompactList}\item 
+void \hyperlink{class_h_p_entity_a9cd0830a4369e036069aba8bdd37f703}{add\-Hit\-Points} (int p\-Hp=-\/1)
+\begin{DoxyCompactList}\small\item\em Suma una cantidad de vida a la entidad, si esta cantidad es negativa, entonces le resta vida, en el caso de que sea cero es neutra y la vida de la entidad no se ve afectada, en el caso de que la cantidad es positiva suma los puntos de vida, las sumas y restas se mantienen en el intervalo de cero a la cantidad maxima de vida de la entidad, por lo tanto es un conjunto cerrado de numeros usados dentro de la entidad. \end{DoxyCompactList}\item 
+int \hyperlink{class_h_p_entity_ab66e8858b5562dd629052cd3770479c0}{get\-Hit\-Points} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene la cantidad de vida concurrente de la entidad de vida. \end{DoxyCompactList}\item 
+\hypertarget{class_h_p_entity_a583b0e71da4f6e1446768e74f5c392dd}{virtual \hyperlink{class_h_p_entity_a583b0e71da4f6e1446768e74f5c392dd}{$\sim$\-H\-P\-Entity} ()}\label{class_h_p_entity_a583b0e71da4f6e1446768e74f5c392dd}
+
+\begin{DoxyCompactList}\small\item\em Destructor virtual de la clase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_h_p_entity_a3d72ffce5b3a795816229b5cfb1e221d}{\-\_\-\-Hp}
+\item 
+int \hyperlink{class_h_p_entity_a484307e81bbf22dbc7fdc11d0ee1c7d3}{\-\_\-\-Max\-Hp}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Es una derivacion de la clase \hyperlink{class_game_object}{Game\-Object}\} se encarga de estructurar aun mas el proyecto especializando algunos tipos de \hyperlink{class_game_object}{Game\-Object} y haciendo que estos tengan controles de vida, las clases que deriven de esta seran las que posean atributos de vida. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_h_p_entity_a3351ec6d47cbf4e5c178b54e056adcbe}{\index{H\-P\-Entity@{H\-P\-Entity}!H\-P\-Entity@{H\-P\-Entity}}
+\index{H\-P\-Entity@{H\-P\-Entity}!HPEntity@{H\-P\-Entity}}
+\subsubsection[{H\-P\-Entity}]{\setlength{\rightskip}{0pt plus 5cm}H\-P\-Entity\-::\-H\-P\-Entity (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rectangle, }
+\item[{int}]{p\-Max\-Hp}
+\end{DoxyParamCaption}
+)}}\label{class_h_p_entity_a3351ec6d47cbf4e5c178b54e056adcbe}
+
+
+Es el metodo constructor se encarga, darle dimensiones y posicion a la entidad con hit points ademas de otorgarle una vida maxima de la entidad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Rectangle} & Es el rectangulo que le dara dimensiones y posicion a la entidad de puntos de vida \\
+\hline
+{\em p\-Max\-Hp} & la cantidad de vida maxima de la entidad \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_h_p_entity_a9cd0830a4369e036069aba8bdd37f703}{\index{H\-P\-Entity@{H\-P\-Entity}!add\-Hit\-Points@{add\-Hit\-Points}}
+\index{add\-Hit\-Points@{add\-Hit\-Points}!HPEntity@{H\-P\-Entity}}
+\subsubsection[{add\-Hit\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void H\-P\-Entity\-::add\-Hit\-Points (
+\begin{DoxyParamCaption}
+\item[{int}]{p\-Hp = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{class_h_p_entity_a9cd0830a4369e036069aba8bdd37f703}
+
+
+Suma una cantidad de vida a la entidad, si esta cantidad es negativa, entonces le resta vida, en el caso de que sea cero es neutra y la vida de la entidad no se ve afectada, en el caso de que la cantidad es positiva suma los puntos de vida, las sumas y restas se mantienen en el intervalo de cero a la cantidad maxima de vida de la entidad, por lo tanto es un conjunto cerrado de numeros usados dentro de la entidad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Hp} & es la cantidad de vida que se le desea sumar o sustraer a la entidad \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_h_p_entity_ab66e8858b5562dd629052cd3770479c0}{\index{H\-P\-Entity@{H\-P\-Entity}!get\-Hit\-Points@{get\-Hit\-Points}}
+\index{get\-Hit\-Points@{get\-Hit\-Points}!HPEntity@{H\-P\-Entity}}
+\subsubsection[{get\-Hit\-Points}]{\setlength{\rightskip}{0pt plus 5cm}int H\-P\-Entity\-::get\-Hit\-Points (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_h_p_entity_ab66e8858b5562dd629052cd3770479c0}
+
+
+Obtiene la cantidad de vida concurrente de la entidad de vida. 
+
+\begin{DoxyReturn}{Returns}
+int la cantidad de vida de la entidad en la que se invoca esta funcion 
+\end{DoxyReturn}
+\hypertarget{class_h_p_entity_a43761d5af8e1883911c3e3b7ad9170df}{\index{H\-P\-Entity@{H\-P\-Entity}!is\-Dead@{is\-Dead}}
+\index{is\-Dead@{is\-Dead}!HPEntity@{H\-P\-Entity}}
+\subsubsection[{is\-Dead}]{\setlength{\rightskip}{0pt plus 5cm}bool H\-P\-Entity\-::is\-Dead (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_h_p_entity_a43761d5af8e1883911c3e3b7ad9170df}
+
+
+Verifica si la entidad tiene puntos de vida, si esta tiene entonces no esta muerta, eso si la cantidad de vida tiene que ser mayor que cero para que la entidad se considere viva. 
+
+\begin{DoxyReturn}{Returns}
+true, si la cantidad de vida es menor o igual a cero 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_h_p_entity_a3d72ffce5b3a795816229b5cfb1e221d}{\index{H\-P\-Entity@{H\-P\-Entity}!\-\_\-\-Hp@{\-\_\-\-Hp}}
+\index{\-\_\-\-Hp@{\-\_\-\-Hp}!HPEntity@{H\-P\-Entity}}
+\subsubsection[{\-\_\-\-Hp}]{\setlength{\rightskip}{0pt plus 5cm}int H\-P\-Entity\-::\-\_\-\-Hp\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_h_p_entity_a3d72ffce5b3a795816229b5cfb1e221d}
+T\-O\-D\-O es la vida concurrente de la entidad \hypertarget{class_h_p_entity_a484307e81bbf22dbc7fdc11d0ee1c7d3}{\index{H\-P\-Entity@{H\-P\-Entity}!\-\_\-\-Max\-Hp@{\-\_\-\-Max\-Hp}}
+\index{\-\_\-\-Max\-Hp@{\-\_\-\-Max\-Hp}!HPEntity@{H\-P\-Entity}}
+\subsubsection[{\-\_\-\-Max\-Hp}]{\setlength{\rightskip}{0pt plus 5cm}int H\-P\-Entity\-::\-\_\-\-Max\-Hp\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_h_p_entity_a484307e81bbf22dbc7fdc11d0ee1c7d3}
+T\-O\-D\-O es la cantidad maxima de vida , la minima es cero 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/mapobjects/hpentity.\-h\item 
+logic/mapobjects/hpentity.\-cpp\end{DoxyCompactItemize}

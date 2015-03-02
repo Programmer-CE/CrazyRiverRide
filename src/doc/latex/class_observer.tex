@@ -1,0 +1,60 @@
+\hypertarget{class_observer}{\section{Observer Class Reference}
+\label{class_observer}\index{Observer@{Observer}}
+}
+
+
+Es la clase que cumple con el patron de diseño observer Este es el observador al cual se le envian notificaciones y este las interpreta segun la implementacion de la clase hija que sobrescriba el metodo update de esta clase.  
+
+
+
+
+{\ttfamily \#include $<$observer.\-h$>$}
+
+Inheritance diagram for Observer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_observer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_observer_a19c43f80a38a332a6f694783df3c9835}{\hyperlink{class_observer_a19c43f80a38a332a6f694783df3c9835}{Observer} ()}\label{class_observer_a19c43f80a38a332a6f694783df3c9835}
+
+\begin{DoxyCompactList}\small\item\em El metodo de constructor por defecto. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_observer_a7204fd48ae9f9c2f39ea7e165740c451}{update} (google\-::protobuf\-::\-Message $\ast$p\-Message)=0
+\begin{DoxyCompactList}\small\item\em Recibe un mensaje mediante el uso de protocol buffers de google Recibe el protocolo, y lo decodifica con la implementacion necesaria que se le de al la clase que sobrescriba este metodo virtual. \end{DoxyCompactList}\item 
+\hypertarget{class_observer_afcc6b67be6c386f2f3d2c363aa59cb47}{virtual \hyperlink{class_observer_afcc6b67be6c386f2f3d2c363aa59cb47}{$\sim$\-Observer} ()}\label{class_observer_afcc6b67be6c386f2f3d2c363aa59cb47}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\-Observer Es el destructor virtual de la clase \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Es la clase que cumple con el patron de diseño observer Este es el observador al cual se le envian notificaciones y este las interpreta segun la implementacion de la clase hija que sobrescriba el metodo update de esta clase. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_observer_a7204fd48ae9f9c2f39ea7e165740c451}{\index{Observer@{Observer}!update@{update}}
+\index{update@{update}!Observer@{Observer}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Observer\-::update (
+\begin{DoxyParamCaption}
+\item[{google\-::protobuf\-::\-Message $\ast$}]{p\-Message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_observer_a7204fd48ae9f9c2f39ea7e165740c451}
+
+
+Recibe un mensaje mediante el uso de protocol buffers de google Recibe el protocolo, y lo decodifica con la implementacion necesaria que se le de al la clase que sobrescriba este metodo virtual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Message} & Es el mensaje recibido que es parte de los protocol buffers de google \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_game_manager_abcc7beda88f37957ab1c0711de030a45}{Game\-Manager}, and \hyperlink{class_key_updater_ae98e44fb4a0be038fd6482bfae40007e}{Key\-Updater}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+logic/patterdesing/observer.\-h\end{DoxyCompactItemize}

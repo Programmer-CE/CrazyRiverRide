@@ -171,7 +171,7 @@ void CrazyRiverRide::keyPressEvent(QKeyEvent *k)
             break;
         case Qt::Key_Return:
 
-            if (!_Menu && !_GameOver || _GameOver) _Paused = !_Paused;
+            if ((!_Menu && !_GameOver )|| _GameOver) _Paused = !_Paused;
             _PausedCalled = !_PausedCalled;
             if (_Paused){
                 music.pause();
@@ -236,10 +236,6 @@ void CrazyRiverRide::setPlayerCombustible(int value)
     playerCombustible = value;
 }
 
-void CrazyRiverRide::addRectangle(QRect dimension, bool isSelected, int text)
-{
-
-}
 
 void CrazyRiverRide::playmusic()
 {

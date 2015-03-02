@@ -13,6 +13,10 @@ GameManager::GameManager(CrazyRiverRide *gw):
     player1(":/images/images/player/mini blue rocket.png"),
     enemies(":/images/images/enemy/mini enemy nave premium version.png"),
     level(":/images/images/levels/bg.jpg"),
+    level2(":/images/images/levels/bg_2.jpg"),
+    level3(":/images/images/levels/bg_3.jpg"),
+    level4(":/images/images/levels/bg_4.jpg"),
+    level5(":/images/images/levels/bg_5.jpg"),
     enemyshot(":/images/images/attack/greenattack.png"),
     playershot(":/images/images/attack/attack.png"),
     indicadorSimpleshot(":/images/images/indicador/simpleshot.png"),
@@ -23,10 +27,6 @@ GameManager::GameManager(CrazyRiverRide *gw):
     boxBadHp(":/images/images/boxes/unhealt.png"),
     boxCombustible(":/images/images/boxes/cumbustible.png"),
     boxBadCombustible(":/images/images/boxes/flame.png"),
-    level2(":/images/images/levels/bg_2.jpg"),
-    level3(":/images/images/levels/bg_3.jpg"),
-    level4(":/images/images/levels/bg_4.jpg"),
-    level5(":/images/images/levels/bg_5.jpg"),
     _Run(true)
 {
     r = gw->rect();

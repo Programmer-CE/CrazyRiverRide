@@ -1,0 +1,19 @@
+var NAVTREEINDEX4 =
+{
+"struct_static_descriptor_initializer___game_object_notify__2eproto.html#aa4ae008d1cdff6840bcf8bf6fa07ab95":[0,0,68,0],
+"struct_static_descriptor_initializer___pause__2eproto.html":[0,0,69],
+"struct_static_descriptor_initializer___pause__2eproto.html#aa4323f5eee6f9235f45d2420a16195bd":[0,0,69,0],
+"struct_static_descriptor_initializer___pause_other_players__2eproto.html":[0,0,70],
+"struct_static_descriptor_initializer___pause_other_players__2eproto.html#af2314feee2ff9f6028fcc9415323d6ad":[0,0,70,0],
+"struct_static_descriptor_initializer___player_is_created__2eproto.html":[0,0,71],
+"struct_static_descriptor_initializer___player_is_created__2eproto.html#a85c429c9a32fb4af350e4dd237bf1720":[0,0,71,0],
+"struct_static_descriptor_initializer___player_status__2eproto.html":[0,0,72],
+"struct_static_descriptor_initializer___player_status__2eproto.html#adc80662af8d9b3ca35638e32fce20189":[0,0,72,0],
+"struct_static_descriptor_initializer___select_map__2eproto.html":[0,0,73],
+"struct_static_descriptor_initializer___select_map__2eproto.html#a0ff8d1e19131b0cebde91733bd77843d":[0,0,73,0],
+"struct_static_descriptor_initializer___stop__2eproto.html":[0,0,74],
+"struct_static_descriptor_initializer___stop__2eproto.html#a35184026347eb4826c81d99a220d58f0":[0,0,74,0],
+"subject_8h_source.html":[1,0,3,3,1],
+"threadhelper_8h_source.html":[1,0,3,0,2],
+"updater_8h_source.html":[1,0,10]
+};

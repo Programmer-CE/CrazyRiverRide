@@ -1,0 +1,189 @@
+\hypertarget{class_socket}{\section{Socket Class Reference}
+\label{class_socket}\index{Socket@{Socket}}
+}
+Inheritance diagram for Socket\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_socket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_socket_a6afde2dca985dacdfa770141192e2daf}{create} ()
+\begin{DoxyCompactList}\small\item\em crea el socket de manera que inicializa sus valores \end{DoxyCompactList}\item 
+bool \hyperlink{class_socket_a77afe3664d8996221a5d9a08a0330778}{link\-To\-Port} (const int p\-Port)
+\begin{DoxyCompactList}\small\item\em link\-To\-Port, Enlazarse a un puerto \end{DoxyCompactList}\item 
+bool \hyperlink{class_socket_ac841ace3ba3f3b0daa9b59a498d3769c}{listen} ()
+\begin{DoxyCompactList}\small\item\em listen, escucha algo mediante el socket \end{DoxyCompactList}\item 
+\hypertarget{class_socket_a0d133d518a86bfae2db9095c587aa4e3}{bool {\bfseries accept} (\hyperlink{class_socket}{Socket} \&p\-Other\-Socket)}\label{class_socket_a0d133d518a86bfae2db9095c587aa4e3}
+
+\item 
+bool \hyperlink{class_socket_a5ccaf81da2b6f25dded056e6dbf7f410}{is\-Valid} ()
+\begin{DoxyCompactList}\small\item\em Retorna si el socket es valido. \end{DoxyCompactList}\item 
+bool \hyperlink{class_socket_a5d4ef6f01022b2653aad96868bd87999}{send\-Message} (std\-::string message) const 
+\begin{DoxyCompactList}\small\item\em Envia un mensaje. \end{DoxyCompactList}\item 
+int \hyperlink{class_socket_a80aef7d019680c494f45cbd5b7fa37f2}{receive\-Message} (std\-::string \&message) const 
+\begin{DoxyCompactList}\small\item\em receive\-Message \end{DoxyCompactList}\item 
+bool \hyperlink{class_socket_afe535648cf44461c6ded1b2d72056d47}{connect} (const std\-::string host, const int port)
+\begin{DoxyCompactList}\small\item\em connect \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_ad97992fa51319cdf4d5d75c8bb49d100}{set\-Non\-Blocking} (const bool b)
+\begin{DoxyCompactList}\small\item\em set\-Non\-Blocking \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket_a95e54f0602448bae84d85145a8720997}{static const int {\bfseries M\-A\-X\-I\-M\-U\-N\-\_\-\-L\-E\-N\-G\-T\-H\-\_\-\-T\-O\-\_\-\-R\-E\-C\-E\-I\-V\-E} = 400}\label{class_socket_a95e54f0602448bae84d85145a8720997}
+
+\item 
+\hypertarget{class_socket_a7e2ace3442918efea281250bf3833d06}{static const int {\bfseries M\-A\-X\-I\-M\-U\-N\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N} = 5}\label{class_socket_a7e2ace3442918efea281250bf3833d06}
+
+\item 
+\hypertarget{class_socket_a41f1845f6cf98d227b32e15f0c9467db}{static const int {\bfseries M\-A\-X\-I\-M\-U\-N\-\_\-\-H\-O\-S\-T\-\_\-\-N\-A\-M\-E} = 200}\label{class_socket_a41f1845f6cf98d227b32e15f0c9467db}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_socket_afe535648cf44461c6ded1b2d72056d47}{\index{Socket@{Socket}!connect@{connect}}
+\index{connect@{connect}!Socket@{Socket}}
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\-::connect (
+\begin{DoxyParamCaption}
+\item[{const std\-::string}]{host, }
+\item[{const int}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_socket_afe535648cf44461c6ded1b2d72056d47}
+
+
+connect 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & \\
+\hline
+{\em port} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_socket_a6afde2dca985dacdfa770141192e2daf}{\index{Socket@{Socket}!create@{create}}
+\index{create@{create}!Socket@{Socket}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\-::create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_socket_a6afde2dca985dacdfa770141192e2daf}
+
+
+crea el socket de manera que inicializa sus valores 
+
+\begin{DoxyReturn}{Returns}
+retorna si el socket fue creado exitosamente 
+\end{DoxyReturn}
+\hypertarget{class_socket_a5ccaf81da2b6f25dded056e6dbf7f410}{\index{Socket@{Socket}!is\-Valid@{is\-Valid}}
+\index{is\-Valid@{is\-Valid}!Socket@{Socket}}
+\subsubsection[{is\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\-::is\-Valid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_socket_a5ccaf81da2b6f25dded056e6dbf7f410}
+
+
+Retorna si el socket es valido. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_socket_a77afe3664d8996221a5d9a08a0330778}{\index{Socket@{Socket}!link\-To\-Port@{link\-To\-Port}}
+\index{link\-To\-Port@{link\-To\-Port}!Socket@{Socket}}
+\subsubsection[{link\-To\-Port}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\-::link\-To\-Port (
+\begin{DoxyParamCaption}
+\item[{const int}]{p\-Port}
+\end{DoxyParamCaption}
+)}}\label{class_socket_a77afe3664d8996221a5d9a08a0330778}
+
+
+link\-To\-Port, Enlazarse a un puerto 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Port} & puerto de coneccion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, si el enlace pudo realizarse con exito 
+\end{DoxyReturn}
+\hypertarget{class_socket_ac841ace3ba3f3b0daa9b59a498d3769c}{\index{Socket@{Socket}!listen@{listen}}
+\index{listen@{listen}!Socket@{Socket}}
+\subsubsection[{listen}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\-::listen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_socket_ac841ace3ba3f3b0daa9b59a498d3769c}
+
+
+listen, escucha algo mediante el socket 
+
+\begin{DoxyReturn}{Returns}
+true, si escucha algo por medio del socket de conexion 
+\end{DoxyReturn}
+\hypertarget{class_socket_a80aef7d019680c494f45cbd5b7fa37f2}{\index{Socket@{Socket}!receive\-Message@{receive\-Message}}
+\index{receive\-Message@{receive\-Message}!Socket@{Socket}}
+\subsubsection[{receive\-Message}]{\setlength{\rightskip}{0pt plus 5cm}int Socket\-::receive\-Message (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{message}
+\end{DoxyParamCaption}
+) const}}\label{class_socket_a80aef7d019680c494f45cbd5b7fa37f2}
+
+
+receive\-Message 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_socket_a5d4ef6f01022b2653aad96868bd87999}{\index{Socket@{Socket}!send\-Message@{send\-Message}}
+\index{send\-Message@{send\-Message}!Socket@{Socket}}
+\subsubsection[{send\-Message}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\-::send\-Message (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{message}
+\end{DoxyParamCaption}
+) const}}\label{class_socket_a5d4ef6f01022b2653aad96868bd87999}
+
+
+Envia un mensaje. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & es el mensaje que se desea enviar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si el mensaje fue enviado 
+\end{DoxyReturn}
+\hypertarget{class_socket_ad97992fa51319cdf4d5d75c8bb49d100}{\index{Socket@{Socket}!set\-Non\-Blocking@{set\-Non\-Blocking}}
+\index{set\-Non\-Blocking@{set\-Non\-Blocking}!Socket@{Socket}}
+\subsubsection[{set\-Non\-Blocking}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\-::set\-Non\-Blocking (
+\begin{DoxyParamCaption}
+\item[{const bool}]{b}
+\end{DoxyParamCaption}
+)}}\label{class_socket_ad97992fa51319cdf4d5d75c8bb49d100}
+
+
+set\-Non\-Blocking 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/lanconection/socket.\-h\item 
+logic/lanconection/socket.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\hypertarget{class_crazy_thread}{\section{Crazy\-Thread Class Reference}
+\label{class_crazy_thread}\index{Crazy\-Thread@{Crazy\-Thread}}
+}
+
+
+Clase superior no instanciable que representa a los thread del proyecto Crazy River Ride la implementacion de esta clase esta inspirada en la clase que se puede apreciar el en siguiente link.  
+
+
+
+
+{\ttfamily \#include $<$crazythread.\-h$>$}
+
+Inheritance diagram for Crazy\-Thread\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_crazy_thread}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_crazy_thread_a0e0ca1644ff99dc033d11a58e0e54cd8}{\hyperlink{class_crazy_thread_a0e0ca1644ff99dc033d11a58e0e54cd8}{Crazy\-Thread} ()}\label{class_crazy_thread_a0e0ca1644ff99dc033d11a58e0e54cd8}
+
+\begin{DoxyCompactList}\small\item\em Constructor de la clase, es el constructor por defecto. \end{DoxyCompactList}\item 
+\hypertarget{class_crazy_thread_a46e62f5a5f328d329b5b14edc693fd77}{virtual \hyperlink{class_crazy_thread_a46e62f5a5f328d329b5b14edc693fd77}{$\sim$\-Crazy\-Thread} ()}\label{class_crazy_thread_a46e62f5a5f328d329b5b14edc693fd77}
+
+\begin{DoxyCompactList}\small\item\em Es el destructor virtual de la clase. \end{DoxyCompactList}\item 
+bool \hyperlink{class_crazy_thread_a2f355e56337c7f4b3f627633f51f9388}{start} ()
+\begin{DoxyCompactList}\small\item\em Es el metodo que se encarga de iniciar la ejecucion del pthread. \end{DoxyCompactList}\item 
+\hypertarget{class_crazy_thread_acd83eb404d4edc6db97f307aead10a32}{void \hyperlink{class_crazy_thread_acd83eb404d4edc6db97f307aead10a32}{stop} ()}\label{class_crazy_thread_acd83eb404d4edc6db97f307aead10a32}
+
+\begin{DoxyCompactList}\small\item\em Este metodo se ecarga de esperar a que el thread termine su ejecucion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_crazy_thread_ac55ecbf9e17716a6dd9acd3f22e4ad80}{virtual void \hyperlink{class_crazy_thread_ac55ecbf9e17716a6dd9acd3f22e4ad80}{internal\-Run} ()=0}\label{class_crazy_thread_ac55ecbf9e17716a6dd9acd3f22e4ad80}
+
+\begin{DoxyCompactList}\small\item\em Es el metodo que puede ser sobrescrito por aquella clase hija que desee tener su propia implemetancion del thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Clase superior no instanciable que representa a los thread del proyecto Crazy River Ride la implementacion de esta clase esta inspirada en la clase que se puede apreciar el en siguiente link. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_crazy_thread_a2f355e56337c7f4b3f627633f51f9388}{\index{Crazy\-Thread@{Crazy\-Thread}!start@{start}}
+\index{start@{start}!CrazyThread@{Crazy\-Thread}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}bool Crazy\-Thread\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_crazy_thread_a2f355e56337c7f4b3f627633f51f9388}
+
+
+Es el metodo que se encarga de iniciar la ejecucion del pthread. 
+
+\begin{DoxyReturn}{Returns}
+retorna true si el thread fue creado con exito 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+logic/crazythreads/crazythread.\-h\end{DoxyCompactItemize}

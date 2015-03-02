@@ -36,7 +36,6 @@ public:
     void setRenderinType(bool isOnMenu,bool isGameOver);
     int getPlayerCombustible() const;
     void setPlayerCombustible(int value);
-    void addRectangle(QRect dimension, bool isSelected, int text);
     void playmusic();
 protected:
     void closeEvent(QCloseEvent *);

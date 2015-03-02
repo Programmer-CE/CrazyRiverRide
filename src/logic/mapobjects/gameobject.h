@@ -89,13 +89,13 @@ public:
      */
     virtual int getX()const;
     /**
-     * @brief
+     * @brief Obtiene la posicion en el eje y del objeto de juego
      *
-     * @return int
+     * @return int la posicion en el eje y
      */
     virtual int getY()const;
     /**
-     * @brief
+     * @brief Destructor de la clase
      *
      */
     virtual ~GameObject();

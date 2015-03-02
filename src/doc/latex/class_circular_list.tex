@@ -1,0 +1,250 @@
+\hypertarget{class_circular_list}{\section{Circular\-List$<$ E $>$ Class Template Reference}
+\label{class_circular_list}\index{Circular\-List$<$ E $>$@{Circular\-List$<$ E $>$}}
+}
+
+
+Esta clase es una estructura de datos especificamente una lista enlazada circular simple que puede contener cualquier tipo de dato solamente definiciendolo mediante el template de esta clase. se puede agregar y borrar el dato.  
+
+
+
+
+{\ttfamily \#include $<$Circular\-List.\-h$>$}
+
+Inheritance diagram for Circular\-List$<$ E $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_circular_list}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_circular_list_aad23571a808ede6fc0432dca645ab2ca}{\hyperlink{class_circular_list_aad23571a808ede6fc0432dca645ab2ca}{Circular\-List} ()}\label{class_circular_list_aad23571a808ede6fc0432dca645ab2ca}
+
+\begin{DoxyCompactList}\small\item\em Es el constructor de la lista circular simple. \end{DoxyCompactList}\item 
+void \hyperlink{class_circular_list_a275c75e142e791de9a1a00691af56a73}{addi} (E)
+\begin{DoxyCompactList}\small\item\em Agrega un elemento al principio de la lista. \end{DoxyCompactList}\item 
+void \hyperlink{class_circular_list_a892b493309f36fb083fdd257388cfa36}{add} (E)
+\begin{DoxyCompactList}\small\item\em Agregar un elemento al final de la lista. \end{DoxyCompactList}\item 
+bool \hyperlink{class_circular_list_af184d3ac2e3bba683a44a6cc19392b12}{add} (E, int)
+\begin{DoxyCompactList}\small\item\em Agrega el elemento en el indice indicado. Si el indice es incorrecto no se agrega el elemento. \end{DoxyCompactList}\item 
+bool \hyperlink{class_circular_list_a4a6acfd818a0ae9055957ec80258c60a}{remove} (int)
+\begin{DoxyCompactList}\small\item\em Remueve el dato en la posicion indicada por el parametro, en caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista no alterara la lista. \end{DoxyCompactList}\item 
+void \hyperlink{class_circular_list_aa54489e11ad76bf929f92b1dce97a3a3}{set} (int, E)
+\begin{DoxyCompactList}\small\item\em Setea el valor del dato que se encuentre en el indice citado con un nuevo valor. \end{DoxyCompactList}\item 
+E \hyperlink{class_circular_list_ad6783339c7ff05841fc62f74f809644d}{get} (int)
+\begin{DoxyCompactList}\small\item\em Obtiene un dato el la posicion indicada. En caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista arrojara un error pues el dato esta fuera de los limites de la lista. \end{DoxyCompactList}\item 
+\hyperlink{class_i_iterator}{I\-Iterator}$<$ E $>$ $\ast$ \hyperlink{class_circular_list_a43e6cf1632001b3f409c6ce531529c6e}{get\-Iterator} ()
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia de un nuevo iterador de esta lista, y pueden obtenerse cuantas sean necesarias. pero es responsabilidad del programador eliminar mediante la palabra reservada delete. \end{DoxyCompactList}\item 
+\hypertarget{class_circular_list_aa65c9665b7d36a5e609752cad0a35dbb}{virtual \hyperlink{class_circular_list_aa65c9665b7d36a5e609752cad0a35dbb}{$\sim$\-Circular\-List} ()}\label{class_circular_list_aa65c9665b7d36a5e609752cad0a35dbb}
+
+\begin{DoxyCompactList}\small\item\em Es el destructor de la lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_circular_list_a6f405f4be7946286a958e0b83937b3e2}{addi} (E p\-Data)
+\begin{DoxyCompactList}\small\item\em Agrega un elemento al principio de la lista. \end{DoxyCompactList}\item 
+\hypertarget{class_circular_list_ad2832eb48d7d69fa5d759c0c16c4bc5e}{bool {\bfseries addf} (E p\-Data)}\label{class_circular_list_ad2832eb48d7d69fa5d759c0c16c4bc5e}
+
+\item 
+\hypertarget{class_circular_list_a0a3f318454d748eff1e3b8729aea94bd}{bool {\bfseries add\-First\-Data} (E p\-Data)}\label{class_circular_list_a0a3f318454d748eff1e3b8729aea94bd}
+
+\item 
+\hypertarget{class_circular_list_a706dd0ab6fb475bec90d9c40cefa92b1}{bool {\bfseries removei} ()}\label{class_circular_list_a706dd0ab6fb475bec90d9c40cefa92b1}
+
+\item 
+\hypertarget{class_circular_list_a1dde06b77306b31eb38fa4b43b6009ab}{bool {\bfseries removef} ()}\label{class_circular_list_a1dde06b77306b31eb38fa4b43b6009ab}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E$>$class Circular\-List$<$ E $>$}
+
+Esta clase es una estructura de datos especificamente una lista enlazada circular simple que puede contener cualquier tipo de dato solamente definiciendolo mediante el template de esta clase. se puede agregar y borrar el dato. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_circular_list_a892b493309f36fb083fdd257388cfa36}{\index{Circular\-List@{Circular\-List}!add@{add}}
+\index{add@{add}!CircularList@{Circular\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ void {\bf Circular\-List}$<$ E $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{E}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_a892b493309f36fb083fdd257388cfa36}
+
+
+Agregar un elemento al final de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el elemento a agregar \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_i_list_a27500caa3d9da05aa6437d5ff56b09e2}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_af184d3ac2e3bba683a44a6cc19392b12}{\index{Circular\-List@{Circular\-List}!add@{add}}
+\index{add@{add}!CircularList@{Circular\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ bool {\bf Circular\-List}$<$ E $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{E}]{data, }
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_af184d3ac2e3bba683a44a6cc19392b12}
+
+
+Agrega el elemento en el indice indicado. Si el indice es incorrecto no se agrega el elemento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & el elemento a agregar \\
+\hline
+{\em index} & el indice que indica el lugar donde se agregara \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si el elemento se agrega retorna true, en caso contrario retorna false 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_i_list_a70140dbc9de2b9f6e5ffd2212d5ea8b0}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_a6f405f4be7946286a958e0b83937b3e2}{\index{Circular\-List@{Circular\-List}!addi@{addi}}
+\index{addi@{addi}!CircularList@{Circular\-List}}
+\subsubsection[{addi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ bool {\bf Circular\-List}$<$ E $>$\-::addi (
+\begin{DoxyParamCaption}
+\item[{E}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_circular_list_a6f405f4be7946286a958e0b83937b3e2}
+
+
+Agrega un elemento al principio de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el elemento a agregar \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_i_list_af202dc9e748ee32238d80e57dfbcae20}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_a275c75e142e791de9a1a00691af56a73}{\index{Circular\-List@{Circular\-List}!addi@{addi}}
+\index{addi@{addi}!CircularList@{Circular\-List}}
+\subsubsection[{addi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ bool {\bf Circular\-List}$<$ E $>$\-::addi (
+\begin{DoxyParamCaption}
+\item[{E}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_a275c75e142e791de9a1a00691af56a73}
+
+
+Agrega un elemento al principio de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & el elemento a agregar \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_i_list_af202dc9e748ee32238d80e57dfbcae20}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_ad6783339c7ff05841fc62f74f809644d}{\index{Circular\-List@{Circular\-List}!get@{get}}
+\index{get@{get}!CircularList@{Circular\-List}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ E {\bf Circular\-List}$<$ E $>$\-::get (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_ad6783339c7ff05841fc62f74f809644d}
+
+
+Obtiene un dato el la posicion indicada. En caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista arrojara un error pues el dato esta fuera de los limites de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & el indice indicado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+E el dato buscado por el indice indicado 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em indexoutbounds} & fuera de rango \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \hyperlink{class_i_list_a60570f7ee0e7474d01b2f364bad996a0}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_a43e6cf1632001b3f409c6ce531529c6e}{\index{Circular\-List@{Circular\-List}!get\-Iterator@{get\-Iterator}}
+\index{get\-Iterator@{get\-Iterator}!CircularList@{Circular\-List}}
+\subsubsection[{get\-Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ {\bf I\-Iterator}$<$ E $>$ $\ast$ {\bf Circular\-List}$<$ E $>$\-::get\-Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_a43e6cf1632001b3f409c6ce531529c6e}
+
+
+Obtiene una instancia de un nuevo iterador de esta lista, y pueden obtenerse cuantas sean necesarias. pero es responsabilidad del programador eliminar mediante la palabra reservada delete. 
+
+\begin{DoxyReturn}{Returns}
+I\-Iterator$<$\-E$>$ un puntero de0l iterador indicado 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_i_list_a997815664cc6b20eb5dfa9968251d2cd}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_a4a6acfd818a0ae9055957ec80258c60a}{\index{Circular\-List@{Circular\-List}!remove@{remove}}
+\index{remove@{remove}!CircularList@{Circular\-List}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E $>$ bool {\bf Circular\-List}$<$ E $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_a4a6acfd818a0ae9055957ec80258c60a}
+
+
+Remueve el dato en la posicion indicada por el parametro, en caso que el indice indicado sea incorrecto, osea que sea menor que cero o mayor o igual que el largo de la lista no alterara la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & la posicion indicada del objeto a borrar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si borra algo, false si el indice indicado es incorrecto 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_i_list_a9bf7d737252dfbd4c9a5d7be36ea4231}{I\-List$<$ E $>$}.
+
+\hypertarget{class_circular_list_aa54489e11ad76bf929f92b1dce97a3a3}{\index{Circular\-List@{Circular\-List}!set@{set}}
+\index{set@{set}!CircularList@{Circular\-List}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class E$>$ void {\bf Circular\-List}$<$ E $>$\-::set (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{E}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_circular_list_aa54489e11ad76bf929f92b1dce97a3a3}
+
+
+Setea el valor del dato que se encuentre en el indice citado con un nuevo valor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & el indice en el que se encuetra el dato \\
+\hline
+{\em E} & el dato por el que se cambiara \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_i_list_a119ed658d2804aec0b9fef9325c03073}{I\-List$<$ E $>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+list/Circular\-List.\-h\end{DoxyCompactItemize}

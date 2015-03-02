@@ -1,0 +1,74 @@
+\hypertarget{class_linear_shot}{\section{Linear\-Shot Class Reference}
+\label{class_linear_shot}\index{Linear\-Shot@{Linear\-Shot}}
+}
+Inheritance diagram for Linear\-Shot\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_linear_shot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_linear_shot_a353b1988983a192affd6913805b8403e}{{\bfseries Linear\-Shot} (Q\-Rect p\-Rectangle, bool p\-To\-Up, int p\-Damage)}\label{class_linear_shot_a353b1988983a192affd6913805b8403e}
+
+\item 
+\hypertarget{class_linear_shot_af5e24419776495f3b42381fe614a3bec}{bool {\bfseries is\-Useful\-Shot} (Q\-Rect p\-Area)}\label{class_linear_shot_af5e24419776495f3b42381fe614a3bec}
+
+\item 
+bool \hyperlink{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}{is\-Collide} (\hyperlink{class_game_object}{Game\-Object} $\ast$other\-Renderizable)
+\begin{DoxyCompactList}\small\item\em Verifica si un \hyperlink{class_game_object}{Game\-Object} esta colisionando con otro. \end{DoxyCompactList}\item 
+\hypertarget{class_linear_shot_a9f7b9d654314185d6d89c8c24a64bc85}{int {\bfseries get\-X\-Velocity} ()}\label{class_linear_shot_a9f7b9d654314185d6d89c8c24a64bc85}
+
+\item 
+\hypertarget{class_linear_shot_ad0b2c8f2e67c4c8bf48895616c9f5683}{int {\bfseries get\-Y\-Velocity} ()}\label{class_linear_shot_ad0b2c8f2e67c4c8bf48895616c9f5683}
+
+\item 
+\hypertarget{class_linear_shot_a50717d095ffb35f445f909f0ef961a5a}{int {\bfseries get\-Type} ()}\label{class_linear_shot_a50717d095ffb35f445f909f0ef961a5a}
+
+\item 
+\hypertarget{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}{void \hyperlink{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}{update} ()}\label{class_linear_shot_a7f0ae98813020ba9c1860f24750b6fcf}
+
+\begin{DoxyCompactList}\small\item\em Actualiza el objeto, es un metodo abstracto, y debe ser implementado por sus clases hijas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_linear_shot_a07e655ed82603f917e1d84758871f5bd}{int {\bfseries \-\_\-\-Velocity\-Y}}\label{class_linear_shot_a07e655ed82603f917e1d84758871f5bd}
+
+\item 
+\hypertarget{class_linear_shot_add140652fdd02d964e8827559d83a8ac}{bool {\bfseries \-\_\-\-Is\-Touched}}\label{class_linear_shot_add140652fdd02d964e8827559d83a8ac}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}{\index{Linear\-Shot@{Linear\-Shot}!is\-Collide@{is\-Collide}}
+\index{is\-Collide@{is\-Collide}!LinearShot@{Linear\-Shot}}
+\subsubsection[{is\-Collide}]{\setlength{\rightskip}{0pt plus 5cm}bool Linear\-Shot\-::is\-Collide (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} $\ast$}]{\-\_\-other\-Renderizable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_linear_shot_a5f74863ef2fe90a8e524945737029e0a}
+
+
+Verifica si un \hyperlink{class_game_object}{Game\-Object} esta colisionando con otro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-other\-Renderizable} & el otro objeto para verificar que se colisione \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si colisionan 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_game_object_a4d7f7506ab6fa6442367844cd8202fb6}{Game\-Object}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/shot/linearshot.\-h\item 
+logic/shot/linearshot.\-cpp\end{DoxyCompactItemize}

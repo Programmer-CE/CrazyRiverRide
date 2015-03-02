@@ -10,6 +10,7 @@ public:
     KeyUpdater(KernelGame *kg);
     KeyUpdater();
     void update(google::protobuf::Message *pMessage);
+    virtual ~KeyUpdater(){}
 };
 
 #endif // KEYUPDATER_H

@@ -35,8 +35,8 @@ const int KernelGame::TIME_TO_REGENERATE_ENEMIES = KernelGame::FPS*10;
 //==================================================================================================
 
 KernelGame::KernelGame(QRect rec):_NumOfPlayer(0),_Paused(false),_isRunning(true),
-    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0),_CurrentTimeToBadBox(0), _CurrentTimeToRegenerateHpBox(0),
-    _OnMenu(true),_OnGameTime(false),_OnBossTime(false),_OnGameOverTime(false)
+    _Map(QRect(rec.x(),-5000+800,1024,5000),2,0),_OnMenu(true),_OnGameTime(false),
+    _OnBossTime(false),_OnGameOverTime(false),_CurrentTimeToBadBox(0), _CurrentTimeToRegenerateHpBox(0)
 {
     _Rec = rec;
     _Players.add(new Player(_Rec.center().x(),_Rec.center().y(),_NumOfPlayer++));

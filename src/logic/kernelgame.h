@@ -17,10 +17,10 @@ private:
     int _PlayerPause;
     int _NumOfPlayer;
     bool _Paused,_isRunning;
+    GameMap _Map;
     int _CurrentTimeToRegenerateEnemies;
     bool _OnMenu,_OnGameTime,_OnBossTime,_OnGameOverTime;
     QRect _Rec;
-    GameMap _Map;
     List<EnemyRocket*> _Enemies;
     List<Player*> _Players;
     List<Shot*> _EnemiesShots;

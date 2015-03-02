@@ -1,0 +1,119 @@
+\hypertarget{class_box}{\section{Box Class Reference}
+\label{class_box}\index{Box@{Box}}
+}
+
+
+Es la clase caja que se encarga de agregar puntos de vida al jugador, tambien se encarga de quitarle puntos si se ha convertido en una caja envenenada.  
+
+
+
+
+{\ttfamily \#include $<$box.\-h$>$}
+
+Inheritance diagram for Box\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_box}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_box_a12c7c3f710d76e599a31e7a41784f613}{Box} (Q\-Rect p\-Rect, int p\-Max\-Hp, int p\-Points\-To\-Add)
+\begin{DoxyCompactList}\small\item\em Es el constructor de la clase box le da una posicion (x,y) y dimensiones, una cantidad de vida maxima y la cantidad de puntos que agregara. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_box_a536c605982fc2000fbda0388d0a2fb2b}{add\-Points\-To\-Player} (\hyperlink{class_player}{Player} $\ast$p\-Player)
+\begin{DoxyCompactList}\small\item\em Es el metodo que se encarga de sumar o restar directamente la vida al jugador. \end{DoxyCompactList}\item 
+\hypertarget{class_box_a82b510b4e487f29189b19699ebaaebae}{void \hyperlink{class_box_a82b510b4e487f29189b19699ebaaebae}{turn\-Abad\-Box} ()}\label{class_box_a82b510b4e487f29189b19699ebaaebae}
+
+\begin{DoxyCompactList}\small\item\em Este metodo se encarga de tornar la caja en una caja mala volviedo los puntos que esta contiene en puntos negativos que afectaran directamente sobre el jugador. \end{DoxyCompactList}\item 
+bool \hyperlink{class_box_a1d84b0a091465889a6e587c4f9072482}{is\-Bad\-Box} ()
+\begin{DoxyCompactList}\small\item\em Verifica si la caja es mala, osea perjudica al jugador. \end{DoxyCompactList}\item 
+\hypertarget{class_box_a779104150a6f06da2bf1500489a58530}{void \hyperlink{class_box_a779104150a6f06da2bf1500489a58530}{update} ()}\label{class_box_a779104150a6f06da2bf1500489a58530}
+
+\begin{DoxyCompactList}\small\item\em Actualiza las posiciones y puntos de la caja. \end{DoxyCompactList}\item 
+\hypertarget{class_box_a6a5e09398e85d602a046b429062fb9c2}{virtual \hyperlink{class_box_a6a5e09398e85d602a046b429062fb9c2}{$\sim$\-Box} ()}\label{class_box_a6a5e09398e85d602a046b429062fb9c2}
+
+\begin{DoxyCompactList}\small\item\em Destructor virtual de la clase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_box_a6bad20b31366e6c10dd372d46521f566}{\-\_\-\-Points\-To\-Add}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Es la clase caja que se encarga de agregar puntos de vida al jugador, tambien se encarga de quitarle puntos si se ha convertido en una caja envenenada. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_box_a12c7c3f710d76e599a31e7a41784f613}{\index{Box@{Box}!Box@{Box}}
+\index{Box@{Box}!Box@{Box}}
+\subsubsection[{Box}]{\setlength{\rightskip}{0pt plus 5cm}Box\-::\-Box (
+\begin{DoxyParamCaption}
+\item[{Q\-Rect}]{p\-Rect, }
+\item[{int}]{p\-Max\-Hp, }
+\item[{int}]{p\-Points\-To\-Add}
+\end{DoxyParamCaption}
+)}}\label{class_box_a12c7c3f710d76e599a31e7a41784f613}
+
+
+Es el constructor de la clase box le da una posicion (x,y) y dimensiones, una cantidad de vida maxima y la cantidad de puntos que agregara. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Rect} & Es el rectangulo que contiene la posicion y las dimensiones de la caja \\
+\hline
+{\em p\-Max\-Hp} & es la cantidad de vida maxima que esta contiene \\
+\hline
+{\em p\-Points\-To\-Add} & es la cantidad de vida que se agregara o sustreara del jugador \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_box_a536c605982fc2000fbda0388d0a2fb2b}{\index{Box@{Box}!add\-Points\-To\-Player@{add\-Points\-To\-Player}}
+\index{add\-Points\-To\-Player@{add\-Points\-To\-Player}!Box@{Box}}
+\subsubsection[{add\-Points\-To\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Box\-::add\-Points\-To\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{p\-Player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_box_a536c605982fc2000fbda0388d0a2fb2b}
+
+
+Es el metodo que se encarga de sumar o restar directamente la vida al jugador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Player} & es el jugador al que se le aplica la operacion de suma o resta de vida \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_amount_box_a006ae7739b2e6dbbb19c0a2a09936a71}{Amount\-Box}, and \hyperlink{class_combustible_box_abab14feb7a19ee2a9fc61bbb1a92726a}{Combustible\-Box}.
+
+\hypertarget{class_box_a1d84b0a091465889a6e587c4f9072482}{\index{Box@{Box}!is\-Bad\-Box@{is\-Bad\-Box}}
+\index{is\-Bad\-Box@{is\-Bad\-Box}!Box@{Box}}
+\subsubsection[{is\-Bad\-Box}]{\setlength{\rightskip}{0pt plus 5cm}bool Box\-::is\-Bad\-Box (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_box_a1d84b0a091465889a6e587c4f9072482}
+
+
+Verifica si la caja es mala, osea perjudica al jugador. 
+
+\begin{DoxyReturn}{Returns}
+true, si la caja es mala 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_box_a6bad20b31366e6c10dd372d46521f566}{\index{Box@{Box}!\-\_\-\-Points\-To\-Add@{\-\_\-\-Points\-To\-Add}}
+\index{\-\_\-\-Points\-To\-Add@{\-\_\-\-Points\-To\-Add}!Box@{Box}}
+\subsubsection[{\-\_\-\-Points\-To\-Add}]{\setlength{\rightskip}{0pt plus 5cm}int Box\-::\-\_\-\-Points\-To\-Add\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_box_a6bad20b31366e6c10dd372d46521f566}
+T\-O\-D\-O son los puntos que agregara 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/mapobjects/box.\-h\item 
+logic/mapobjects/box.\-cpp\end{DoxyCompactItemize}

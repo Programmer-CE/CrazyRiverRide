@@ -1,0 +1,79 @@
+\hypertarget{class_game_loop}{\section{Game\-Loop Class Reference}
+\label{class_game_loop}\index{Game\-Loop@{Game\-Loop}}
+}
+
+
+Es la clase que se encarga de controlar el pintado de la ventana del juego seccionandolo en frame por segundo, especificamente 24 fps, la clase regula el pintado y la ejecucion de las actualizaciones del juego mismo.  
+
+
+
+
+{\ttfamily \#include $<$gameloop.\-h$>$}
+
+Inheritance diagram for Game\-Loop\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_loop}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_loop_adbe6559d3c3270054090db3b98a5c2d5}{Game\-Loop} (\hyperlink{class_kernel_game}{Kernel\-Game} $\ast$p\-Kernel\-Game)
+\begin{DoxyCompactList}\small\item\em Es el constructor de la clase. \end{DoxyCompactList}\item 
+\hypertarget{class_game_loop_ae6c558d0d751a068dbafe2cae465ec1f}{virtual \hyperlink{class_game_loop_ae6c558d0d751a068dbafe2cae465ec1f}{$\sim$\-Game\-Loop} ()}\label{class_game_loop_ae6c558d0d751a068dbafe2cae465ec1f}
+
+\begin{DoxyCompactList}\small\item\em Metodo virtual destructor, se encarga de detener el thread si este no ha sido detenido para evitar problemas en tiempo de ejecucion. \end{DoxyCompactList}\item 
+\hyperlink{class_thread_helper}{Thread\-Helper} $\ast$ \hyperlink{class_game_loop_aa95091d6b9fbc580219ee08374ca1642}{get\-Gui\-Conector} () const 
+\begin{DoxyCompactList}\small\item\em retorna un puntero a la objeto que se encarga de conectarse con la logica \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_game_loop_a87ba7bf63cff924dbaec68aa41508cc0}{void \hyperlink{class_game_loop_a87ba7bf63cff924dbaec68aa41508cc0}{internal\-Run} ()}\label{class_game_loop_a87ba7bf63cff924dbaec68aa41508cc0}
+
+\begin{DoxyCompactList}\small\item\em Es el metodo a sobrescribir de su clase padre \hyperlink{class_crazy_thread}{Crazy\-Thread}\} El metodo se encarga de regular las actualizaciones logicas dentro del juego ademas de enviar signal para que la ventana pueda pintar estas actualizacion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Es la clase que se encarga de controlar el pintado de la ventana del juego seccionandolo en frame por segundo, especificamente 24 fps, la clase regula el pintado y la ejecucion de las actualizaciones del juego mismo. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_game_loop_adbe6559d3c3270054090db3b98a5c2d5}{\index{Game\-Loop@{Game\-Loop}!Game\-Loop@{Game\-Loop}}
+\index{Game\-Loop@{Game\-Loop}!GameLoop@{Game\-Loop}}
+\subsubsection[{Game\-Loop}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Loop\-::\-Game\-Loop (
+\begin{DoxyParamCaption}
+\item[{{\bf Kernel\-Game} $\ast$}]{p\-Kernel\-Game}
+\end{DoxyParamCaption}
+)}}\label{class_game_loop_adbe6559d3c3270054090db3b98a5c2d5}
+
+
+Es el constructor de la clase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Kernel\-Game} & es la variable que contiene la logica y la cual sera el punto centra de este thread \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_loop_aa95091d6b9fbc580219ee08374ca1642}{\index{Game\-Loop@{Game\-Loop}!get\-Gui\-Conector@{get\-Gui\-Conector}}
+\index{get\-Gui\-Conector@{get\-Gui\-Conector}!GameLoop@{Game\-Loop}}
+\subsubsection[{get\-Gui\-Conector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Thread\-Helper} $\ast$ Game\-Loop\-::get\-Gui\-Conector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_game_loop_aa95091d6b9fbc580219ee08374ca1642}
+
+
+retorna un puntero a la objeto que se encarga de conectarse con la logica 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_thread_helper}{Thread\-Helper} el puntero que se encarga de conectarse con la logica 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/crazythreads/gameloop.\-h\item 
+logic/crazythreads/gameloop.\-cpp\end{DoxyCompactItemize}

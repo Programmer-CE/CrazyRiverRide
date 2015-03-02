@@ -26,7 +26,7 @@ public:
     bool pause();
     void select(int Map);
     void update(google::protobuf::Message *pMessage);
-    ~GameManager();
+    virtual ~GameManager();
 };
 
 #endif // GAMEMANAGER_H

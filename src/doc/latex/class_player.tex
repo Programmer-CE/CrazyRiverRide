@@ -1,0 +1,78 @@
+\hypertarget{class_player}{\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_player_a24659ea97da1acc913319776705aab94}{{\bfseries Player} (int p\-X, int p\-Y, int p\-Player\-Number)}\label{class_player_a24659ea97da1acc913319776705aab94}
+
+\item 
+\hypertarget{class_player_ad2d305f9af724e761a491b7a85a020e0}{{\bfseries Player} (\hyperlink{class_player}{Player} \&)}\label{class_player_ad2d305f9af724e761a491b7a85a020e0}
+
+\item 
+\hypertarget{class_player_ae994ea7007d6da03e2b07941ec57d487}{\hyperlink{class_player_rocket}{Player\-Rocket} $\ast$ {\bfseries get\-Rocket} ()}\label{class_player_ae994ea7007d6da03e2b07941ec57d487}
+
+\item 
+\hypertarget{class_player_a609d8bc41b5975dc84419ebf8499af78}{void {\bfseries add\-Points} (int p\-Points)}\label{class_player_a609d8bc41b5975dc84419ebf8499af78}
+
+\item 
+\hypertarget{class_player_ab98ee3c0e10f7b2b65ad43b2a2929445}{int {\bfseries get\-Points} ()}\label{class_player_ab98ee3c0e10f7b2b65ad43b2a2929445}
+
+\item 
+\hypertarget{class_player_ad6220515daeec578e4edcebb0b304df4}{int {\bfseries get\-Player\-Number} () const }\label{class_player_ad6220515daeec578e4edcebb0b304df4}
+
+\item 
+\hypertarget{class_player_a2c86a52ca55e44e2de9115e0c736a155}{void {\bfseries change\-Munition} ()}\label{class_player_a2c86a52ca55e44e2de9115e0c736a155}
+
+\item 
+\hypertarget{class_player_ac0b88c415cb264d54c227dd4ef82a7d1}{bool {\bfseries is\-Dead} ()}\label{class_player_ac0b88c415cb264d54c227dd4ef82a7d1}
+
+\item 
+\hypertarget{class_player_a0a1f2222ab92d321474bd52147a2b1df}{bool {\bfseries revive} ()}\label{class_player_a0a1f2222ab92d321474bd52147a2b1df}
+
+\item 
+\hypertarget{class_player_a4cdc67fd9ca2de09af89d9ae19efe5f8}{void {\bfseries shoot} ()}\label{class_player_a4cdc67fd9ca2de09af89d9ae19efe5f8}
+
+\item 
+\hypertarget{class_player_ae02c3ddb3bff99fd2375c552e51b8560}{void {\bfseries set\-Stun\-Time} (int p\-Stun\-Time)}\label{class_player_ae02c3ddb3bff99fd2375c552e51b8560}
+
+\item 
+\hypertarget{class_player_a4f5d43c9f4394429fef4106715529ed7}{void {\bfseries delete\-Shot} (string p\-Id)}\label{class_player_a4f5d43c9f4394429fef4106715529ed7}
+
+\item 
+\hypertarget{class_player_a7a3afa150767d2c07968dc6d04b145b8}{bool {\bfseries operator$<$} (\hyperlink{class_player}{Player} const \&other\-Player)}\label{class_player_a7a3afa150767d2c07968dc6d04b145b8}
+
+\item 
+\hypertarget{class_player_aee44ed3cca127251cf0f65102c89dd8f}{bool {\bfseries operator$>$} (\hyperlink{class_player}{Player} const \&other\-Player)}\label{class_player_aee44ed3cca127251cf0f65102c89dd8f}
+
+\item 
+\hypertarget{class_player_a78258f14f551447cb997c91ada49ade6}{bool {\bfseries operator!=} (\hyperlink{class_player}{Player} const \&other\-Player)}\label{class_player_a78258f14f551447cb997c91ada49ade6}
+
+\item 
+\hypertarget{class_player_a3221fef8a645a3d9b40eb2e3594b3f60}{bool {\bfseries operator==} (\hyperlink{class_player}{Player} const \&other\-Player)}\label{class_player_a3221fef8a645a3d9b40eb2e3594b3f60}
+
+\item 
+\hypertarget{class_player_a324a27f8b07cc82afe1c4cb67906a964}{void {\bfseries update} (Q\-Rect rec)}\label{class_player_a324a27f8b07cc82afe1c4cb67906a964}
+
+\item 
+virtual \hyperlink{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$\-Player} ()
+\item 
+\hypertarget{class_player_ab221ec831c2a110ae5b631c782b6dbe7}{\hyperlink{class_list}{List}$<$ \hyperlink{class_shot}{Shot} $\ast$ $>$ $\ast$ {\bfseries get\-Player\-Shots} ()}\label{class_player_ab221ec831c2a110ae5b631c782b6dbe7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{\index{Player@{Player}!$\sim$\-Player@{$\sim$\-Player}}
+\index{$\sim$\-Player@{$\sim$\-Player}!Player@{Player}}
+\subsubsection[{$\sim$\-Player}]{\setlength{\rightskip}{0pt plus 5cm}Player\-::$\sim$\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_player_a749d2c00e1fe0f5c2746f7505a58c062}
+bool Player\-::operator !=(\-Player const \&to\-Compare)\{ return get\-Player\-Number() $>$ to\-Compare.\-get\-Player\-Number(); \} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+logic/player.\-h\item 
+logic/player.\-cpp\end{DoxyCompactItemize}
